@@ -49,7 +49,6 @@ public class SumOfTwoNumbers {
         int sum = a + b;
         return sum;
     }
-
     }
 
     //Method Syntax
