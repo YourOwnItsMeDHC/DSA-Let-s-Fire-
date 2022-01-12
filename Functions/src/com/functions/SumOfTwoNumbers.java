@@ -5,23 +5,28 @@ import java.util.Scanner;
 public class SumOfTwoNumbers {
     public static void main(String[] args) {
 
+        sum();
+
         //to return int method , we have to store that method in some reference variable , and then print that
-
-     int ans = sum2();
-        System.out.println("From sum2() , Sum is : " + ans);
-
-        System.out.println();                                          //line spacing
-
-        sum();
-
-        int ans2 = sum2();
-        System.out.println("From sum2() , Sum is : " + ans2);
+        int ansForSum2 = sum2();
+        System.out.println("From sum2() , Sum is : " + ansForSum2);
 
         System.out.println();                                          //line spacing
 
-        sum();
+        int ansForSum3 = sum3(10  , 20);
+        System.out.println("From sum3() , Sum is : " + ansForSum3);
     }
 
+    static void sum() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter First Number : ");              //return type "void"
+        int num1 = in.nextInt();
+        System.out.print("Enter Second Number : ");
+        int num2 = in.nextInt();
+        int sum = num1 + num2;
+        System.out.println("From sum() , Sum of " + num1 + " and " + num2 + " is : " + sum);
+        System.out.println();
+    }
 
     static int sum2() {
         Scanner in = new Scanner(System.in);
@@ -33,16 +38,18 @@ public class SumOfTwoNumbers {
         return sum;                                                //it means last line of method
     }                          //to return int method , we have to store that method in some reference variable
 
-        static void sum() {
-            Scanner in = new Scanner(System.in);
-            System.out.print("Enter First Number : ");              //return type "void"
-            int num1 = in.nextInt();
-            System.out.print("Enter Second Number : ");
-            int num2 = in.nextInt();
-            int sum = num1 + num2;
-            System.out.println("From sum() , Sum of " + num1 + " and " + num2 + " is : " + sum);
-            System.out.println();
-        }
+
+    //Using Parameters
+    /*
+    In parameters there will be all the things i.e variables whose input we want.
+    We need to use Scanner if we want value of some variable as an input ,but here ,
+    we can get that input by passing all that variable n parameters of method whose value we need.
+     */
+    static int sum3(int a , int b){
+        int sum = a + b;
+        return sum;
+    }
+
     }
 
     //Method Syntax
