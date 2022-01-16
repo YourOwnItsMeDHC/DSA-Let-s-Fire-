@@ -21,6 +21,9 @@ public class MethodOverloading {
         var(10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
 
         var("Deepak", "Suraj", "Rapper", "Dancer");
+
+//        var();         //If we don't give any input here, it will give an error
+//                       //It is known as AMBIGUITY , because at COMPILE TIME it will not come to know that which var() should it run.
     }
 
     static void fun(int a){
