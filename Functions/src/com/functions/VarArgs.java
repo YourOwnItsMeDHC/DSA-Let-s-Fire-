@@ -29,5 +29,5 @@ public class VarArgs {
           body
           }
 
-          any_name is called implicitly as ann array of data_type
+          any_name is called implicitly as an array of whatever data_type we chose
      */
