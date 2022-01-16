@@ -13,7 +13,7 @@ public class VarArgs {
     }
 
     static void var(int...arr){
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));             //Convert Arrays into String
     }
 }
 
