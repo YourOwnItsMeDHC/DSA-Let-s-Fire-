@@ -17,3 +17,4 @@ public class PassByValueOfReference {
 
      //Here element of oth index is changed , because we didn't changed the object , we have just modified it .
      //In java , we don't have pass or call by reference and pointer concept , we have pass or call by value.
+     //In primitive data type , new object is created and in non-primitive data type , object is modified.
