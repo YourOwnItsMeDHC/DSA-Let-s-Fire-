@@ -9,11 +9,25 @@ public class VarArgs {
 
         var(1, 12, 3, 4, 46, 65465, 4654, 5485, 878);      //with more than zero arguments
 
+        System.out.println();                                   //line spacing
+
         var();                                                  //with zero argument
+
+        System.out.println();                                   //line spacing
+
+        //normal argument along with keyword or variable argument as well
+        multipleAruments(10, 20, "Deepak", "Suraj");
     }
 
     static void var(int...arr){
         System.out.println(Arrays.toString(arr));             //Convert Arrays into String
+    }
+
+    //variable length argument should be declare at last in the list
+    static void multipleAruments(int a, int b, String...name){
+        System.out.println(a + b);
+        System.out.println();
+        System.out.println(Arrays.toString(name));;
     }
 }
 
