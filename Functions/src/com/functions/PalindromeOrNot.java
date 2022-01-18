@@ -10,7 +10,6 @@ public class PalindromeOrNot {
 
         System.out.print("Enter any number : ");
         long n = in.nextLong();
-
         in.close();
 
         System.out.println(palindrome(n));
