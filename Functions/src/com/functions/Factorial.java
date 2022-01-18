@@ -9,6 +9,7 @@ public class Factorial {
         System.out.print("Enter a Number : ");
         int num = in.nextInt();
 
+        in.close();                               //Close the Scanner Class
         System.out.println(factorial(num));
     }
 
