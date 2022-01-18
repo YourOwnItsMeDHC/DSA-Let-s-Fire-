@@ -13,6 +13,8 @@ public class CircumferenceAndAreaOfCircle {
         System.out.print("Enter the Radius : ");
         double radius = in.nextDouble();
 
+        in.close();                               //Closing the Scanner Class
+
         System.out.println(area(radius));
 
         System.out.println(circumference(radius));
