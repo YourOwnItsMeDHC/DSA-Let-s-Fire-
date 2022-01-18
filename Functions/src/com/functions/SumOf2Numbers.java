@@ -9,7 +9,6 @@ public class SumOf2Numbers {
         //Write a program to print the sum of two numbers entered by user by defining your own method.
         System.out.print("Enter the FIRST Number : ");
         int num1 = in.nextInt();
-
         System.out.print("Enter the SECOND Number : ");
         int num2 = in.nextInt();
 
