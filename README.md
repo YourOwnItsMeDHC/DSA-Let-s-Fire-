@@ -1,5 +1,5 @@
 # DSA-Let-s-Fire-
-**Problems**, which is not a Problem
+**Problems**, which are not a Problem
 
 [Begin Your Journey](https://github.com/YourOwnItsMeDHC/ProgramBasics/tree/master/src/deepak)
 
