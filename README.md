@@ -1,2 +1,6 @@
 # DSA-Let-s-Fire-
-Arrays[LINK]Arrays[LINK]Arrays[LINK]Arrays[LINK]
+**Problems**, which is not a Problem
+
+[Begin Your Journey](https://github.com/YourOwnItsMeDHC/ProgramBasics/tree/master/src/deepak)
+
+[Functions/Methods](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Functions/src/com/functions)
