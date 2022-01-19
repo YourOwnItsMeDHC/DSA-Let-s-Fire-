@@ -11,6 +11,8 @@ public class SumOfNNaturalNumbers {
         System.out.print("Sum of how many first N natural numbers you want : ");
         int num = in.nextInt();
 
+        in.close();
+
         System.out.println(sumOfNatural(num));
     }
 
