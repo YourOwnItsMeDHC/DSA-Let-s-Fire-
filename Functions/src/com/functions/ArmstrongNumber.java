@@ -27,7 +27,7 @@ public class ArmstrongNumber {
         while(n>0){
             rem = n % 10;
             n/= 10;
-            armstrong += (long)(Math.pow(rem , count));
+            armstrong += (int)(Math.pow(rem , count));
         }
 
         if( temp2 == armstrong){

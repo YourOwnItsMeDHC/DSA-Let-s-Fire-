@@ -6,6 +6,7 @@ public class GradesAccordingToMarks {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+
         System.out.print("Enters the Marks (Out Of 100) : ");
         byte mks = in.nextByte();
 

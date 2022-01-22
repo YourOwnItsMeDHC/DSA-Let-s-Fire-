@@ -11,6 +11,7 @@ public class EvenOrOdd {
         int num = in.nextInt();
 
         System.out.println(evenOdd(num));
+
     }
 
     static String evenOdd(int value){

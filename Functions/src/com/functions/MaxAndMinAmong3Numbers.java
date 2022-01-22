@@ -18,9 +18,9 @@ public class MaxAndMinAmong3Numbers {
         int num3 = in.nextInt();
 
         max(num1, num2, num3);
-
         min(num1, num2, num3);
     }
+
     static void max(int a, int b, int c){
         System.out.println("Among " + a + " ," + b + " ," + c);
         System.out.println("Maximum is : " + Math.max(c, Math.max(a, b)));
