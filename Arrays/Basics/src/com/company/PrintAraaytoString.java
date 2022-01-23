@@ -7,6 +7,7 @@ public class PrintAraaytoString {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+        //Array Of Primitives
         int[] arr = new int[5];
 
         System.out.println(Arrays.toString(arr));     //It will print all as zero, beacuse yet input is not given
