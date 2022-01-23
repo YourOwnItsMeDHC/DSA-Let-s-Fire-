@@ -7,3 +7,6 @@
 [Begin Your Journey](https://github.com/YourOwnItsMeDHC/ProgramBasics/tree/master/src/deepak)
 
 [Functions/Methods](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Functions/src/com/functions)
+
+[Arrays](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays) :
+([🤣 Basics ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Basics/src/com/company)) , 
