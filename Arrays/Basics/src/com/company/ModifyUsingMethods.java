@@ -15,7 +15,7 @@ public class ModifyUsingMethods {
         System.out.println(Arrays.toString(num));
         System.out.println();                         //line spacing
 
-        modifyInteger(num);                           //It will change the value/object , because Array is Mutable
+        modifyInteger(num);          //Function Call  //It will change the value/object , because Array is Mutable
         System.out.print("After Modification : ");
         System.out.println(Arrays.toString(num));     //40 is changed to 145 will get print
     }
