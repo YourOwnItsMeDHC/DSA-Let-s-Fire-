@@ -8,6 +8,7 @@ public class Print2dArray {
         Scanner in = new Scanner(System.in);
 
         //Print 2D Array
+        //In 2D Array , each index's element is 1D Array itself i.e row
 
         int[][] arr = new int[3][3];
 
