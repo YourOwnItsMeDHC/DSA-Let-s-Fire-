@@ -20,7 +20,8 @@ public class Print2dArray {
             }
         }
 
-        //Take Output
+        //Take Output (Using "for" loop)
+        System.out.println("Using for loop : ");
         for(int row=0; row<arr.length; row++){
             for(int col=0; col<arr[row].length; col++){
                 System.out.print(arr[row][col] + " ");
@@ -29,9 +30,17 @@ public class Print2dArray {
         }
 
         System.out.println();
+        System.out.println("Using Arrays.toString() : ");
         //Using Arrays.toString()
-        for(int row=0; row<arr.length; row++){
+        for(int row=0; row<arr.length; row++) {
             System.out.println(Arrays.toString(arr[row]));
         }
+
+            System.out.println();
+        System.out.println("Using Enhanced for loop and Array.toString()");
+            //Using Enhanced "for" loop and Array.toString()
+            for(int[] arrOfRow : arr){
+                System.out.println(Arrays.toString(arrOfRow));
+            }
     }
 }
