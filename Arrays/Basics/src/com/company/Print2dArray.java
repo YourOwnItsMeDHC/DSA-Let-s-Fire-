@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Print2dArray {
@@ -25,6 +26,12 @@ public class Print2dArray {
                 System.out.print(arr[row][col] + " ");
             }
             System.out.println();
+        }
+
+        System.out.println();
+        //Using Arrays.toString()
+        for(int row=0; row<arr.length; row++){
+            System.out.println(Arrays.toString(arr[row]));
         }
     }
 }
