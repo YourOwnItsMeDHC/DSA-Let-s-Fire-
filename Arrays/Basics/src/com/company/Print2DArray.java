@@ -3,7 +3,7 @@ package com.company;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Print2dArray {
+public class Print2DArray {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -37,11 +37,11 @@ public class Print2dArray {
             System.out.println(Arrays.toString(arr[row]));
         }
 
-            System.out.println();
+        System.out.println();
         System.out.println("Using Enhanced for loop and Array.toString()");
-            //Using Enhanced "for" loop and Array.toString()
-            for(int[] arrOfRow : arr){
-                System.out.println(Arrays.toString(arrOfRow));
-            }
+        //Using Enhanced "for" loop and Array.toString()
+        for(int[] arrOfRow : arr){
+            System.out.println(Arrays.toString(arrOfRow));
+        }
     }
 }
