@@ -23,5 +23,9 @@ public class Print2DArrOfVarColLength {
             System.out.println(Arrays.toString(elementOfRow));
         }
 
+//        //Using "for" loop
+//        for(int row=0; row<arr.length; row++){
+//            System.out.println(Arrays.toString(arr[row]));
+//        }
     }
 }
