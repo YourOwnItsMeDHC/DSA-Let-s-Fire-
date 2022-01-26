@@ -23,7 +23,7 @@ public class ArrayListExample {
 
         System.out.println(list);   //Prints the Array , These list internally calls Array.toString() only
 
-        System.out.println();
+        System.out.println();       //Line Spacing
 
         System.out.print("The Size Of Array is : ");
         System.out.println(list.size());                 //Prints The Size Of An Array
