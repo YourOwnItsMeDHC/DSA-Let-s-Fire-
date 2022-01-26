@@ -58,9 +58,9 @@ public class ArrayListExample {
         //Method : 1 of Printing Output
         System.out.println(list);
 
-        //Method : 2 of Printing Output
+        //Method : 2 of Printing Output (Iterative)
         for(int i=0; i<10; i++){
-            System.out.print(list.get(i) + " ");  //arr[i] or list[i] is wrong , list.get(i) is coorect
+            System.out.print(list.get(i) + " ");  //arr[index] or list[index] is wrong , list.get(index) is coorect
         }
     }
 }
