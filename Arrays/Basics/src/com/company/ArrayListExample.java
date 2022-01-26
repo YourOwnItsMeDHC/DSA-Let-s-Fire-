@@ -37,7 +37,7 @@ public class ArrayListExample {
 
         System.out.println();
         list.set(3, 420);                         //Update or set 4th index(i.e 40) into 420
-        System.out.print("Update Element of index 3 : ");
+        System.out.print("Update Element of index 3 by 420 : ");
         System.out.println(list);
 
         list.remove(3);                     //removes element of specified index
@@ -48,6 +48,20 @@ public class ArrayListExample {
         list.clear();  //used to remove all of the elements from the List container. This method does not deleted the List container, instead it justs removes all of the elements from the List
         System.out.print("Empty List Container , as all Elements is removed : ");
         System.out.println(list);
+
+        //Take Input Using "fer" loop
+        System.out.print("Enter 10 Values for an Array : ");
+        for(int i=0; i<10; i++){
+            list.add(in.nextInt());
+        }
+
+        //Method : 1 of Printing Output
+        System.out.println(list);
+
+        //Method : 2 of Printing Output
+        for(int i=0; i<10; i++){
+            System.out.print(list.get(i) + " ");  //arr[i] or list[i] is wrong , list.get(i) is coorect
+        }
     }
 }
 
