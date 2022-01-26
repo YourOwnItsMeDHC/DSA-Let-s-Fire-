@@ -60,7 +60,7 @@ public class ArrayListExample {
 
         //Method : 2 of Printing Output (Iterative)
         for(int i=0; i<10; i++){
-            System.out.print(list.get(i) + " ");  //arr[index] or list[index] is wrong , list.get(index) is coorect
+            System.out.print(list.get(i) + " ");  //arr[index] or list[index] is wrong , list.get(index) is correct
         }
     }
 }
