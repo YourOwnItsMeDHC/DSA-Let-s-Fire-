@@ -17,7 +17,7 @@ public class Swap {
             arr[i] = in.nextInt();
         }
 
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));                             //Print the Original Array
 
         System.out.print("Enter Two Index Value : ");
         int in1 = in.nextInt();
