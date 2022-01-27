@@ -23,9 +23,15 @@ public class MaxValueRangeInput {
     }
 
     static int maxRange(int[] arr, int start, int end){
+        //Edge Cases
         if(arr.length == 0){
             return -1;
         }
+           //Above or Below
+//        if(arr == null){
+//            return -1;
+//        }
+
         if(end < start){
             return -1;
         }
