@@ -7,6 +7,8 @@ public class ReverseArray {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+        //Reverse of an Array  (Two Pointer Approach)
+
         int[] array = new int[6];                             //Declare and Initialize
 
         System.out.print("Enter " + array.length + " values for an Array : ");         //Message to Input the Values
