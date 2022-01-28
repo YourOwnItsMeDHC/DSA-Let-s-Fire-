@@ -10,3 +10,4 @@
 
 [Arrays](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays) :
 ([🤣 Basics ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Basics/src/com/company)) , 
+([😅 Easy ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Easy))
