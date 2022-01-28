@@ -1,0 +1,20 @@
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        
+        int[] shuffledArr = new int[2*n];
+        
+        for(int i=0; i<n; i++) {
+            shuffledArr[2*i] = nums[i];         //Even Places , values for x
+            shuffledArr[2*i+1] = nums[n+i];     //Odd Places , values for y
+        }
+        
+        return shuffledArr;
+    }
+}
+
+     /*
+       x elements are at the indexes , which is multiple or divisible by 2
+       y elements are at the indexes , which is not multiple or divisible by 2
+       
+       for loop will run till n i.e half the length o array, because in one iteration we are          storing two elements in new Array
+      */
