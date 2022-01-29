@@ -1,0 +1,23 @@
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        
+        ArrayList<Boolean> result= new ArrayList<>(candies.length);
+        
+        //Among all the Eements in Array "candies" , find the Maximum
+        int max=0;
+        
+        for(int candy : candies) {
+            max = Math.max(candy, max);
+        }
+        
+        /*
+        Add extraCandies with each Eement of Array "candies" and check whether it is greater           than max or not , if yes then true or else false
+        */
+        
+        for(int candy : candies) {
+            result.add(candy + extraCandies >= max);
+        }
+    
+        return result;
+    }
+}
