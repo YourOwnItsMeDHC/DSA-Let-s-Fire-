@@ -1,0 +1,20 @@
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+     
+     
+       ArrayList<Integer> temp = new ArrayList<>(nums.length);
+        
+        for(int i=0; i<nums.length; i++) {
+              temp.add(index[i], nums[i]);    //temp.add(index number, element value);
+        }
+        
+    
+        int[] target = new int[nums.length];  //store elements of temp into target
+        
+        for(int i=0; i<nums.length; i++) {
+            target[i] = temp.get(i);
+        }
+        
+        return target;
+    }
+}
