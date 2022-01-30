@@ -35,3 +35,28 @@ class Solution {
         return panaOrNot;
     }
 }
+
+/*
+48 / 79 test cases passed (Using Below Code) : 
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+        
+        boolean flag = false;
+        
+        int length = sentence.length();
+        
+        for(char ch='a'; ch<='z'; ch++) {
+            for(int i=0; i<length; i++) {
+                if(ch == sentence.charAt(i)) {
+                    flag = true;             		                           
+		    break;            //if it is true , then no need to chck for further i
+                }
+                else {
+                    flag = false;
+                }
+            }
+        }
+        return flag;
+    }
+}
+*/
