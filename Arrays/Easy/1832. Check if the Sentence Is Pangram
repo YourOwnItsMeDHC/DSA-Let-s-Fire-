@@ -1,0 +1,37 @@
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+        
+       boolean flag = false;
+        
+        for(char ch='a'; ch<='z'; ch++) {
+            boolean panagram = checkPanagram(ch, sentence);
+            
+            if(panagram == false) {
+                flag = false;
+                break;
+            }
+            else {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+    
+    public Boolean checkPanagram(char ch, String sent) {
+        
+        boolean panaOrNot = false;
+        
+        char[] words = sent.toCharArray();
+             
+           for(char letter : words) {
+               if(ch == letter) {
+                   panaOrNot = true;
+                   break;
+            }
+               else {
+                   panaOrNot = false;
+               }
+        }
+        return panaOrNot;
+    }
+}
