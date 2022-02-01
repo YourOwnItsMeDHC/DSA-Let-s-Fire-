@@ -1,0 +1,35 @@
+class Solution {
+public int diagonalSum(int[][] mat) {
+    int center = mat.length / 2;
+    int sum = 0;
+    for(int i=0; i<mat.length; i++) {
+        sum += mat[i][i];
+    }
+    for(int i=0; i<mat.length; i++) {
+        sum += mat[i][mat.length-1 -i];
+    }
+    if(mat.length % 2 !=0) {
+        sum -= mat[center][center];
+    }
+    return sum;
+      }
+}
+
+// class Solution {
+//     public int diagonalSum(int[][] mat) {
+//         int center = mat.length/2;
+//         int sum = 0, cols = 0;
+//         for(int i=0; i<mat.length; i++) {
+//             sum += mat[i][cols];
+//             cols++;
+//         }
+//         for(int i=0; i<mat.length; i++) {
+//             cols--;
+//             sum += mat[i][cols];
+//         }
+//         if(mat.length % 2 !=0) {
+//             sum -= mat[center][center];
+//         }
+//         return sum;
+//             }
+//         }
