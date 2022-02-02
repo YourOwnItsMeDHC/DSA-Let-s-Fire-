@@ -1,0 +1,53 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count = 0;
+        for(int i=0; i<nums.length; i++) {
+            int digit = 0;
+            while(nums[i] > 0) {
+                nums[i] = nums[i] / 10;
+                digit++;
+            }
+            if(digit % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+/*
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count = 0;
+        for (int number :
+                nums) {
+            if (even(number)){
+                count++;
+            }
+        }
+        return count;
+    }
+    boolean even(int number) {
+        int numberOfDigits = countNoOfDigits(number);
+        if (numberOfDigits%2==0){
+            return true;
+        }
+        return false;
+    }
+    int countNoOfDigits(int number){
+        //Resolving for negative numbers
+        if (number<0){
+            number = number*-1;
+        }
+        if (number == 0){
+            return 1;
+        }
+        int count = 0;
+        while (number>0){
+            count++;
+            number = number/10;
+        }
+        return count;
+    }
+}
+*/
