@@ -1,0 +1,43 @@
+//Optimised Solution : 
+class Solution {
+    public int maximumPopulation(int[][] logs) {
+        int[] arr = new int[101];
+       
+        for(int i=0; i<logs.length; i++) {
+            arr[logs[i][0] - 1950]++;      //Person born , that's why do increment by 1
+            arr[logs[i][1] - 1950]--;      //Person die , that's why do decrement by 1
+        }
+        for(int i=1; i<101; i++) {
+            arr[i] = arr[i] + arr[i-1];                           //Running Sum
+        }
+         int max = 0, earlyYearWithMaxPopulation = 1950;
+        for(int j=0; j<101; j++) {
+            if(max < arr[j]) {
+                max = arr[j];
+                earlyYearWithMaxPopulation = j + 1950; //Bcoz 1950 is base case or base year
+            }
+          }
+        return earlyYearWithMaxPopulation;
+    }
+}
+
+// //Brute Force Approach :
+// class Solution {
+//     public int maximumPopulation(int[][] logs) {
+//         int[] arr = new int[101];                 //(2050 - 1950) + 1 = 101
+        
+//         for(int i=0; i<logs.length; i++) {
+//             for(int j=logs[i][0]; j<logs[i][1]; j++) {   //Years in which person is alive
+//                 arr[j - 1950]++;                 //Because in arr , 1950 is at 0th index
+//             }
+//         }
+//         int max = 0, earlyYearWithMaxPopulation = 1950;
+//         for(int i=0; i<arr.length; i++) {
+//             if(arr[i] > max) {
+//                 max = arr[i];
+//                 earlyYearWithMaxPopulation = i + 1950;
+//             }
+//         }
+//         return earlyYearWithMaxPopulation;
+//     }
+// }
