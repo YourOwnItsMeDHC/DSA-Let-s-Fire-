@@ -19,9 +19,9 @@ class Solution {
                     return true;
         }
     
-    //Tranpose Matrix
-    public void rotate(int[][] mat) {
-        for(int i=0; i<mat.length; i++) {
+    //Tranpose Matrix      Refer : 867
+    public void rotate(int[][] mat) {            //Because it is n X n matriox , so no
+        for(int i=0; i<mat.length; i++) {        //need to create another Array
             for(int j=0; j<i; j++) {
                 int temp = mat[i][j];
                 mat[i][j] = mat[j][i];
@@ -29,7 +29,7 @@ class Solution {
             }
         }
         
-        //Swap Rows By Columns
+        //Swap Rows By Columns       Refer : 832
         int start = 0;
         int end = mat.length - 1;
         
