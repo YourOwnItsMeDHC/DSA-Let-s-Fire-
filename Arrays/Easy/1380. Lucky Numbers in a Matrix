@@ -1,0 +1,31 @@
+class Solution {
+    public List<Integer> luckyNumbers (int[][] matrix) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        for(int i=0; i<matrix.length; i++) {
+            
+            int minIndex = 0, min = Integer.MAX_VALUE;
+            
+            for(int j=0; j<matrix[i].length; j++) {
+                if(matrix[i][j] < min) {
+                    min = matrix[i][j];
+                    minIndex = j;   //i.e at ith row & jth col, min element is present
+                }
+            }
+                
+//Check in each row & above minIndex i.e jth col, whether min element which we got //from above for loop is greater in it's col or not
+            
+            boolean isLucky = true;
+                for(int j=0; j<matrix.length; j++) {    //check in each row
+                    if(matrix[i][minIndex] < matrix[j][minIndex]) {
+                        isLucky = false;
+                        break;
+                    }
+                }
+            if(isLucky) {
+                ans.add(matrix[i][minIndex]);
+            }
+        }
+        return ans;
+    }
+}
