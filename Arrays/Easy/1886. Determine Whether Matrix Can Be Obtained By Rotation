@@ -29,7 +29,7 @@ class Solution {
             }
         }
         
-        //Swap Rows By Columns       Refer : 832
+         //Reverse i.e Flip      Refer : 832
         int start = 0;
         int end = mat.length - 1;
         
