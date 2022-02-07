@@ -1,0 +1,50 @@
+//Perfect Approach :
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+    
+        int n = digits.length;
+        
+        for(int i=n-1; i>=0; i--) {
+            if(digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        
+        //If all digits are 9  , Eg: [9, 9, 9] ➡ [1, 0, 0, 0]
+        int[] ans = new int[n+1];
+        ans[0] = 1;
+        return ans;
+    }
+}
+
+// //Approach 2 : Faster than 29.99%
+// class Solution {
+//     public int[] plusOne(int[] digits) {
+//         ArrayList<Integer> ans = new ArrayList<>();
+        
+//         int k = 1;
+        
+//         int i = digits.length-1;
+//         while(i>=0 ||k>0) {
+//             if(i>=0){
+//             ans.add((digits[i] + k) % 10);
+//             k = (digits[i] + k) / 10;
+//         }
+//         else {
+//             ans.add(k % 10);
+//             k = k / 10;
+//           }
+//             i--;
+//         }
+//         Collections.reverse(ans);
+//         int[] result = new int[ans.size()];
+        
+//         for(int ind=0; ind<result.length; ind++) {
+//             result[ind] = ans.get(ind);
+//         }
+//         return result;
+//     }
+// }
