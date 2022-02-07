@@ -1,0 +1,26 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int[][] ans = new int[r][c];
+        
+        int m = mat.length;
+        int n = mat[0].length;  //[0] because in matrix no. of cols in every row is same
+        
+        if(r*c != m*n) {     //Number of elements should be same in both i.e new and 
+            return mat;         //old matrix
+        }
+        
+        if(r==m && c==n) {      //then no need to reshape , it's already shaped
+            return mat;
+        }
+        
+        int new_Index = 0 , old_Index = 0;
+        
+        while(new_Index < r*c && old_Index < m*n) {
+            ans[new_Index / c][new_Index % c] = mat[old_Index / n][old_Index % n];
+            
+            new_Index++;
+            old_Index++;
+        }
+        return ans;
+    }
+}
