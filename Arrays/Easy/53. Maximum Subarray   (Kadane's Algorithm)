@@ -17,3 +17,5 @@ class Solution {
             return max;
     }
 }
+
+//For Simple Approach , See Notes
