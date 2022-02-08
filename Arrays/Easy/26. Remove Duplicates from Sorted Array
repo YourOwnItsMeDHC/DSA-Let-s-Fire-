@@ -1,0 +1,64 @@
+//Optimal Approach : Two Pointer (Faster than 100%)
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length <= 0) {          //Check whether ,  there is any element or not
+            return nums.length;
+        }
+        
+        int i = 0;
+        for(int j=1; j<nums.length; j++) {
+            if(nums[i] != nums[j]) 
+                i++;
+            nums[i] = nums[j];
+        }
+        return ++i;                       //or i+1
+     }
+}
+
+
+// //Approach 2 : Faster than 85 + % (Same as Above , just used another method)
+// class Solution {
+//     public int removeDuplicates(int[] nums) {
+//         if (nums.length <= 0) {
+//             return nums.length;
+//         }
+        
+//         int count = 0;
+//         int i = 0;
+        
+//         for (int j = 1; j < nums.length; j++) {
+//             if (nums[i] != nums[j]) {
+//                 i++;
+//                 swap(nums, i, j);
+//             }
+//         }
+//         return i + 1;
+//     }
+    
+//     private void swap(int[] nums, int i, int j) {
+//         int temp = nums[i];
+//         nums[i] = nums[j];
+//         nums[j] = temp;
+//     }
+// }
+
+        
+// //Approach 1 : Faster than 45.74%        
+// class Solution {
+//     public int removeDuplicates(int[] nums) {
+
+//         if(nums.length == 0) {
+//             return 0;
+//         }
+        
+
+//         int res = 1;
+//         for(int i=1; i<nums.length; i++) {
+//             if(nums[i] != nums[i-1]) {
+//                 nums[res] = nums[i];
+//                 res++;
+//             }
+//         }
+//         return res;
+//     }
+// }
