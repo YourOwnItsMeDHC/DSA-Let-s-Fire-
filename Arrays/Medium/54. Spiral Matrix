@@ -1,0 +1,50 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        int m = matrix.length;                            //Number of Rows
+        int n = matrix[0].length;                         //Number of Columns
+        
+        //We need 4 variables or pointers to track the movements of Spiral
+        int left = 0;
+        int right = n-1;
+        int top = 0;
+        int bottom = m-1;
+        
+        //⬇ Until the size of list is less than the number of elements in the matrix
+        //because we have to fill m*n elements in the List ,List's index strats from 0
+        
+        while(ans.size() < m*n) {   
+            
+            //from left to right
+            for(int i=left; i<=right; i++) {
+                ans.add(matrix[top][i]);      //row is constant ,column are varying
+            }
+            
+            //from top to bottom
+            for(int i=top+1; i<= bottom; i++) {
+                ans.add(matrix[i][right]);     //rows are changing ,column is constant
+            }
+            
+            //from right to left
+            if(top != bottom) {
+            for(int i=right-1; i>=left; i--) {
+                ans.add(matrix[bottom][i]);    //row is constant ,columns are varying
+             }
+            }
+            
+            //from bottom to top
+            if(left != right) {
+            for(int i=bottom-1; i>top; i--) {
+                ans.add(matrix[i][left]);      //rows are changing ,column is constant
+             }
+            }
+            
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+        return ans;
+    }
+}
