@@ -4,10 +4,10 @@ class Solution {
         
           for(int i=0; i<position.length; i++) {
               if(position[i] % 2 !=0) {
-                 ++coinsAtOdd;
+                 ++coinsAtOdd;           //means coins are somewhere at odd index
               }
               else {
-                  ++coinsAtEven;
+                  ++coinsAtEven;         //means coins are somewhere at even position
               }
          }
         return Math.min(coinsAtEven , coinsAtOdd);
