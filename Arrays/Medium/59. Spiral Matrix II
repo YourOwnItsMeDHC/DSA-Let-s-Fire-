@@ -1,14 +1,15 @@
 class Solution {
     public int[][] generateMatrix(int n) {
         int[][] mat = new int[n][n];
-        int temp = n*n;
+        int temp = n*n;                   //These much element , we have to insert
         
+        //Initialization
         int left = 0;
         int right = n-1;
         int top = 0;
         int bottom = n-1;
         
-        int count = 1;
+        int count = 1;                    //Value , which need to be insert in matrix
         
         while(left <= right) {
             
