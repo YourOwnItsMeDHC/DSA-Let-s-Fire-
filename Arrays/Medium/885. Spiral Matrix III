@@ -1,0 +1,54 @@
+class Solution {
+      int size = 0;
+    int[][] mat;
+    
+     public void add(int r, int c, int rows, int cols) {
+            
+            //Check out of bound condition , if it is out of bound , don't do anything
+            //just return it
+            
+            if(r>=rows || r<0 || c>=cols || c<0) {
+                return;
+            }
+            
+             mat[size][0] = r;
+             mat[size++][1] = c;        //size is increaed for next trip or iteration
+     }
+    public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+        
+//There are rows X cols elements in Matrix , and each of that element we have to //traverse in clockwise spiral i.e Jalebi , and we need to print co-ordinates of each //element , so we need rows = rows X cols and in each 1D Array , there are two indices //only i.e (row , col) , so we need cols = 2
+        
+ 
+        mat = new int[rows * cols][2];
+        
+        int len = 1;
+        // int size = 0;
+        int r = rStart, c = cStart;
+        
+        while(size < rows * cols) {
+            
+            //Move Right or East , so cols will increase
+            for(int i=0; i<len; i++) {
+                add(r, c++,  rows , cols);
+            }
+            
+            //Move Down or South , so rows will increase
+            for(int i=0; i<len; i++) {
+                add(r++, c, rows, cols);
+            }
+                    len++;                   //To Know why len increased , see notes
+            
+            //Move Left or West , so cols will decrease
+            for(int i=0; i<len; i++) {
+                add(r, c--, rows, cols);
+            }
+                    
+            //Move Up or North , so rows will decrease
+            for(int i=0; i<len; i++) {
+                add(r--, c, rows, cols);
+            }
+                    len++;
+        }
+                    return mat;
+    }
+}
