@@ -1,36 +1,109 @@
-//Better Approach 2
+//Optimized Approach : (Space is Optimized)
 class Solution {
-    public void setZeroes(int[][] matrix) {
+    public void setZeroes(int[][] matrix) {        
+        boolean isCol = false;
+        int m = matrix.length;
+        int n = matrix[0].length;
         
-        int rows = matrix.length;
-        int cols = matrix[0].length;
+        for(int i=0; i<m; i++) {
+            if(matrix[i][0] == 0) {  //In 0th col, is there any element with value 0
+                
+             //isCol means , is there any element in 0th Column having value 0
+                isCol = true;
+            }
         
-        int[] dummyArr1 = new int[rows];      //Array for Rows
-        int[] dummyArr2 = new int[cols];      //Array for Columns
-        
-        //Initially both dummy Array will be filled as -1
-        Arrays.fill(dummyArr1, -1);
-        Arrays.fill(dummyArr2, -1);
-        
-        for(int i=0; i<rows; i++) {
-            for(int j=0; j<cols; j++) {
+    //We haven't traverse from j=0, because j=0 is already traversed above in "if"
+            for(int j=1; j<n; j++) {
                 if(matrix[i][j] == 0) {
-                    dummyArr1[i] = 0;   //Make that Row of dummyArr1 as 0
-                    dummyArr2[j] = 0;   //Make that Column of dummyArr2 as 0
+                   matrix[i][0] = 0;
+                   matrix[0][j] = 0;
                 }
             }
         }
         
-        //Traverse again to make row and col as 0
-        for(int i=0; i<rows; i++) {
-            for(int j=0; j<cols; j++) {
-                if(dummyArr1[i] == 0 || dummyArr2[j] == 0) {
+        for(int i=m-1; i>=0; i--) {
+            for(int j=n-1; j>=1; j--) {
+                if(matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
                 }
-            }
+            }    
+        //Make 0th Column as 0
+        if(isCol) {
+            matrix[i][0] = 0;
         }
+      }
+        
+//         for(int i=0; i<m; i++) {
+//             if(matrix[i][0] == 0) {   //then make all elements of these Row as 0
+//                 for(int j=0; j<n; j++) {
+//                     matrix[i][j] = 0;
+//                 }
+//             }
+//         }
+        
+//         for(int i=0; i<n; i++) {
+//             if(matrix[0][i] == 0) {  //then make all elements of these Column as 0
+//                 for(int j=0; j<m; j++) {
+//                     matrix[j][i] = 0;      //row will change, column will be the same
+//                 }
+//             }
+//         }
+        
+//         if(matrix[0][0] == 0){
+//            for(int i=0; i<n; i++) {
+//                matrix[0][i] = 0;
+//            }    
+//         }
+        
+//         if(isCol) {
+//             for(int i=0; i<m; i++) {
+//                 matrix[i][0] = 0;
+//             }
+//         }
     }
 }
+
+
+
+
+
+// //Better Approach 2
+// class Solution {
+//     public void setZeroes(int[][] matrix) {
+        
+//         int rows = matrix.length;
+//         int cols = matrix[0].length;
+        
+//         int[] dummyArr1 = new int[rows];      //Array for Rows
+//         int[] dummyArr2 = new int[cols];      //Array for Columns
+        
+//         //Initially both dummy Array will be filled as -1
+//         Arrays.fill(dummyArr1, -1);
+//         Arrays.fill(dummyArr2, -1);
+        
+//         for(int i=0; i<rows; i++) {
+//             for(int j=0; j<cols; j++) {
+//                 if(matrix[i][j] == 0) {
+//                     dummyArr1[i] = 0;   //Make that Row of dummyArr1 as 0
+//                     dummyArr2[j] = 0;   //Make that Column of dummyArr2 as 0
+//                 }
+//             }
+//         }
+        
+//         //Traverse again to make row and col as 0
+//         for(int i=0; i<rows; i++) {
+//             for(int j=0; j<cols; j++) {
+//                 if(dummyArr1[i] == 0 || dummyArr2[j] == 0) {
+//                     matrix[i][j] = 0;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+
+
 
 // class Solution {
 //     public void setZeroes(int[][] matrix) {
