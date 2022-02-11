@@ -1,7 +1,8 @@
-class Solution {
+cclass Solution {
       int size = 0;
       int[][] mat;
     
+    //Method for adding co-ordinated of spirally traversed elements
      public void add(int r, int c, int rows, int cols) {
             
             //Check out of bound condition , if it is out of bound , don't do anything
@@ -14,13 +15,12 @@ class Solution {
              mat[size][0] = r;
              mat[size++][1] = c;        //size is increaed for next trip or iteration
      }
+    
+    //Main method
     public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
         
 /*
-There are rows X cols elements in Matrix , and each of that element we have to traverse
-in clockwise spiral i.e Jalebi , and we need to print co-ordinates of each element ,
-so we need rows = rows X cols and in each 1D Array , there are two indices only
-i.e (row , col) , so we need cols = 2
+There are rows X cols elements in Matrix , and each of that element we have to traverse in clockwise spiral i.e Jalebi , and we need to print co-ordinates of each element , so we need rows = rows X cols and in each 1D Array , there are two indices only i.e (row , col) , so we need cols = 2
 */
         
  
