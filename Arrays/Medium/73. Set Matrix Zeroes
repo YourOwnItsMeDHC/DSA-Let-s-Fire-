@@ -1,3 +1,4 @@
+//Optimized Approach : (DC)
 class Solution {
     public void setZeroes(int[][] matrix) {         
         boolean row0 = false, col0 = false;
