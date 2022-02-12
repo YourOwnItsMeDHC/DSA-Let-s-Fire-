@@ -1,67 +1,122 @@
-//Optimized Approach : (Space is Optimized)
 class Solution {
-    public void setZeroes(int[][] matrix) {        
-        boolean isCol = false;
-        int m = matrix.length;
-        int n = matrix[0].length;
+    public void setZeroes(int[][] matrix) {         
+        boolean row0 = false, col0 = false;
         
-        for(int i=0; i<m; i++) {
-            if(matrix[i][0] == 0) {  //In 0th col, is there any element with value 0
-                
-             //isCol means , is there any element in 0th Column having value 0
-                isCol = true;
-            }
-        
-    //We haven't traverse from j=0, because j=0 is already traversed above in "if"
-            for(int j=1; j<n; j++) {
+        //Searching for element with 0 value
+        for(int i=0; i<matrix.length; i++) {
+            for(int j=0; j<matrix[0].length; j++) {
                 if(matrix[i][j] == 0) {
-                   matrix[i][0] = 0;
-                   matrix[0][j] = 0;
+                    if(i == 0) {             //Is these element is at 0th row
+                        row0 = true;
+                    }
+                    if(j == 0) {             //Is these element is at 0th row  
+                        col0 = true;
+                    }
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
                 }
             }
         }
         
-        for(int i=m-1; i>=0; i--) {
-            for(int j=n-1; j>=1; j--) {
+        //Making Elements Row and Column as 0
+        //Not checking for i=0 & j=0 , because they are reference for us
+        for(int i=1; i<matrix.length; i++) {
+            for(int j=1; j<matrix[0].length; j++) {
                 if(matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
                 }
-            }    
-        //Make 0th Column as 0
-        if(isCol) {
-            matrix[i][0] = 0;
+            }
         }
-      }
+   
+   //If any element in 0th Row is already 0, make whole 0th row's element as 0 
+        if(row0) {
+            //Make each Column of 0th Row as 0
+            for(int j=0; j<matrix[0].length; j++) {
+                matrix[0][j] = 0;
+            }
+        }
         
-//         for(int i=0; i<m; i++) {
-//             if(matrix[i][0] == 0) {   //then make all elements of these Row as 0
-//                 for(int j=0; j<n; j++) {
-//                     matrix[i][j] = 0;
-//                 }
-//             }
-//         }
+  //If any element in 0th Column is already 0, make whole 0th Column's element as 0 
+        if(col0) {
+            //Make each Row of 0th Column as 0
+            for(int i=0; i<matrix.length; i++) {
+                matrix[i][0] = 0;
+            }
+        }
         
-//         for(int i=0; i<n; i++) {
-//             if(matrix[0][i] == 0) {  //then make all elements of these Column as 0
-//                 for(int j=0; j<m; j++) {
-//                     matrix[j][i] = 0;      //row will change, column will be the same
-//                 }
-//             }
-//         }
-        
-//         if(matrix[0][0] == 0){
-//            for(int i=0; i<n; i++) {
-//                matrix[0][i] = 0;
-//            }    
-//         }
-        
-//         if(isCol) {
-//             for(int i=0; i<m; i++) {
-//                 matrix[i][0] = 0;
-//             }
-//         }
     }
 }
+
+
+
+
+
+
+
+// //Optimized Approach : (Space is Optimized)
+// class Solution {
+//     public void setZeroes(int[][] matrix) {        
+//         boolean isCol = false;
+//         int m = matrix.length;
+//         int n = matrix[0].length;
+        
+//         for(int i=0; i<m; i++) {
+//             if(matrix[i][0] == 0) { //In 0th col, is there any element with value 0
+                
+//              //isCol means , is there any element in 0th Column having value 0
+//                 isCol = true;
+//             }
+        
+//     //We haven't traverse from j=0, because j=0 is already traversed above in "if"
+//             for(int j=1; j<n; j++) {
+//                 if(matrix[i][j] == 0) {
+//                    matrix[i][0] = 0;
+//                    matrix[0][j] = 0;
+//                 }
+//             }
+//         }
+        
+//         for(int i=m-1; i>=0; i--) {
+//             for(int j=n-1; j>=1; j--) {
+//                 if(matrix[i][0] == 0 || matrix[0][j] == 0) {
+//                     matrix[i][j] = 0;
+//                 }
+//             }    
+//         //Make 0th Column as 0
+//         if(isCol) {
+//             matrix[i][0] = 0;
+//         }
+//       }
+        
+// //         for(int i=0; i<m; i++) {
+// //             if(matrix[i][0] == 0) {   //then make all elements of these Row as 0
+// //                 for(int j=0; j<n; j++) {
+// //                     matrix[i][j] = 0;
+// //                 }
+// //             }
+// //         }
+        
+// //         for(int i=0; i<n; i++) {
+// //             if(matrix[0][i] == 0){   //then make all elements of these Col as 0
+// //                 for(int j=0; j<m; j++) {
+// //                     matrix[j][i] = 0; //row will change, column will be the same
+// //                 }
+// //             }
+// //         }
+        
+// //         if(matrix[0][0] == 0){
+// //            for(int i=0; i<n; i++) {
+// //                matrix[0][i] = 0;
+// //            }    
+// //         }
+        
+// //         if(isCol) {
+// //             for(int i=0; i<m; i++) {
+// //                 matrix[i][0] = 0;
+// //             }
+// //         }
+//     }
+// }
 
 
 
@@ -104,11 +159,9 @@ class Solution {
 
 
 
-
+// //Brute - Force Approach 1 : (But , it will give error , if element is already negative)
 // class Solution {
 //     public void setZeroes(int[][] matrix) {
-        
-// //Brute - Force Approach 1 : (But , it will give error , if element is already negative)
         
 // /* Assuming all the elements in the matrix are non-negative. Traverse through the matrix and if you find an element with value 0, then change all the elements in its row and column to -1, except when an element is 0. The reason for not changing other elements to 0, but -1, is because that might affect other columns and rows. Now traverse through the matrix again and if an element is -1 change it to 0, which will be the answer. */
         
