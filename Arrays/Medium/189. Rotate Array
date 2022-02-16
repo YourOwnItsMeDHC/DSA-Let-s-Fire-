@@ -1,33 +1,71 @@
-//Brute Force Approach :
+// //Brute Force Approach :
+// class Solution {
+//     public void rotate(int[] nums, int k) {
+//       int n = nums.length;
+//       int[] rotate = new int[n];
+        
+//         //In case, if k value is greater than n value
+//         k = k % n;
+//     /* 
+//    Eg: k=15, n=10  So, k %= n will be k=5
+//    If you will rotate nums n=10 times, then also all the elemnts will come onto           their original position only.
+//    So, there is no need to rotate for n times , if k > n
+//    Just , rotate the Array k = k%n times only i.e 5 times only
+//    */
+ 
+//         //Store k last elements in the new array , starting from index 0
+//         for(int i=n-k; i<n; i++) {
+//            rotate[i - (n-k)] = nums[i]; //1st Element Posi: [i-(n-k) = 4-(7-3) = 0]
+//         }
+//         //Result : [5, 6, 7, 0, 0, 0, 0]
+        
+//         //Store Elements excluding last k Elements in new Array after k no. of                  indices
+//         for(int i=k; i<n; i++) {
+//             rotate[i] = nums[i-k];        //1st Position : [i-k] = 3-3 = 0 
+//         }
+//         //Result : [5, 6, 7, 1, 2, 3, 4]
+        
+//         //Store elements of "nums" into array "rotate"
+//         for(int i=0; i<n; i++) {
+//             nums[i] = rotate[i];
+//         }
+//    }
+// }
+
+
+
+//Optimized Approach :
 class Solution {
     public void rotate(int[] nums, int k) {
-      int n = nums.length;
-      int[] rotate = new int[n];
         
-        //In case, if k value is greater than n value
-        k = k % n;
-/* 
-   Eg: k=15, n=10  So, k %= n will be k=5
-   If you will rotate nums n=10 times, then also all the elemnts will come onto their    original position only.
-   So, there is no need to rotate for n times , if k > n
-   Just , rotate the Array k = k%n times only i.e 5 times only
-*/
- 
-        //Store k last elements in the new array , starting from index 0
-        for(int i=n-k; i<n; i++) {
-           rotate[i - (n-k)] = nums[i];   //1st Element Posi : [i-(n-k) = 4-(7-3) = 0]
-        }
-        //Result : [5, 6, 7, 0, 0, 0, 0]
+        //Step 1 : Reverse Elements from 0 to n-1 
+        //Step 2 : Reverse Elements from 0 to k-1
+        //Step 3 : Reverse Elements from k to n-1
+                
+        int n = nums.length;
         
-        //Store Elements excluding last k Elements in new Array after k no. of indices
-        for(int i=k; i<n; i++) {
-            rotate[i] = nums[i-k];        //1st Position : [i-k] = 3-3 = 0 
-        }
-        //Result : [5, 6, 7, 1, 2, 3, 4]
+        //In case , if k value is greater than n
+        k %= n;
         
-        //Store elements of "nums" into array "rotate"
-        for(int i=0; i<n; i++) {
-            nums[i] = rotate[i];
+        reverse(nums, 0, n-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, n-1);
+    }
+    
+    //Reverse or Flip Method
+    public void reverse(int nums[], int start, int end) {
+        while(start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
         }
-   }
+    }
+    
+    //Swap Method
+    public void swap(int nums[], int start, int end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+    }
+    
 }
