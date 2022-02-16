@@ -2,7 +2,7 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         
-        //Create Array to show result of Occurence Positions
+        //Create Array to show result of occurence positions
         int[] ans = new int[2];
         
         ans[0] = firstOccur(nums, target);
