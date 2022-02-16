@@ -1,0 +1,53 @@
+class Solution {
+    public boolean canJump(int[] nums) {
+        
+        int n = nums.length;
+        int reachable = 0;         //Initially, it can reach upto 0th index only       
+        
+        for(int i=0; i<n; i++) {
+            if(reachable <i) {        //Eg:i=7 and rechable=6 , so it can't reach to i
+                return false;
+            }
+            else {                     //When, reachable is equal or greater than i
+ 
+ /*
+ Eg: reachable=5, nums[i]=7, i=4
+ Indices  :  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+ Elements :  - - - - 7 - - - - - - - - - - - -  
+                     i  r              
+ So, nums[i]+i = 7+4 = 10
+ Here, reachability was upto index 5 only, but new reachability is 10 i.e it can make   7 jumps from index 4 and can reach to index 10.
+ So , we will update reachable by 10 instead of 5 
+ */               
+                reachable = Math.max(reachable, nums[i]+i);
+            }
+        }
+        
+      return true;
+        
+    }
+}
+
+
+
+
+
+// //Clean and Enhanced Code :
+// class Solution {
+//     public boolean canJump(int[] nums) {
+        
+//         int n = nums.length;
+//         int reachable = 0;         //Initially, it can reach upto 0th index only
+        
+        
+//          for(int i=0; i<n; i++) {
+//              if(reachable < i)   
+//                  return false;
+//              reachable= Math.max(reachable, i + nums[i]);
+//          }
+        
+//          return true;
+		 
+//     }
+// }
+
