@@ -1,44 +1,82 @@
-// class Solution {
-//     public void sortColors(int[] nums) {
-//     }
-// }
-
-
-
-
-
-//Approach 1 : Two Pass Approach
-//First Pass = O(N), Second Pass = O(N) , So, Time Complexity = O(2N)
+//Approach - 2 : Dutch National Flag
 class Solution {
     public void sortColors(int[] nums) {
         
-        int n = nums.length;
-        int countRed=0, countWhite=0, countBlue=0;
+        int low = 0;
+        int mid = 0;
+        int high = nums.length-1;
+
+        int temp;
         
-        //Count number of red, white, blue objects
-        for(int i=0; i<n; i++) {
-            if(nums[i] == 0) {
-                countRed++;
+        while(mid <= high) {
+            switch(nums[mid]) {
+                    
+                case 0 : {
+                    temp = nums[mid];
+                    nums[mid] = nums[low];
+                    nums[low] = temp;
+                    
+                    low++;
+                    mid++;
+                    break;
+                }
+                    
+                case 1 : {
+                    mid++;
+                    break;
+                }
+                    
+                case 2 : {
+                    temp = nums[mid];
+                    nums[mid] = nums[high];
+                    nums[high] = temp;
+                    
+                    high--;
+                    break;
+                }
+                    
             }
-            else if(nums[i] == 1) {
-                countWhite++;
-            }
-            else {
-                countBlue++;
-            }
-        }
-       
-        //Sort it in increasing order i.e 1 ➡ 2 ➡ 3
-        for(int i=0; i<countRed; i++) {
-            nums[i] = 0;
-        }
-        
-        for(int i=0; i<countWhite; i++) {
-            nums[i + countRed] = 1;
-        }
-        
-        for(int i=0; i<countBlue; i++) {
-           nums[i + countRed + countWhite] = 2;
         }
     }
 }
+
+
+
+
+
+// //Approach 1 : Two Pass Approach
+// //First Pass = O(N), Second Pass = O(N) , So, Time Complexity = O(2N)
+// //Space Complexity: O(1)
+// class Solution {
+//     public void sortColors(int[] nums) {
+        
+//         int n = nums.length;
+//         int countRed=0, countWhite=0, countBlue=0;
+        
+//         //Count number of red, white, blue objects
+//         for(int i=0; i<n; i++) {
+//             if(nums[i] == 0) {
+//                 countRed++;
+//             }
+//             else if(nums[i] == 1) {
+//                 countWhite++;
+//             }
+//             else {
+//                 countBlue++;
+//             }
+//         }
+       
+//         //Sort it in increasing order i.e 1 ➡ 2 ➡ 3
+//         for(int i=0; i<countRed; i++) {
+//             nums[i] = 0;
+//         }
+        
+//         for(int i=0; i<countWhite; i++) {
+//             nums[i + countRed] = 1;
+//         }
+        
+//         for(int i=0; i<countBlue; i++) {
+//            nums[i + countRed + countWhite] = 2;
+//         }
+//     }
+// }
