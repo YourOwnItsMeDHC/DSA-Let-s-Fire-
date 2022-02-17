@@ -8,7 +8,7 @@
 //         k = k % n;
 //     /* 
 //    Eg: k=15, n=10  So, k %= n will be k=5
-//    If you will rotate nums n=10 times, then also all the elemnts will come onto           their original position only.
+//    If you will rotate nums n=10 times, then also all the elemnts will come onto their original position only.
 //    So, there is no need to rotate for n times , if k > n
 //    Just , rotate the Array k = k%n times only i.e 5 times only
 //    */
@@ -19,7 +19,7 @@
 //         }
 //         //Result : [5, 6, 7, 0, 0, 0, 0]
         
-//         //Store Elements excluding last k Elements in new Array after k no. of                  indices
+//         //Store Elements excluding last k Elements in new Array after k no. of indices
 //         for(int i=k; i<n; i++) {
 //             rotate[i] = nums[i-k];        //1st Position : [i-k] = 3-3 = 0 
 //         }
