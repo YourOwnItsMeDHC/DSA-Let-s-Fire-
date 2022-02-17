@@ -1,4 +1,4 @@
-//Approach - 2 : Dutch National Flag
+//Approach - 2 : Dutch National Flag Algorithm
 class Solution {
     public void sortColors(int[] nums) {
         
