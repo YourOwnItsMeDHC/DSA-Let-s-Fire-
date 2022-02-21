@@ -1,17 +1,56 @@
-//Recursive Approach : (Also See NoteBook Notes)
-//Accepted and Correct , but giving TLE (Check Github's Arrays-Basic Section)
+// //Recursive Approach : (Also See NoteBook Notes)
+// //Accepted and Correct , but giving TLE (Check Github's Arrays-Basic Section)
+// class Solution {
+//     public int rob(int[] nums) {
+//      return rob(nums, 0);
+//     }
+    
+//     private int rob(int[] wealth, int currentIndex) {
+//         if(wealth.length <= currentIndex)
+//             return 0;
+        
+// //We will go to each currentIndex, & will ask Q. "should I rob these house or not"
+//         int stealCurrent = wealth[currentIndex] + rob(wealth, currentIndex+2);
+//         int skipCurrent = rob(wealth, currentIndex+1);
+//         return Math.max(stealCurrent, skipCurrent);
+//     }
+    
+// }
+
+
+
+//DP(Memoization Approach) : 
 class Solution {
+    
+    //Initialized dp Array here, so both, main method and rob method can use it
+    //We have used "null" in line 45, null is an string, so here, we used Integer         //wrapper class to avoid issue of conversion from int to string 
+        Integer [] dp;
+        
     public int rob(int[] nums) {
-     return rob(nums, 0);
+        
+        //Created 1-D Array, to avoid re-calculation of same recursive call
+          dp = new Integer[nums.length];
+        
+          return rob(nums, 0);
     }
     
-    private int rob(int[] wealth, int currentIndex) {
-        if(wealth.length <= currentIndex)
+    public int rob(int[] wealth, int currentIndex) {
+        if(wealth.length <= currentIndex) {
             return 0;
+        }
+        
+        //if there is something excluding 0 in dp Array at same currentIndex,
+        //means recursive call for that index has already called in past,
+        //and value is calculated, so use or return that same value only. 
+        if(dp[currentIndex] != null) {
+            return dp[currentIndex];
+        }
         
         int stealCurrent = wealth[currentIndex] + rob(wealth, currentIndex+2);
         int skipCurrent = rob(wealth, currentIndex+1);
-        return Math.max(stealCurrent, skipCurrent);
+        
+        //Maximun of above two is the maximum robbery I can make choosing that                   currentIndex for robbery 
+        return dp[currentIndex] = Math.max(stealCurrent, skipCurrent);
     }
     
 }
