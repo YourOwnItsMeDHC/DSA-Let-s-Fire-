@@ -23,7 +23,8 @@
 class Solution {
     
     //Initialized dp Array here, so both, main method and rob method can use it
-    //We have used "null" in line 45, null is an string, so here, we used Integer         //wrapper class to avoid issue of conversion from int to string 
+    //We have used "null" in line 45, null is an string, so here, we used Integer
+    //wrapper class to avoid issue of conversion from int to string 
         Integer [] dp;
         
     public int rob(int[] nums) {
@@ -49,7 +50,7 @@ class Solution {
         int stealCurrent = wealth[currentIndex] + rob(wealth, currentIndex+2);
         int skipCurrent = rob(wealth, currentIndex+1);
         
-        //Maximun of above two is the maximum robbery I can make choosing that                   currentIndex for robbery 
+        //Maximun of above two is the maximum robbery I can make choosing that currentIndex for robbery 
         return dp[currentIndex] = Math.max(stealCurrent, skipCurrent);
     }
     
