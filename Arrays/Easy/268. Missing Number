@@ -49,5 +49,18 @@
 //XOR Method :
 class Solution {
     public int missingNumber(int[] nums) {
+        
+        int xorOfN = 0;
+        for(int i=1; i<=nums.length; i++) {
+            xorOfN ^= i;
+        }
+        
+        int xorOfnums=nums[0];
+        for(int i=1; i<nums.length; i++) {
+            xorOfnums ^= nums[i];
+        }
+        
+        return xorOfN^xorOfnums; 
+        
     }
 }
