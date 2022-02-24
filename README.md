@@ -12,3 +12,4 @@
 ([`🤣 Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Basics/src/com/company)) , 
 ([`😅 Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Easy)) ,
 ([`😥 Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Medium))
+([`😭Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Hard))
