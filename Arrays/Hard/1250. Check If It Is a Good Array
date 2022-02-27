@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isGoodArray(int[] nums) {
+        
+        int gcd = nums[0];
+        
+        for(int i=1; i<nums.length; i++) {
+            gcd = gCD(gcd, nums[i]);
+            if(gcd == 1) {
+                return true;
+            }
+        }
+         return gcd == 1;                    //return false, because here gcd != 1
+    }
+    
+    static int gCD(int a, int b) {
+        if(b==0) {
+            return a;
+        }
+        //If b is no
+        return gCD(b, a%b);                      //Using Euclidean Algorithm
+    }
+}
