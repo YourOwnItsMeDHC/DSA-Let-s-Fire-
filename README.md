@@ -13,3 +13,5 @@
 ([`😅 Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Easy)) ,
 ([`😥 Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Medium))
 ([`😭Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Hard))
+
+([`Basics Of Linear Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Linear_Search_Basics/src/com/company))
