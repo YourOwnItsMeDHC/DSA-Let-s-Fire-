@@ -7,7 +7,7 @@ public class SearchIndex {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.print("Size of Array : ");
+        System.out.print("Size of an Array : ");
         int n = in.nextInt();
 
         int[] nums = new int[n];
