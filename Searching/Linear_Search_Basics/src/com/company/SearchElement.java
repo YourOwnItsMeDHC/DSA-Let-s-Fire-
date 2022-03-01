@@ -41,7 +41,7 @@ public class SearchElement {
             }
         }
 
-        //If after searching in whole Array, Element not found i.e. not present, so just return
+        //If after searching in whole Array, Element not found i.e. not present, so just return max value of integer + 1 , but here we can't return it , because return type is not int, it will not add 1 in its max value of int, so here we just return max value of int
         return (Integer.MAX_VALUE);
     }
 }
