@@ -24,11 +24,11 @@ public class ImprovedLinearSearch {
         while(left < right) {
             if(nums[left] == target) {
                 position = left;
-                System.out.println(target + " is at index : " + position);
+                System.out.println(target + " is present at index : " + position);
             }
             if(nums[right] == target) {
                position = right;
-               System.out.println(target + " is at index : " + position);
+               System.out.println(target + " is present at index : " + position);
             }
 
             left++;
