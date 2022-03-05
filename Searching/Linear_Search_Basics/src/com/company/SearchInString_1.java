@@ -17,8 +17,8 @@ public class SearchInString_1 {
         int position = -1;
         for (int i = 0; i <length-1 ; i++) {
             if(letter == str.charAt(i)) {
-                position = i+1;
-                System.out.println(letter + " is present at position : " + position);
+                position = i+1;                      //i+1 because, we will count position from 1
+                System.out.println(letter + " is present at position : " + position + " in " + str);
 //                break;
                 //If break is uncommented it will return all occurrences of letter
                 //If break is commented it will return only the first occurrence of letter
