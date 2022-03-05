@@ -22,7 +22,7 @@ public class MinNumber {
 
     }
     static int searchMin(int[] nums) {
-        //Assuming, length of an Array is not zero
+        //Assuming , length of an Array is not zero
         int min = nums[0];
         for (int i = 1; i < nums.length; i++) {
             if(nums[i] < min) {
