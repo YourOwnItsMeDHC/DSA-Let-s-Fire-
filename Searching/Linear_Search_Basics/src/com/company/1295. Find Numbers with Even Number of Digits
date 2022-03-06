@@ -1,0 +1,24 @@
+class Solution {
+    
+    //Count elements which are having even number of digits :
+    public int findNumbers(int[] nums) {
+        int countElements = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(countDigits((nums[i])) % 2 == 0) {
+                countElements++;
+            }
+        }
+        return countElements;
+    } 
+    
+    //Count digits of each element in an Array :
+    static int countDigits(int element) {
+        int countDigits = 0;
+        while(element > 0) {
+            element /= 10;
+            countDigits++;
+        }
+        return countDigits;
+    }
+    
+}
