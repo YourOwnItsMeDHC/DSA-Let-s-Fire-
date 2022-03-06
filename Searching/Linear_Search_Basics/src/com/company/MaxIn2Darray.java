@@ -21,7 +21,7 @@ public class MaxIn2Darray {
         }
         System.out.println();
 
-        System.out.println("Initially Before Traversing Through 2D Array is : " + Integer.MIN_VALUE);
+        System.out.println("Initially Before Traversing Through 2D Array Max was : " + Integer.MIN_VALUE);
 
         System.out.println("Max Element is : " + max(num));
     }
