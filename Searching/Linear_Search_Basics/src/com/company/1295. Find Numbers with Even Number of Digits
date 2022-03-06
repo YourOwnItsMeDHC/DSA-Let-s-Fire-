@@ -11,7 +11,7 @@ class Solution {
         return countElements;
     } 
     
-    //Count digits of each element in an Array :
+    //Count digits of each element in 2D Array :
     static int countDigits(int element) {
         int countDigits = 0;
         while(element > 0) {
