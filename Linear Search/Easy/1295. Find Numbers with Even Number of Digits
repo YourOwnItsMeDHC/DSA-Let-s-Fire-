@@ -1,24 +1,47 @@
+// //Approach 1 : Counting number of Digits of each element
+// class Solution {
+    
+//     //Count elements which are having even number of digits :
+//     public int findNumbers(int[] nums) {
+//         int countElements = 0;
+//         for(int i=0; i<nums.length; i++) {
+//             if(countDigits((nums[i])) % 2 == 0) {
+//                 countElements++;
+//             }
+//         }
+//         return countElements;
+//     } 
+    
+//     //Count digits of each element in an Array :
+//     static int countDigits(int element) {
+//         int countDigits = 0;
+//         while(element > 0) {
+//             element /= 10;
+//             countDigits++;
+//         }
+//         return countDigits;
+//     }
+    
+// }
+
+
+
+
+//Approach 2: Convert element(integer) into string, find whether length of str is even 
 class Solution {
+     public int findNumbers(int[] nums) {
+         int countElement = 0;
+         for(int element : nums) {
+             if(countDigits(element) % 2 == 0) {
+                 countElement++;
+             }
+         }
+         return countElement;
+     }
     
-    //Count elements which are having even number of digits :
-    public int findNumbers(int[] nums) {
-        int countElements = 0;
-        for(int i=0; i<nums.length; i++) {
-            if(countDigits((nums[i])) % 2 == 0) {
-                countElements++;
-            }
-        }
-        return countElements;
-    } 
-    
-    //Count digits of each element in 2D Array :
     static int countDigits(int element) {
-        int countDigits = 0;
-        while(element > 0) {
-            element /= 10;
-            countDigits++;
-        }
-        return countDigits;
+        String elementInStr = Integer.toString(element);
+        return elementInStr.length();
     }
     
 }
