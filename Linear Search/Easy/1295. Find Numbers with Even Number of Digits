@@ -1,4 +1,4 @@
-// //Approach 1 : Counting number of Digits of each Element
+// //Approach 1 : Counting number of Digits of each element
 // class Solution {
     
 //     //Count elements which are having even number of digits :
@@ -12,8 +12,23 @@
 //         return countElements;
 //     } 
     
+    
 //     //Count digits of each element in an Array :
 //     static int countDigits(int element) {
+        
+//         //if element is negative it will not go inside "while loop"
+//         //Convert it into positive
+//         if(element < 0) {
+//             element *= (-1);
+//         }
+        
+//         //if element=0, it will not go inside "while" loop, and return count=0
+//         //But, it should return 1, because we count 0 also as one digit
+//         if(element == 0) {
+//             return 1;
+//         }
+        
+        
 //         int countDigits = 0;
 //         while(element > 0) {
 //             element /= 10;
@@ -27,21 +42,59 @@
 
 
 
-//Approach 2: Convert element(integer) into string, find whether length of str is even 
+
+
+
+
+
+
+
+
+
+
+
+// //Approach 2: Convert element(int) into string, find whether length of str is even 
+// class Solution {
+//      public int findNumbers(int[] nums) {
+//          int countElement = 0;
+//          for(int element : nums) {
+//              if(countDigits(element) % 2 == 0) {
+//                  countElement++;
+//              }
+//          }
+//          return countElement;
+//      }
+    
+//     static int countDigits(int element) {
+//         String elementInStr = Integer.toString(element);
+//         return elementInStr.length();
+//     }
+    
+// }
+
+
+
+
+
+
+
+
+
+
+
+//Approach 3 : (Optimized Approach)
 class Solution {
      public int findNumbers(int[] nums) {
-         int countElement = 0;
-         for(int element : nums) {
-             if(countDigits(element) % 2 == 0) {
-                 countElement++;
-             }
-         }
-         return countElement;
+         int countElements = 0;
+        for(int element : nums) {
+            if(countDigits(element) % 2 == 0){
+                countElements++;
+            }
+        }
+         return countElements;
      }
     
-    static int countDigits(int element) {
-        String elementInStr = Integer.toString(element);
-        return elementInStr.length();
+    int countDigits(int element) {
+        return (int)(Math.log10(element)) + 1;
     }
-    
 }
