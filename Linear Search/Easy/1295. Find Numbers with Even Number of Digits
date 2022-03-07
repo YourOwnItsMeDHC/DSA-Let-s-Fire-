@@ -1,4 +1,4 @@
-// //Approach 1 : Counting number of Digits of each element
+// //Approach 1 : Counting number of Digits of each Element
 // class Solution {
     
 //     //Count elements which are having even number of digits :
