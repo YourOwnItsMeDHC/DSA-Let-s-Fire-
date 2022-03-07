@@ -16,4 +16,6 @@
 
 [Searching :](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching)
 
-([`Basics Of Linear Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search/Linear_Search_Basics/src/com/company))
+[Linear Search : ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search)
+([`Basics Of Linear Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search/Linear_Search_Basics/src/com/company)) , 
+([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search/Easy))
