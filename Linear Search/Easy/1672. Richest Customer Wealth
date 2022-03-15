@@ -1,0 +1,21 @@
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        
+        int wealth=Integer.MIN_VALUE;      //OR int wealth=0;
+        
+        for(int row=0; row<accounts.length; row++) {
+            int sum=accounts[row][0];
+            for(int cols=1; cols<accounts[row].length; cols++) {
+                sum = sum + accounts[row][cols];
+            }
+            
+            wealth = Math.max(sum, wealth);
+            
+            sum = 0;    //For next iteration of outer "for" loop i.e  row increment , 
+                        //sum should again initialize to 0 
+        }
+        
+        return wealth;
+        
+    }
+}
