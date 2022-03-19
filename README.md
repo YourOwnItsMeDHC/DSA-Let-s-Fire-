@@ -22,4 +22,4 @@
 
 [Binary Search : ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Binary%20Search/src/com/company)
 ([`Basics Of Binary Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Binary%20Search/src/com/company)) , 
-([`😅 Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Easy)) ,
+([` Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Easy)) ,
