@@ -8,13 +8,13 @@
 
 [Functions/Methods](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Functions/src/com/functions)
 
-[Arrays](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays) :
+*  [Arrays](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays) :
 ([`🤣 Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Basics/src/com/company)) , 
 ([`😅 Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Easy)) ,
 ([`😥 Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Medium))
 ([`😭Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays/Hard))
 
-[Searching :](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching)
+*  [Searching :](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching)
 
 [Linear Search : ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search)
 ([`Basics Of Linear Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search/Linear_Search_Basics/src/com/company)) , 
