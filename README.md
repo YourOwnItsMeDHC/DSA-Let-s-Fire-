@@ -21,5 +21,5 @@
 ([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Linear%20Search/Easy))
 
 [Binary Search : ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Binary%20Search/src/com/company)
-([`Basics Of Binary Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Binary%20Search/src/com/company)) , 
+([`Basics Of Binary Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Basic/src/com/company)) , 
 ([` Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Easy)) ,
