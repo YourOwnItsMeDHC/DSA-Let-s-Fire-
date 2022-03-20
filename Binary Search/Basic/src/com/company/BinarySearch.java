@@ -8,7 +8,7 @@ public class BinarySearch {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        //Return index of target element if found, or else return -1
+        //Return index of target element if found , or else return -1
         int[] nums = {-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10};        //Ascending Sorted Array
         System.out.println("Array Given As : ");
         System.out.println(Arrays.toString(nums));
