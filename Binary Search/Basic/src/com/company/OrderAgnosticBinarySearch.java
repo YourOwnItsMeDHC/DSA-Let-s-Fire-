@@ -8,7 +8,7 @@ public class OrderAgnosticBinarySearch {
         Scanner in = new Scanner(System.in);
         //Order Agnostic Binary Search is used when we don't know order i.e whether array is sorted in ascending order or in descending order.
 
-        //Return index of target element if found, or else return -1
+        //Return index of target element if found , or else return -1
         int[] nums = {-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10};        //Ascending Sorted Array
 //        int[] nums = {10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10};        //Descending Sorted Array
         System.out.println("Array Given As : ");
