@@ -28,10 +28,18 @@ public class CeilingOfAnumber {
 
         int ans = ceiling(nums, target);
         System.out.println();
-        System.out.println("Ceiling Value Of " + target + " is " + nums[ans] + " , present at index " + ans);
+        System.out.println("Ceiling Value Of " + target + " is present at index " + ans);
+//        System.out.println("Ceiling Value Of " + target + " is " + nums[ans] + " , present at index " + ans);
     }
 
     static int ceiling(int[] nums, int target) {
+
+        //Edge Case: If target is greater than the greatest element in an array. Eg: 1554
+        //In an array, there is no any element which is greater than 1554 and not even it have 1554
+        if(target > nums[nums.length-1]) {
+            return -1;                             //It means there no any ceiling value for target provided
+        }
+
         int start = 0;
         int end = nums.length-1;
 
