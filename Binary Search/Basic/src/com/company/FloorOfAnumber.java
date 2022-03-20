@@ -28,10 +28,13 @@ public class FloorOfAnumber {
 
         int ans = floor(nums, target);
         System.out.println();
-        System.out.println("Floor Value Of " + target + " is " + nums[ans] + " , present at index " + ans);
+        System.out.println("Floor Value Of " + target + " is present at index " + ans);
+//        System.out.println("Floor Value Of " + target + " is " + nums[ans] + " , present at index " + ans);
     }
 
     static int floor(int[] nums, int target) {
+
+        //No need to provide edge case, as we did in "ceiling of a number", to see edge case, give target=1, and debug the program
         int start = 0;
         int end = nums.length-1;
 
