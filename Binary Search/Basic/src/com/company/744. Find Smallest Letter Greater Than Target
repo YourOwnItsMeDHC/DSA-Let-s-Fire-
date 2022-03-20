@@ -1,7 +1,7 @@
 class Solution {
     public char nextGreatestLetter(char[] letters, char target) {
         
-        /* If there is no character in an array, which is larger than target, just return character which are at zeroth index of that array -> it means wrap around*/
+        /* If there is no character in an array, which is larger than target, just       return character which are at zeroth index of that array -> it means wrap around*/
         
         int start=0;
         int end = letters.length-1;
