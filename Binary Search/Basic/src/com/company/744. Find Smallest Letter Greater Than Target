@@ -1,0 +1,25 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        
+        /* If there is no character in an array, which is larger than target, just return character which are at zeroth index of that array -> it means wrap around*/
+        
+        int start=0;
+        int end = letters.length-1;
+        
+        while(start <= end) {
+            int mid = start + (end - start)/2;
+            
+            if(target < letters[mid]) {
+                end = mid -1;
+            }
+            else {                            //target > letters[mid]
+                start = mid + 1;
+            }
+        }
+        return letters[start % letters.length];
+    }
+}
+
+// Checkout [Ceiling Of A Number](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic/src/com/company/CeilingOfAnumber.java) , it's similar to these "744. Find Smallest Letter Greater Than Target"
+// Only change is that , in Ceiling Question we were finding element greater than or equal to target , 
+// but here we are finding only greater than target and not equal to target and there is on wrap around condition.
