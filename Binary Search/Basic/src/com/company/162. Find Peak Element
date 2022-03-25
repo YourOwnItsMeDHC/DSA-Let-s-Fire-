@@ -1,0 +1,62 @@
+//Same question as - 852. Peak Index in a Mountain Array :
+//https://leetcode.com/problems/peak-index-in-a-mountain-array/
+
+//Own Article - https://leetcode.com/problems/peak-index-in-a-mountain-array/discuss/1883152/JavaFaster-than-100-Solution-With-Explanation-Brute-Force-To-Optimized-Approach
+
+//Article - https://www.enjoyalgorithms.com/blog/valid-mountain-array
+
+// //Brute Force - Approach : (Linear Search)
+// class Solution {
+//     public int findPeakElement(int[] nums) {
+        
+//       //Mountain array is also called as Bitonic array
+//       //Peak index is that index which consist element with max value in that array
+        
+//       //Check all elements linearly until current(i) element is less than next(i+1)
+//       //of current element
+//       //When we get an element at i whose value is greater than next element at i+1
+//       //means we reach at peak index, just return that index(i)
+//         int i=0;
+//         while(nums[i] < nums[i+1]) {
+//             i++;
+//         }
+//         return i;                   //Here, nums[i] is max element in "nums" array
+//     }
+// }
+
+
+
+
+
+
+
+
+//Optimized Approach : (Binary Search)
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int start = 0;
+        int end = nums.length-1;
+        
+        while(start < end) {
+            int mid = start + (end-start)/2;
+            
+            if(nums[mid] > nums[mid+1]) {
+                //We are in descending/right part of the array, nums[mid] may be the
+                //answer, but we will also look at the left to check whether
+                //"is there any element at left of mid as greater than nums[mid]"
+                end = mid;
+                //Above we didn't do "end=mid-1", because there might be the case that
+                //there is no more element at left as greater than nums[mid], so for
+                //that case we have to consider nums[mid] only as our max element
+            }
+            else {              //nums[mid] < nums[mid+1]
+                //Here we are at ascending/left side, so check at right for max
+                //element than current element
+                start = mid+1;
+            }
+        }
+         //At the last, we get start==end which points to the same element which is
+         //our max element, so return either start or end
+         return end;            //or return end;
+    }
+}
