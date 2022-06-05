@@ -1,0 +1,65 @@
+class Solution {
+    public int splitArray(int[] nums, int m) {
+        
+        int start = 0;
+        int end = 0;
+        
+        for (int i=0; i<nums.length; i++) {
+            
+            //Min answer will be these (if m == n), then in each subarray there
+            //will only be one element, so just find max among them :
+            start = Math.max(start, nums[i]);     //Max element of 'nums' array
+            
+            //Max answer will be these (if m == 1), then there will only be one
+            //subarr, that will be original arr only, so just add all elements
+            end += nums[i]; 
+        }
+        
+        
+        //Using Binary Search :
+        while(start < end) {
+            //Consider mid as potential answer
+            int mid = start + (end - start)/2;
+            
+            
+    //Calculate how many pieces can you divide using these "mid" or "max"
+    //Keep on adding element continuously until summation of all these
+    //element is not greater than mid value
+    //If yes, then make another piece starting from that last element only
+    //and again check it with mid value, so on.. till last element of array
+            int sum = 0;
+            int pieces = 1;
+            for (int num : nums) {
+                if(sum+num > mid) {
+                    
+                    //If yes, then start with another piece, starting from that                       //last element only, so sum = num
+                    sum = num;
+                    pieces++;
+                }
+                else {
+                    sum += num;
+                }
+            }
+            
+            //Now, check number of pieces is given the answer or not
+            if(pieces <= m) {
+                
+              
+                end = mid;
+            }
+            else {                           //pieces > m
+                
+                //Here, we need to decrease the number of pieces
+                //So, increase number of elements in each subarray or pieces
+                //If we have to add more elements in each subarray or piece
+                //Mid value should be more (to which we are comparing)
+                //Here, mid is greater than start, so replace start by mid+1
+                //So, mid = (s+e)/2 will be more as compared to earlier one
+                start = mid+1;
+            }
+        }
+        
+        return start;                  //Here, start == end
+        
+    }
+}
