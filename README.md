@@ -22,6 +22,7 @@
 
 [Binary Search : ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Searching/Binary%20Search/src/com/company)
 ([`Basics Of Binary Search`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Basic/src/com/company)) , 
+([`Binary Search in 2D Array - Basics`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Basic_2D_Array/src/com/company)) ,
 ([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Easy)) ,
 ([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Medium)) ,
 ([`Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Binary%20Search/Hard))
