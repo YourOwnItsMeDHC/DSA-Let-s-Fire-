@@ -1,0 +1,70 @@
+//See Notes (2)
+//Video   : https://youtu.be/eC0b6lUj84w
+//Article : https://www.goodtecher.com/leetcode-69-sqrtx/
+
+// class Solution {
+//     public int mySqrt(int x) {
+        
+//       //Approach-1 : Using "Math.sqrt()" method :
+//       return (int)Math.sqrt(x); 
+//     }
+// }
+
+
+
+
+
+// class Solution {
+//     public int mySqrt(int x) {
+        
+//       //Approach-2 : Brute Force => Linear Search
+//       //Java : Accepted, but wrong ; C++ : Accepted(13%)
+//         int y = 0;
+//         while(y*y <= x) {
+//             y++;
+//         }
+//         return y-1;
+//     }
+// }
+
+
+
+
+class Solution {
+    public int mySqrt(int x) {
+        
+      //Approach-3 : Optimized => Binary Search
+        long start=0, end=x;
+       
+        while(start+1 < end) {
+            long mid = start + (end - start) /2;
+            if(mid*mid == x) {
+                return (int)mid;
+            }
+            
+            if(mid*mid < x) {
+                start = mid;
+                //Above, we are not doing "start=mid+1", bcoz "mid" also
+                //can be the possible answer, so we need to consider it
+            }
+            else {                     //mid*mid > x
+                end = mid;
+                //Above, we are not doing "end=mid-1", bcoz "mid" also
+                //can be the possible answer, so we need to consider it
+            }
+        }
+        
+        //If after "while" loop, we didn't get "mid" as our sqrt
+        //If x=64,16,...       , then mid can be find as sqrt, directly as
+        //mid=8(8*8=64) , 4(4*4=16),....
+        //But, if x=65,..., then we need to check whether our start or end
+        //is sqrt or not :
+        if(end*end == x) {
+            return (int)end;
+        }
+        else {                           //end*end == x
+            return (int)start;
+        }
+     
+    }
+}
