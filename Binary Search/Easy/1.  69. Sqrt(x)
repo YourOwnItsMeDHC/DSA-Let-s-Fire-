@@ -18,12 +18,11 @@
 //     public int mySqrt(int x) {
         
 //       //Approach-2 : Brute Force => Linear Search
-//       //Java : Accepted, but wrong ; C++ : Accepted(13%)
-//         int y = 0;
+//         long y = 0;
 //         while(y*y <= x) {
 //             y++;
 //         }
-//         return y-1;
+//         return (int)y-1;
 //     }
 // }
 
