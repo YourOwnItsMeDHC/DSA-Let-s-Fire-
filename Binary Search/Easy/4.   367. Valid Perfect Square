@@ -1,0 +1,43 @@
+//Refer : https://leetcode.com/problems/valid-perfect-square/discuss/83874/A-square-number-is-1%2B3%2B5%2B7%2B...-JAVA-code
+//Refer : https://www.youtube.com/watch?v=tSy8lDLPduU
+//Similar to 1. 69. Sqrt(x)
+
+// //Approach-1 : Brute Force (Linear Search)
+// class Solution {
+//     public boolean isPerfectSquare(int num) {
+//         long i = 1;
+//         while(i*i < num) {
+//             i++;
+//         }
+//         return i*i == num;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Approach-2 : Optimized (Binary Search)
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        long start=1, end=num;
+        while(start <= end) {
+            long mid = start + (end -start) / 2;
+            
+            if(mid*mid == num) {
+                return true;
+            }
+            else if(mid*mid < num) {
+                start = mid + 1;
+            }
+            else {                                //mid*mid > num
+                end = mid-1;
+            }
+        }
+        return false;
+    }
+}
