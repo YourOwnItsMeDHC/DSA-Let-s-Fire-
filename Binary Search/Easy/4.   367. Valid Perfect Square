@@ -2,7 +2,7 @@
 //Refer : https://www.youtube.com/watch?v=tSy8lDLPduU
 //Similar to 1. 69. Sqrt(x)
 
-// //Approach-1 : Brute Force (Linear Search)
+// //Approach - 1 : Brute Force (Linear Search)
 // class Solution {
 //     public boolean isPerfectSquare(int num) {
 //         long i = 1;
