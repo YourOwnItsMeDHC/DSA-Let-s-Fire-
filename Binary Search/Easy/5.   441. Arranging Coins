@@ -1,0 +1,66 @@
+// //Approach-1 : Linear Search (Accepted, But TLE)
+// class Solution {
+//     public int arrangeCoins(int n) {
+//         int row=1, coinsInPreviousRow=0, numberOfCompletedRow=0;
+//         while(row + coinsInPreviousRow <= n) {
+//             coinsInPreviousRow += row;
+//             numberOfCompletedRow++;
+//             row++;
+//         }
+//         return numberOfCompletedRow;        
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Approach-2 : (Optimized) Binary Search
+class Solution {
+    public int arrangeCoins(int n) {
+        
+        //Our start=1, because in constraint it is starting from 1
+        //Which means our n will never be 0, it will always be greater
+        //than or equal to 1
+        //1 <= n <= 231 - 1
+        //If our constraint wil start from 0, it means there can be
+        //n=0 also, so we will make our start=0
+        
+        long start=1, end=n;
+        long currentRow, coinsInCurrentRow;
+        while(start <= end) {
+            currentRow = start + (end - start) / 2;
+            coinsInCurrentRow = currentRow * (currentRow + 1) / 2;
+            
+            if(coinsInCurrentRow == n) {
+                return (int)currentRow;
+            }
+            if(coinsInCurrentRow > n) {
+                end = currentRow-1;
+            }
+            else {                       //coinInCurrentRow < n
+                start = currentRow+1;
+            }
+        }
+        return (int)end;
+    }
+}
+
+
+
+
+
+
+
+
+
+// //Approach-3 : Maths (Using Formula)
+// class Solution {
+//   public int arrangeCoins(int n) {
+//     return (int) (Math.sqrt(2 * (long) n + 0.25) - 0.5);
+//   }
+// }
