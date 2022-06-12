@@ -1,0 +1,56 @@
+//Refer Notes(5, 6, 7)
+
+//Using Two-Pointer Method :
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        int start=0, end=nums.length-1;
+        while(nums[start] + nums[end] != target) {
+            if(nums[start] == nums[end]) {
+                return new int[]{};
+            }
+            
+            if(nums[start] + nums[end] > target) {
+                end--;
+            }
+            else {              //nums[start] + nums[end] < target
+                start++;
+            }
+        }
+        return new int[]{start+1, end+1};
+    }
+}
+
+//Using For loop, no need to see below solution, it is same as above :
+// class Solution {
+//     public int[] twoSum(int[] numbers, int target) {
+//         // Use two pointers.
+//         int left = 0;
+//         int right = numbers.length - 1;
+//         int[] pair = new int[2];
+        
+//         for (int i = 0; i < numbers.length; i++) {
+//             int leftVal = numbers[left];
+//             int rightVal = numbers[right];
+//             int totalVal = leftVal + rightVal;
+            
+//             // If sum of left and right equal to target, return indexes.
+//             if (totalVal == target) {
+//                 pair[0] = left + 1;
+//                 pair[1] = right + 1;
+//             }
+            
+//             // If sum of left and right less than target, move left pointer to right.
+//             if (totalVal < target) {
+//                 left++;
+//             }
+            
+//             // If sum of left and right greater than target, move right pointer to left.
+//             if (totalVal > target) {
+//                 right--;
+//             }
+//         }
+        
+//         return pair;
+//     }
+// }
