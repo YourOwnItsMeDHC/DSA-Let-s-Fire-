@@ -6,20 +6,35 @@ class Solution {
         
         int start=0, end=nums.length-1;
         while(nums[start] + nums[end] != target) {
+            
+            //Edge case: if s==e, so no more possibility
             if(nums[start] == nums[end]) {
-                return new int[]{};
+                return new int[]{};             //Just return empty array
             }
             
             if(nums[start] + nums[end] > target) {
-                end--;
+                end--;             //Bcoz, from right it is in decreasing
             }
             else {              //nums[start] + nums[end] < target
-                start++;
+                start++;           //Bcoz, from left it is increasing
             }
         }
+        
+        //"while" loop breaks, which means nums[start]+nums[end]==target
+        //Here, we don't have to return index; we need to return exact
+        //location, that's why below we do "+1"
         return new int[]{start+1, end+1};
     }
 }
+
+
+
+
+
+
+
+
+
 
 //Using For loop, no need to see below solution, it is same as above :
 // class Solution {
