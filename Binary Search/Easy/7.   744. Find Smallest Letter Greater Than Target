@@ -16,7 +16,7 @@ class Solution {
                 start = mid + 1;
             }
         }
-        return letters[start % letters.length];
+        return letters[start % letters.length];                  //For wrap up condition
     }
 }
 
