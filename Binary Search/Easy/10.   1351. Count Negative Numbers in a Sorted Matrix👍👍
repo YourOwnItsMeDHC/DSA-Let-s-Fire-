@@ -1,0 +1,151 @@
+//Below question is advancement of :
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic_2D_Array/src/com/company/RowColSortedMatrix.java
+
+// //Approach-1 : (Brute Force)Linear Search : 
+// class Solution {
+//     public int countNegatives(int[][] grid) {
+  
+//         int count=0;
+//         for(int row=0; row<grid.length; row++) {
+//             for(int col=0; col<grid[row].length; col++) {
+//                 if(grid[row][col] < 0) {
+//                     count++;
+//                 }
+//             }
+//         }
+//         return count;
+//     }
+// }
+
+
+
+
+
+
+
+// //Approach-2 : Two Pointer
+    
+// //Refer Notes(13 - 14)
+// class Solution {
+//     public int countNegatives(int[][] grid) {
+        
+//         int row=0, col=grid[row].length-1;
+//         int count=0;
+        
+//         while(row<grid.length && col>=0) {
+//             if(grid[row][col] < 0) {
+//                 count += (grid.length - row);
+//                 col--;
+//             }
+//             else {                                   //grid[row][col] >= 0
+//                 row++;             
+//             }
+//         }
+//         return count;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public int countNegatives(int[][] grid) {
+        
+        int count=0;
+        for(int row=0; row<grid.length; row++) {
+            // add up negative numbers of each row
+            count += negElemInEachRow(grid[row]);
+        }
+        return count;
+        
+    }
+    
+    int negElemInEachRow(int[] row) {
+        int negElem=0;
+        int start=0, end=row.length-1;
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            
+            // if midPoint is positive, go to the right side
+            if(row[mid] >= 0) {
+                start = mid+1;
+            }
+            // if midPoint is negative, count the right side(because they all are negative)             // and then go to the left side.
+            else if(row[mid] < 0) {
+                
+  // negElem += lengthOfRow - midIndex + 1(because, index starts from 0, compensate it)
+              negElem += end - mid + 1;
+                end = mid-1;
+            }
+        }
+        return negElem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// //Wrong :
+// class Solution {
+//     public int countNegatives(int[][] grid) {
+        
+//         //Length of rows and columns :
+//         int rows=grid.length, cols=grid[0].length;
+//         int count=0;
+//         int lastNegative=0;
+//         //lastNegative : location of first negative element of previous row
+        
+//         for(int row=0; row<rows; row++) {
+            
+//             //Check whether, first element is less than 0
+//             //Here, array is in decreasing order and if first element is less than 0
+//             //Then, all elements in that particular row will be neagative or <0
+//             if(grid[row][0] < 0) {
+//                 count += cols;      //Don't do below thing, just move to next row iteartion
+//             }
+            
+//             //Check whether, last element is greater than 0
+//             //Here, array is in decreasing order and if last element is greater than 0
+//             //Then, all elements in that particular row will be positive or >0
+//             if(grid[row][cols-1] > 0) {
+//                 continue;              //Don't do anything, just move to next row iteartion
+//             }
+            
+//             //If above two condition are false, it means row contains mix elements i.e.
+//             //negative elements along with positive elements
+//             //So, find border point between them
+//             int start=0, end=cols-1;
+//             while(start <= end) {
+//                 int mid = start + (end-start)/2;
+//                 if(grid[row][mid] < 0) {
+//                     end = mid-1;
+//                 }
+//                 else {                      //(grid[row][mid] > 0    : check at right side
+//                     start = mid+1;
+//                 }
+//             }
+            
+//             //Now, start points to the first negative element
+//             count += (cols-start);
+//         }
+        
+//         return count;
+        
+//     }
+// }
