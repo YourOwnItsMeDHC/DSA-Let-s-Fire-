@@ -1,0 +1,135 @@
+//Solution is completely same as " 349. Intersection of Two Arrays", the only change in the code is - replace HashSet by ArrayList
+
+//HashSet will not store repeated value, HashSet is good for
+//" 349. Intersection of Two Arrays", because in " 349. Intersection of //         //Two Arrays" we have to store element but if that same element repeat,
+//we don't have to store that, we just have to ignore that, 
+ //but here we have to store elements as many times as it appears,
+//so use ArrayList in these case
+
+//Approach-1 : Two-Pointers :
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        
+        //For storing intersection elements :
+        
+        // Set<Integer> set = new HashSet<>();
+        
+        //HashSet will not store repeated value, HashSet is good for
+        //" 349. Intersection of Two Arrays", because in " 349. Intersection of //         //Two Arrays" we have to store element but if that same element repeat,
+        //we don't have to store that, we just have to ignore that, 
+        //but here we have to store elements as many times as it appears,
+        //so use ArrayList in these case
+        
+        List<Integer> set = new ArrayList<>();
+        
+       //Sort both arrays, and point both pointers to same index in both arrays
+       //So, they both pointer will find intersected element, linearly
+       //by co-ordinating like a dost
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        
+        int i=0;
+        int j=0;
+        
+        while(i<nums1.length && j<nums2.length) {
+            if(nums1[i] < nums2[j]) {
+                i++;
+            }
+            else if(nums1[i] > nums2[j]) {
+                j++;
+            }
+            else {                                    //nums1[i] == nums2[j]
+                set.add(nums1[i]);                    //or set.add(nums2[j])
+                
+             //Now, Find next possible intersected element, saath saath like a                 //dost, so just do increment of i and j
+                i++;
+                j++;
+            }
+        }
+        
+        //We have to return output in int[] format, so convert it :
+        int index=0;
+        int[] result = new int[set.size()];
+        for(int elementOfResult : set) {
+            result[index++] = elementOfResult;
+        }
+        
+        //Now, just return the "result" array :
+        return result;
+    }
+}
+
+
+
+
+
+
+
+
+
+// //Approach-2 : Binary Search :
+
+// //Accepted but wrong
+// //Because, below we have sorted only 1 array (Refer Notes - 15)
+// //Also, because here we are comparing single element with whole array
+// //Eg: element-5, in nums1 there is three "5", and in nums2 there is four "5"
+// //Here, it will return four "5" in output, because it is comparing whole array, so 
+// //it will also compare all 5's i.e. four "5"
+
+// class Solution {
+//     public int[] intersect(int[] nums1, int[] nums2) {
+        
+//         //For storing intersection elements :
+//         List<Integer> set = new ArrayList<>();
+        
+//       //Sort nums2, so we can apply binary search to find intersection elements
+//       //by comnparing it with elements of num1 :
+//         Arrays.sort(nums2);
+//         Arrays.sort(nums1);
+        
+//         for(int elementOfNums1 : nums1) {
+//             if(binarySearch(nums2, elementOfNums1)) {
+//                 set.add(elementOfNums1);
+//             }
+//         }
+        
+//         //We have to return output in int[] format, so convert it :
+//         int i=0;
+//         int[] result = new int[set.size()];
+//         for(int elementOfResult : set) {
+//             result[i++] = elementOfResult;
+//         }
+        
+//         //Now, just return the "result" array :
+//         return result;
+        
+//     }
+    
+//     boolean binarySearch(int[] nums, int target) {
+//         int start=0, end=nums.length-1;
+//         while(start <= end) {
+//             int mid = start + (end-start)/2;
+            
+//             if(nums[mid] < target) {
+//                 start = mid+1;
+//             }
+//             else if(nums[mid] > target) {
+//                 end = mid-1;
+//             }
+//             else {                           //nums[mid] == target
+//                 return true;                 //Target found
+//             }
+//         }
+//         return false;                        //Target not found
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Approach-3 HashMap : Will Do
