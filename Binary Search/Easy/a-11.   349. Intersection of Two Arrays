@@ -63,46 +63,95 @@
 
 
 
-//Approach-2 : Two-Pointers :
+// //Approach-2 : Two-Pointers :
+// class Solution {
+//     public int[] intersection(int[] nums1, int[] nums2) {
+        
+//         //For storing intersection elements :
+//         Set<Integer> set = new HashSet<>();
+        
+//        //Sort both arrays, and point both pointers to same index in both arrays
+//        //So, they both pointer will find intersected element, linearly
+//        //by co-ordinating like a dost
+//         Arrays.sort(nums1);
+//         Arrays.sort(nums2);
+        
+//         int i=0;
+//         int j=0;
+        
+//         while(i<nums1.length && j<nums2.length) {
+//             if(nums1[i] < nums2[j]) {
+//                 i++;
+//             }
+//             else if(nums1[i] > nums2[j]) {
+//                 j++;
+//             }
+//             else {                                    //nums1[i] == nums2[j]
+//                 set.add(nums1[i]);                    //or set.add(nums2[j])
+                
+//              //Now, Find next possible intersected element, saath saath like a                 //dost, so just do increment of i and j
+//                 i++;
+//                 j++;
+//             }
+//         }
+        
+//         //We have to return output in int[] format, so convert it :
+//         int index=0;
+//         int[] result = new int[set.size()];
+//         for(int elementOfResult : set) {
+//             result[index++] = elementOfResult;
+//         }
+        
+//         //Now, just return the "result" array :
+//         return result;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Approach-3 : Using Two Hash Sets :
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        
-        //For storing intersection elements :
+   
+        //Create two hash sets :
         Set<Integer> set = new HashSet<>();
+        Set<Integer> intersect = new HashSet<>();
         
-        //Sort both arrays, and point both pointers to same index in both arrays
-        //So, they both pointer will find intersected element, linearly
-        //by co-ordinating like a dost
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
+        //Fill "set" by nums1 elements :
+        for(int elementOfNums1 : nums1) {
+            set.add(elementOfNums1);
+        }
         
-        int i=0;
-        int j=0;
-        
-        while(i<nums1.length && j<nums2.length) {
-            if(nums1[i] < nums2[j]) {
-                i++;
-            }
-            else if(nums1[i] > nums2[j]) {
-                j++;
-            }
-            else {                                    //nums1[i] == nums2[j]
-                set.add(nums1[i]);                    //or set.add(nums2[j])
-                
-                //Now, Find next possible intersected element, saath saath like a                 //dost, so just do increment of i and j
-                i++;
-                j++;
+        //Check whether element of nums2 is there in "set"
+        //If it is, then just add that element into "inersect"
+        for(int elementOfNums2 : nums2) {
+            if(set.contains(elementOfNums2)) {
+                intersect.add(elementOfNums2);
             }
         }
         
-        //Wwe have to return output in int[] format, so convert it :
+        //We have to return output in int[] format, so convert it :
         int index=0;
-        int[] result = new int[set.size()];
-        for(int elementOfResult : set) {
-            result[index++] = elementOfResult;
+        int[] result = new int[intersect.size()];
+        
+        for(int elementOfIntersect : intersect) {
+            result[index++] = elementOfIntersect;
         }
+        
         
         //Now, just return the "result" array :
         return result;
     }
 }
+
