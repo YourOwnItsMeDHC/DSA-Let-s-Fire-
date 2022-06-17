@@ -1,0 +1,35 @@
+//Refer Notes(16-17)
+//https://youtu.be/-gY42yiNLxY
+class Solution {
+    public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
+        
+        //Create array, bcoz we hace to return an array
+        int[] result = new int[2];
+        
+        int aliceHave=0, bobHave=0;
+        Set<Integer> setB = new HashSet<>();
+        
+        //Count, total number of candies that Alice have :
+        for(int candyOfAlice : aliceSizes) {
+            aliceHave += candyOfAlice;
+        }
+        
+        //Count, total number of candies that Bob have :
+        for(int candyOfBob : bobSizes) {
+            bobHave += candyOfBob;
+            setB.add(candyOfBob);
+        }
+        
+        //Calculate delta :
+        int delta = (bobHave-aliceHave)/2;
+        
+        for(int candyOfAlice : aliceSizes) {
+            if(setB.contains(candyOfAlice + delta)) {
+                result[0] = candyOfAlice;
+                result[1] = candyOfAlice + delta;
+                return result;
+            }
+        }
+        return result;
+    }
+}
