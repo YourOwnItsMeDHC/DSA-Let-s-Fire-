@@ -1,0 +1,39 @@
+//https://youtu.be/wbwHsgoEsxA
+
+// //Approach-1 : (Brute Force) Linear Search
+// //T=O(n^2)  , S=O(1)
+// class Solution {
+//     public boolean checkIfExist(int[] nums) {
+//         for(int i=0; i<nums.length; i++) {
+//             for(int j=0; j<nums.length; j++) {
+//                 if(i!=j && nums[i]==nums[j]*2) {
+//                     return true;
+//                 }
+//             }
+//         }
+//         return false;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Approach-2 : (Optimized) HashSet
+//T=O(n)  , S=O(n) [We are using map, map can store n elements]
+class Solution {
+    public boolean checkIfExist(int[] nums) {
+        HashSet<Double> set = new HashSet<>();
+        for(double element : nums) {
+            if(set.contains(element*2) || set.contains(element/2)) {
+                return true;
+            }
+            set.add(element);
+        }
+        return false;
+    }
+}
