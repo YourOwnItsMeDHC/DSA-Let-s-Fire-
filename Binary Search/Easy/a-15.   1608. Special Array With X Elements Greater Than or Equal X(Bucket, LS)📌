@@ -1,0 +1,55 @@
+//Refer Notes(19)
+//https://youtu.be/qiAi1t_fXjQ
+
+// //Apprpach-1 : (Brute Force) Linear Searh
+// class Solution {
+//     public int specialArray(int[] nums) {
+//         //Constraint : 0 <= nums[i] <= 1000, therefore(🔽)
+//         for(int x=0; x<=1000; x++) {
+//             int count=0;
+//             //Count number of elements, which are greter than or equal to
+//             //our present x
+//             for(int i=0; i<nums.length; i++) {
+//                 if(nums[i] >= x) {
+//                     count++;
+//                 }
+//             }
+//             //After iterating each element, in our "nums" array
+//             //If our count==x, array is special, i.e. true, so return "x"
+//             if(count == x) {
+//                 return x;
+//             }
+//         }
+//         return -1;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Refer Notes(19)
+//Apprpach-2 : (Optimized) Bucket Sort
+class Solution {
+    public int specialArray(int[] nums) {
+        int bucket[] = new int[1001];
+        for(int element : nums) {
+            bucket[element]++;
+        }
+        
+        int total = nums.length;
+        for(int i=0; i<=1000; i++) {
+            if(i == total) {
+                return i;
+            }
+            else {
+            total -= bucket[i];
+            }
+        }
+        return -1;
+    }
+}
