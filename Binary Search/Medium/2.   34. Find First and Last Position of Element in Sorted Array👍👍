@@ -67,7 +67,7 @@
 //             else {
 //                 position = mid;
                 
-//  //Above we found our target, but don't know that it is which occurence                //So, to find first occurence, also see elements which are at left of mid
+//  //Above we found our target, but we don't know that it is which occurence                //So, to find first occurence, also see elements which are at left of mid
 //                 end = mid -1;
 //             }
 //         }
@@ -87,7 +87,7 @@
 //             else {
 //                  position = mid;
                 
-//  //Above we found our target, but don't know that it is which occurence                //So, to find last occurence, also see elements which are at right of mid
+//  //Above we found our target, but we don't know that it is which occurence                //So, to find last occurence, also see elements which are at right of mid
 //                  start = mid + 1;
 //             }
 //         }
