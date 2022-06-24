@@ -1,0 +1,56 @@
+class Solution {
+    public int findMin(int[] nums) {
+        
+         // If the list has just one element then return that element.
+         if(nums.length == 1) {
+            return nums[0];
+         }
+        
+        //Firstly, find pivot :
+        int pivot = findPivot(nums);
+        
+        //If we didn't find pivot, it means array is not rotated
+        //And, here array is in ascending order, so just return first element
+        if(pivot == -1) {
+            return nums[0];
+        }
+        //If, we found pivot, and we know pivot is the greatest element, and
+        //just next element of pivot is smallest element of our array, so just
+        //return element which is next to the pivot 
+        else {
+            return nums[pivot+1];
+        }
+    }
+    
+    
+    
+    
+     //Method for finding Pivot/Peak/Largest Elementm :
+    int findPivot(int[] nums) {
+        int start = 0;
+        int end = nums.length-1;
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            
+            //For finding pivot, we have 4 cases here :
+            if(mid < end && nums[mid] > nums[mid+1]) {
+                return mid;
+            }
+            if(mid > start && nums[mid] < nums[mid-1]) {
+                return mid-1;
+            }
+            
+            if(nums[start] >= nums[mid]) {
+                //In rotated sorted BS, all the elements at left of mid are greater
+                //than mid, and all the elements at right of mid are smaller than mid
+                //Here, mid is smaller than start, and here we have to find largest                   //element, which will never be at right, so search at left
+                end = mid-1;
+            }
+            else {                           //nums[start] < nums[mid]
+                //Here mid is greater than start, so check at right
+                start = mid+1;
+            }
+        }
+        return -1;
+    }
+}
