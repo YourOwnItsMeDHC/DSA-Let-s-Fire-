@@ -83,7 +83,7 @@ class Solution {
             else if(target > nums[mid]) {
                 start = mid+1;
             }
-            else {                            //start == nums[mid]
+            else {                           //start == nums[mid]
                 return mid;
             }
         }
