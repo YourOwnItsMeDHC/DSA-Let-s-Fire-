@@ -57,6 +57,6 @@ class Solution {
         }
          //At the last, we get start==end which points to the same element which is
          //our max element, so return either start or end
-         return end;            //or return end;
+         return end;            //or return start;
     }
 }
