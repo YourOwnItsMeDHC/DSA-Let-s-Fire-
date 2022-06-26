@@ -1,0 +1,135 @@
+//Refer Notes(21)
+//https://youtu.be/uSrRvXntLOI
+
+//Right Interval :
+//Here, we have to check that which interval is having start value greater than or 
+//equal to the end value of my current interval
+//Current interval means, interval to which my pointer is pointing as reference //or you can see outer for loop
+//Here, we have to find minimum start value
+//Eg: reference end=2 and start= 2,3,4,6,8,23,45
+//Above all start is greater than or equal to our end, but we have to chooser //minStart i.e. 2
+
+//At 0th index or 0th column , start value is there
+//At 1st index or 1st column , end value is there
+
+// //Brute Force (Linear Search) :
+// //Time Complexity : O(n^2)
+// //Time Complexity : O(n^2) {we have used "ans" array of size "n"}
+// class Solution {
+//     public int[] findRightInterval(int[][] intervals) {
+//         int[] ans = new int[intervals.length];
+        
+//         for(int i=0; i<intervals.length; i++) {
+//             int index = -1;
+//             int minStart = Integer.MAX_VALUE;
+            
+//             for(int j=0; j<intervals.length; j++) {
+//                 if(intervals[j][0] >= intervals[i][1] &&
+//                    minStart > intervals[j][0]) {
+//                     index = j;
+//                     minStart = intervals[j][0];
+//                 }
+//             }
+//             ans[i] = index;
+//         }
+//         return ans;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Optimized (Binary Search) :
+//Time Complexity : O(nlogn)
+//Time Complexity : O(3n) = O(n) 
+class Solution {
+    public int[] findRightInterval(int[][] intervals) {
+
+        //Store start value of each interval along with that interval's index
+        //So, afterwards we can know the index just by the start value
+        //<Integer, Integer. : <StartValue, Index>
+        HashMap<Integer, Integer> indexHM = new HashMap<>();
+
+        //Store all start value in "startValues" array, so we can sort it and           //apply binary search
+        int[] startValue = new int[intervals.length];
+
+        for(int i=0; i<intervals.length; i++) {
+            indexHM.put(intervals[i][0], i);
+            startValue[i] = intervals[i][0];
+        }
+
+        //Sort the "startValue" array, so we can apply binary search on that
+        Arrays.sort(startValue);
+
+
+        //Create array for storing index for answer
+        int[] ans = new int[intervals.length];
+
+        //Apply binary search to each interval :
+        for(int i=0; i<intervals.length; i++) {
+
+            //Here, our target is end value of ith interval
+            int key = binarySearch(startValue, intervals[i][1]);
+
+            //It means, now start is pointing outside he array i.e. ceiling                 //value is not found
+            if(key == intervals.length) {
+                ans[i] = -1;
+            }
+
+        // //Below comented conditions doesn't affect :    
+        // //Either right interval or ceiling is at 0th index of "startValue"
+        // //or it is not there
+        //     else if(key == 0) {
+        //         if(startValue[0] >= intervals[i][1]) {
+        //           //Get index of interval, which consists these start value
+        //           //from "startHM" hashmap
+        //             ans[i] = indexHM.get(startValue[0]);
+        //         }
+        //         else {
+        //             ans[i] = -1;
+        //         }
+        //     }
+
+            //If above two conditions fail, just go with below condition :
+            else {
+                ans[i] = indexHM.get(startValue[key]);
+            }
+        }
+
+        //Return answer array :
+        return ans;
+
+    }
+
+    //Method for Binary Search (smae as ceiling value : BS-Basic-Q.3):
+    int binarySearch(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length-1;
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            if(nums[mid] < target) {
+                start = mid+1;
+            }
+            else {                                 //nums[mid] > target
+                end = mid-1;
+            }
+        }
+        return start;        
+    }
+
+
+}
