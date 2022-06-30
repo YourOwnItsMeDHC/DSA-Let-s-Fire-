@@ -1,0 +1,58 @@
+//https://youtu.be/MjpAAE3-hYg (12)
+//Refer Notes(22)
+
+class Solution {
+    public int maxValue(int n, int index, int maxSum) {
+        
+        //Initially, we don't know our answer :
+        long ans = 0;
+        
+        //0  1  2  3  4  5  6  7  8  9  10   n=11
+        //      i
+        //SizeOfArray - Index - 1(bcoz, here we are not considering index in
+        //rightSpace)
+        long rightSpace = n-index-1;
+        
+        //Indexing is start from 0, so in leftSpace our index will also get consider
+        long leftSpace = index;
+        
+        long start = 1;
+        long end = maxSum;
+        
+        while(start <= end) {
+            long mid = start + (end-start)/2;
+            
+            long sum = mid;            
+            long leftSum = 0;
+            long rightSum = 0;
+            
+            long m = mid-1;
+            
+            if(m >= rightSpace) {
+                rightSum = m*(m+1)/2 - (m-rightSpace)*(m-rightSpace+1)/2;
+            }
+            else {                       //m < rightSpace
+                rightSum = m*(m+1)/2 + 1*(rightSpace - m);
+            }
+            
+            if(m >= leftSpace) {
+                leftSum = m*(m+1)/2 - (m-leftSpace)*(m-leftSpace+1)/2;
+            }
+            else {                       //m < leftSpace
+                leftSum = m*(m+1)/2 + 1*(leftSpace - m);
+            }
+            
+            sum += leftSum + rightSum;
+            
+            if(sum <= maxSum) {
+                ans = mid;
+                start = mid+1;
+            }
+            else {                         //sum > maxSum
+                end = mid-1;
+            }
+        }
+        
+        return (int)ans;
+    }
+}
