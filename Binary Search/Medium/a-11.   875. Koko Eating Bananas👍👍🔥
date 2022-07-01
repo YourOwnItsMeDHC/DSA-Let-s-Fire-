@@ -1,0 +1,74 @@
+//Refer Notes(23)
+//https://youtu.be/LzZFUTWE55c        (40) (LS-0 to 12, BS-13 TO 30)
+//https://leetcode.com/problems/koko-eating-bananas/discuss/2223640/Java-Binary-Search-With-Detailed-Explaination
+
+//We have to find the of speed of eating bananas by Koko i.e. k, which is the min //speed in which Koko can eat all bananas of an array
+
+//If the pile has less than k bananas, she eats all of them instead and will not eat //any more bananas during this hour i.e.
+//Koko has to eat bananas of each pile (or index) in one hour even if in a pile //there is only one banana then also it will take one hour, so h i.e. hours value //should always be greater than or euals to piles.length, if "h" is less than these, //it means question's answer is not possible
+
+
+//Find max element i.e. a pile which is having maximun bananas, take that max as "k"
+//i.e. speed of eating bananas, so here in array all elements are smaller than max, //so if these max bananas can be eaten in one hour , so bananas of rest of the pile //can also be eaten in one hour
+//But, here above "k" is the maximum speed, but we are asked to return minimum speed
+//We will find the minimum speed using Binary Search :
+
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        
+        //Find Max (It wil be our "end" for BS) :
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<piles.length; i++) {
+            max = Math.max(piles[i], max);
+        }
+        
+        //Edge Case : (h == piles.length)
+//Find max element i.e. a pile which is having maximun bananas, take that max as "k"
+//i.e. speed of eating bananas, so here in array all elements are smaller than max, //so if these max bananas can be eaten in one hour , so bananas of rest of the pile //can also be eaten in one hour
+//So, here to eat bananas of all index or pile will need one one hour, which is  //piles.length only 
+        if(piles.length == h) {
+            return max;
+        }
+        
+        
+        //Here start and end value will not be 0th and last index of "piles" array
+        //It is eating speed i.e. start=0 and end=maxElement
+        int start=0;
+        int end = max;
+        
+        int minSpeed = Integer.MAX_VALUE;
+        while(start <= end) {
+            
+            //k is mid
+            int k = start + (end-start)/2;
+           
+            //If all bananas can be eaten in "k" speed under given "h" hours
+            //Check for even minimum speed than current "k" speed, but along with it
+            //save current "k" speed also
+            if(isPossible(piles, k, h)) { //True
+                minSpeed = k;
+                end = k-1;              //But also, check for lesser speed         
+            }
+            else {                        //False
+                //Here, eating speed is less, therfore it is taking more time than h
+                //Increase the speed (k), Koko is eating so slowly here
+                start = k+1;
+            }
+        }        
+        return minSpeed;        
+    }
+    
+    
+    //Method to check, whether it is possible to eat all the bananas of "piles"         //array in less than or equal to provided "h" hours
+    boolean isPossible(int[] piles, int k, int h) {
+        int hours = 0;
+        for(int i=0; i<piles.length; i++) {
+            hours += (int)Math.ceil(piles[i]*1.0 / k);
+        //The ceil() method rounds the specified double value upward and returns it
+        //So, multiply piles[i] by 1.0 to make it "double", and then typcast it into
+        //integer, because "h" hours is of integer data type
+        }
+        return hours <= h;
+    }
+}
+
