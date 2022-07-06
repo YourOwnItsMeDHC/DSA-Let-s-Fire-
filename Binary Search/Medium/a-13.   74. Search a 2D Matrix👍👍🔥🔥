@@ -1,0 +1,133 @@
+//Make sure to have a look :
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic_2D_Array/src/com/company/SortedMatrix.java
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        //        Edge Case: There might be the case, where only 1 row is there, which means,
+//        it's simply a 1D Array, jo ki 2D Array ka roop badal ke aaya hai, so just simply apply Binary Search
+        int row = matrix.length;
+        int col = matrix[0].length;                                         //Be cautious, matrix may be empty
+        if(row == 1) {
+            return binarySearch(matrix, 0, 0, col-1, target);
+        }
+        
+        //If col == 1, so there will only be one index i.e. 0
+        //so see just below steps, there we have to do middleCol, so that
+        //will be middleCol=col/2 = 1/2 = 0.5 = 0 , so
+        //middleCol -1 = 0-1 = -1  (Index out of bound)
+        //middleCol +1 = 0+1 = 1  (Index out of bound)
+        if(col == 1) {
+            return binarySearchForCol(matrix, 0, 0, row-1, target); 
+        }
+        
+        //1. Find middle column
+        //2. Apply Binary Search on middle column
+        //3. On the basis of 2. eliminate rows, until only two rows are left
+        int startRow = 0;
+        int endRow = row - 1;                    //or matrix.length -1
+        int middleCol = col/2;                   //These col is fixed, it's our reference col
+        
+        //Run "while" loop until only two rows are remaining :
+        //Assume end=6, so end-1=6-1=5
+        //So, here start < end-1, which means loop will run till end=4, so we will left with 6-4= "2 rows" at last
+        while(startRow < endRow-1) {
+            int midRow = startRow + (endRow - startRow) / 2;
+
+            if(matrix[midRow][middleCol] == target) {
+                return true;
+            }
+            else if(matrix[midRow][middleCol] < target) {
+                //It means, elements before these midRow is also smaller than target, so just ignore that
+                startRow = midRow;
+            }
+            else {                                          //matrix[midRow][middleCol] > target
+                //It means, elements after these midRow is also greater than target, so just ignore that
+                endRow = midRow;
+            }
+        }
+        
+        //Now, after these "while" loop, we are left with 2 rows
+        //Now, target can be at 5 possible places
+        //1, 2, 3, 4 : In one of the 4 sides of these fixed middle column
+        //5. In that fixed middle column
+
+        //Check whether the target is in that fixed middle column of 2 rows :
+        //Check at First Row :
+         if(matrix[startRow][middleCol] == target) {
+            return true;
+        }
+        //Check at Second Row :
+        if(matrix[startRow + 1][middleCol] == target) {
+            return true;
+        }
+        
+        //Search in 1st half :
+        if(target <= matrix[startRow][middleCol-1]) {
+            return binarySearch(matrix, startRow, 0, middleCol-1, target);
+        }
+        
+        //Search in 2nd half :
+        else if(target >= matrix[startRow][middleCol] && target <= matrix[startRow][col-1]) {
+            return binarySearch(matrix, startRow, middleCol+1, col-1, target);
+        }
+        //Search in 3rd half :
+        else if(target <= matrix[startRow+1][middleCol-1]) {
+            return binarySearch(matrix, startRow+1, 0, middleCol-1, target);
+        }
+        //Search in 4th half :
+        else {                                                        //target >= matrix[startRow+1][middleCol+1]
+            return binarySearch(matrix, startRow+1, middleCol+1, col-1, target);
+        }
+        
+    }
+    
+    
+    
+    
+     //Search in a particular row provided, in between particular columns provided
+    //binarySearch(which 2D Array, in which row, from which col, till which col, what is the target)
+    boolean binarySearch(int[][] matrix, int row, int startCol, int endCol, int target) {
+        while(startCol <= endCol) {
+            int mid = startCol + (endCol - startCol) / 2;
+
+            if(matrix[row][mid] == target) {
+                return true;
+            }
+            else if(matrix[row][mid] < target) {
+                startCol = mid + 1;
+            }
+            else {                                       //matrix[row][mid] > target
+                endCol = mid - 1;
+            }
+        }
+        return false;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    //If col length is 1 , so just directly apply below Binary Search : 
+    boolean binarySearchForCol(int[][] matrix, int col, int startRow, int endRow, int target) {
+        while(startRow <= endRow) {
+            int mid = startRow + (endRow - startRow) / 2;
+
+            if(matrix[mid][col] == target) {
+                return true;
+            }
+            else if(matrix[mid][col] < target) {
+                startRow = mid + 1;
+            }
+            else {                                       //matrix[row][mid] > target
+                endRow = mid - 1;
+            }
+        }
+        return false;
+    }
+
+
+}
