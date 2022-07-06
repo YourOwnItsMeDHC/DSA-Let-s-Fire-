@@ -2,6 +2,8 @@
 //If solution is not understandable, then only watch (3 to 17) :
 //https://youtu.be/79vyrSH7VO8
 
+//https://leetcode.com/problems/find-a-peak-element-ii/discuss/2247865/Java-Clear-Detailed-Explaination-Binary-Search-O(m*log(n))
+
 class Solution {
     public int[] findPeakGrid(int[][] mat) {
         
@@ -51,12 +53,8 @@ class Solution {
                } 
             
             
-            //If above cases get fail, it means there is no peak elementin middleRow, so just
+            //If above cases get fail, it means there is no peak element in middleRow, so just
             //check for another row :
-            
-            //Here, element at present "middleRow" is less than the element which is at next
-            //row, so it may also be less than elements which is at next to next row, and so on
-            //row, so we will check only in the rows,  which are above our present "middleRow"
             
             //Here, element at present "middleRow" is less than the element which is at next
             //row, so all the previous rows may also be lesser, so just only check at rows next
