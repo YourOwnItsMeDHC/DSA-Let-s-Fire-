@@ -1,0 +1,90 @@
+//Refer Notes(24)
+//If solution is not understandable, then only watch (3 to 17) :
+//https://youtu.be/79vyrSH7VO8
+
+class Solution {
+    public int[] findPeakGrid(int[][] mat) {
+        
+        int startRow = 0;
+        int endRow = mat.length-1;
+        
+        while(startRow <= endRow) {
+            int middleRow = startRow + (endRow-startRow)/2;
+            
+            //Find max element of these particular row i.e. middleRow :
+            int rowMax = maxElementPositionInRow(mat[middleRow], mat[middleRow].length-1);
+            
+            //If middleRow is the first row of "mat" matrix :
+            //Peak element has to be greater than left, right, top, and bottom element
+            //Here, top = -1
+            //No need to check left and right, because element "mat[middleRow][rowMax]" is
+            //itself greater in it's row, so it will also be definetely greater than left and
+            //right, so here in these case, just check bottom element
+            if(middleRow == 0) {
+              if(mat[middleRow][rowMax] > mat[middleRow+1][rowMax]) {
+                return new int[]{middleRow, rowMax};
+               }  
+            }
+            
+            
+            //If middleRow is last row of "mat" matrix :
+            //Peak element has to be greater than left, right, top, and bottom element
+            //Here, bottom = -1
+            //No need to check left and right, because element "mat[middleRow][rowMax]" is
+            //itself greater in it's row, so it will also be definetely greater than left and
+            //right, so here in these case, just check top element
+            if(middleRow == mat.length-1) {
+              if(mat[middleRow][rowMax] > mat[middleRow-1][rowMax]) {
+                return new int[]{middleRow, rowMax};
+               }  
+            }
+            
+            
+            //If middleRow is any row excluding first and last row of "mat" matrix :
+            //Peak element has to be greater than left, right, top, and bottom element
+            //No need to check left and right, because element "mat[middleRow][rowMax]" is
+            //itself greater in it's row, so it will also be definetely greater than left and
+            //right, so here in these case, just check top and bottom element
+            if(mat[middleRow][rowMax] > mat[middleRow+1][rowMax] &&
+                 mat[middleRow][rowMax] > mat[middleRow-1][rowMax]) {
+                return new int[]{middleRow, rowMax};
+               } 
+            
+            
+            //If above cases get fail, it means there is no peak elementin middleRow, so just
+            //check for another row :
+            
+            //Here, element at present "middleRow" is less than the element which is at next
+            //row, so it may also be less than elements which is at next to next row, and so on
+            //row, so we will check only in the rows,  which are above our present "middleRow"
+            
+            //Here, element at present "middleRow" is less than the element which is at next
+            //row, so all the previous rows may also be lesser, so just only check at rows next
+            //to "middleRow"
+            if(mat[middleRow][rowMax] < mat[middleRow+1][rowMax]) {
+                startRow = middleRow+1;
+            }
+            else {
+                endRow = middleRow-1;
+            }          
+        }
+        
+        //Here, we didn't find any peak element in "mat" matrix :
+        return new int[]{-1, -1};
+        
+    }
+    
+    
+    //Method for finding maximum element in a particular provided row :
+    //(In which row do function have to find max element ,
+    //what is the length of that row, as these matrix is MxN, so just pass end of row
+    int maxElementPositionInRow(int[] nums, int end) {
+        int max = 0;
+        for(int i=0; i<=end; i++) {
+            if(nums[i] > nums[max]) {
+                max = i;
+            }
+        }
+        return max;
+    }
+}
