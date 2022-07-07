@@ -1,0 +1,45 @@
+//https://youtu.be/vgBrQ0NM5vE
+
+class Solution {
+    public int maxFrequency(int[] nums, int k) {
+        
+        //Sort the array, so we can use "Sliding Window" :
+        Arrays.sort(nums);
+        
+        //Left pointer "l" and Right pointer "r" :
+        //Initially window will be of size=1 only, it will expand based on the conditions
+        int l=0, r=0;
+        
+        //Original total sum of a particular window :
+        //Use "long", because summation can cross the value of "integer"
+        long total=0;
+        
+        //And, result will be also initially 0 :
+        int res = 0;
+        
+        while(r < nums.length) {
+            total += nums[r];
+            
+            //Formula : nums[r] X lengthOfWindow <= total + k
+            //lengthofWindow = r - l + 1
+            
+            while(nums[r] * (r-l+1) > total + k) {
+                //Here, increment "l" :
+                //So, from "total" that starting "l"th element will be reduce :
+                total -= nums[l];
+                l++;
+            }
+            
+            //"maximum possible frequency" would be lengthOfWindow i.e. (r-l+1) :
+            res = Math.max(res, r-l+1);
+            
+            //Else part of "while" loop : i.e. now  "nums[r] * (r-l+1) <= total + k"
+            //So, here check for next possible potential window or answer
+            r++;
+        }
+        
+        //Just return the "res" i.e. maximum possible frequency :
+        return res;
+        
+    }
+}
