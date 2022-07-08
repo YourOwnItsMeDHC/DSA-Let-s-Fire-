@@ -1,0 +1,120 @@
+//"Solution" section of "question" itself has 8 different approaches (Detailed Explanation)
+
+// //Approach 1: Sort
+// class Solution {
+//     public int findDuplicate(int[] nums) {
+        
+//         //Sort element :
+//        Arrays.sort(nums);
+        
+//         //Compare a particular element with it's previous element, if it is same, that means
+//         //we got our duplicate element :
+//         for(int i=1; i<nums.length; i++) {
+//             if(nums[i] == nums[i-1]) {
+//                 return nums[i];
+//             }
+//         }
+        
+//         //We didn't find any duplicate element :
+//         return -1;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+// //Approach 2: Set  (HashSet/unordered_set)
+// //As we traverse the array, we need a way to "remember" values that we've seen. If we come //across a number that we've seen before, we've found the duplicate. An efficient way to record //the seen values is by adding each number to a set as we iterate over the numsnums array.
+// class Solution {
+//     public int findDuplicate(int[] nums) {
+//         HashSet<Integer> basket = new HashSet<>();
+//         for(int element : nums) {
+//             if(basket.contains(element)) {
+//                 return element;
+//             }
+//             basket.add(element);            
+//         }
+//         return -1;        
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+// //Linear Search : (Accepted, but giving TLE)
+// class Solution {
+//     public int findDuplicate(int[] nums) {
+              
+//         for(int i=1; i<=nums.length; i++) {
+//             int count = 0;
+//             for(int j=0; j<nums.length; j++) {
+//                 if(nums[j] <= i) {
+//                     count++;
+//                 }
+//             }
+//             if(count > i){
+//                 return i;
+//             }
+//         }
+//         return -1;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+//Approach 3 : Binary Search
+//"Solution" section of "question" itself has 8 different approaches (Detailed Explanation)
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int duplicate = -1;
+        
+         // 'start' and 'end' represent the range of values of the target        
+        int start=1, end=nums.length-1;
+        
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            
+            // Count how many numbers in 'nums' are less than or equal to "mid"
+            int count = 0;
+            for(int element : nums) {
+                if(element <= mid) {
+                    count++;
+                }
+            }
+            
+            if(count > mid) {
+                //It is the potential answer, but continue to look at left for a smaller number                 //that satisfies the condition
+                duplicate = mid;
+                end = mid-1;
+            }
+            else {                                  //count <= mid
+                start = mid+1;
+            }
+            
+        }
+        return duplicate;
+    }
+}
+
+
+
+
+
+//More 5 Approaches are remaining to explore
