@@ -1,0 +1,93 @@
+//https://youtu.be/CoNBRq5JSz0
+
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+        
+        //weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+        //Here, max element i.e. biggest package is 10, so  
+        //Even if a single package of these weight "10 " is getting shipped over conveyor belt
+        //Therefore, Min weght = 10 (max element)
+        
+        //If days = 1 , it means we have to ship all the packages in a single day only, so
+        //weight for these will be summation of all elements of the given array
+        //Therefore, Max weight = 55 (Summation of array)
+        
+        //Therefore, our weight will be between these two weights only, i.e. between 10 and 55
+        
+        //Brute Force (Linear Search) : O(n) * O(max - min)
+        //Try all weights from "min" and "max" i.e. 10 and 55
+        //Capacity-10 : [1,2,3,4] [5] [6] [7] [8] [9] [10] - Taking 7 days, so increase weight
+        //Capacity-11 -> 12 -> 13 -> 14
+        //Capacity-15 ->
+         //A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+        //1st day: 1, 2, 3, 4, 5
+        //2nd day: 6, 7
+        //3rd day: 8
+        //4th day: 9
+        //5th day: 10
+        
+        
+        //Binary : O(n) * O(log(max - min))
+        int minWeight = 0;                          //Max Element
+        int maxWeight = 0;                          //Summation of array
+        
+        //Calculate minWeight and maxWeight :
+        for(int w : weights) {
+            minWeight = Math.max(w, minWeight);     //Max Element
+            maxWeight += w;                         //Summation of array
+        }
+        
+        
+        //Whatever we were doing in linear search, do that using Binary Search :
+        int ans = 0;
+        while(minWeight <= maxWeight) {                       // O( log(max - min) )
+            int mid = minWeight + (maxWeight - minWeight)/2;
+            //"mid" is the capacity weight, which can be taken into ship in one day
+            
+            //Find number of days required when capacity weight is "mid" :
+            int daysRequired = numberOfDaysRequiredWithCapacity(weights, mid); // O(n)
+            
+            if(daysRequired > days) {
+                //It means, aaraam aaraam se mart bhejo, thoda thoda samaan mat bhejo
+                //Increase the capacity :
+                minWeight = mid+1;
+            }
+            else {                           //daysRequired > days
+                //It might be OK capacity weight, but also check whether there is more optimal
+                //answer or not :
+                ans = mid;                   //mid is capacity
+                //Matlab ki thoda aur aaraam se kaam karo, capacity kam karke ship me transfer
+                //karke dekho, ki utne capacity me "days" days me transfer kar paa rahe hai
+                //yaa nahi
+                maxWeight = mid-1;
+            }
+        }
+        return ans;
+        
+    }
+    
+    
+    
+    
+    //Method to find number of days required when capacity weight is "mid" :
+    int numberOfDaysRequiredWithCapacity(int[] weights, int capacity) {
+        
+        //1 <= days <= weights.length <= 5 * 104
+        int daysRequired = 1;
+        int currentWeight = 0;
+        
+        for(int w : weights) {
+            currentWeight += w;
+            if(currentWeight > capacity) {
+                
+                //Now, one day's capacity is full, jump to next day :
+                daysRequired++;
+                
+                //Jo element/weight last me choda tha agle din ke liye , ushi weight se
+                //shuruvaat karenge ship me load karna :
+                currentWeight = w;
+            }
+        }
+        return daysRequired;
+    }
+}
