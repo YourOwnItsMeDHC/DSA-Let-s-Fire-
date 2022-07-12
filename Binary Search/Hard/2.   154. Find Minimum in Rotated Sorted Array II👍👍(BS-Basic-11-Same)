@@ -1,0 +1,52 @@
+//Totally same as (Firstly, look at the link):
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic/src/com/company/SearchInRotatedSortedWithDuplicates.java
+
+class Solution {
+    public int findMin(int[] nums) {
+        int pivot = findPivotWithDuplicates(nums);
+        return nums[pivot+1];        
+    }
+    
+    int findPivotWithDuplicates(int[] nums) {
+        int start = 0;
+        int end = nums.length-1;
+        
+        while(start <= end) {
+            int mid = start + (end - start)/2;
+            
+            if(mid < end && nums[mid] > nums[mid+1]) {
+                return mid;
+            }
+            
+            if(mid > start && nums[mid-1] > nums[mid]) {
+                return mid-1;
+            }
+            
+            if(nums[start]==nums[mid] && nums[end]==nums[mid]) {
+                //Below, in both "if" cases I used "start < end"and
+                //"end > start" to avoid index out of bound error
+                if(start < end && nums[start] > nums[start+1]) {
+                    return start;
+                }
+                start++;
+                
+                if(end > start && nums[end-1] > nums[end]) {
+                    return end-1;
+                }
+                end--;
+            }
+            else {
+                if(nums[mid]>nums[start] || nums[mid]==nums[start]
+                  && nums[mid] > nums[end]) {
+                    start = mid+1;
+                }
+                else {
+                    end = mid-1;
+                }
+            }
+            
+        }
+        return -1;
+    }
+    
+}
