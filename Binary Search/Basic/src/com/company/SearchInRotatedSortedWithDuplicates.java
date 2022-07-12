@@ -95,7 +95,7 @@ public class SearchInRotatedSortedWithDuplicates {
                 //Check if end is pivot : (Using Case-2)
                 //In case-2, we were checking whether mid-1 is pivot or not, here we are checking whether end-1 is pivot or not, so in place of mid-1 just write end-1, as it is same like case-2
                 if(nums[end-1] > nums[end]) {
-                    return end;
+                    return end-1;
                 }
                 end--;
             }
