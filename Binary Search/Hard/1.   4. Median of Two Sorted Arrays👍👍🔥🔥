@@ -78,8 +78,8 @@ class Solution {
             int cut1 = low + (high-low)/2;
             int cut2 = medianPos - cut1;
             
-            //"cut1" denotes number of elements on the left side
-            //"cut2" denotes number of elements on the right side
+            //"cut1" denotes the cutting in num1
+            //"cut2" denotes the cutting in num2
                        
             //if cut1 is 0 it means nothing is there on left side. Use lesser number there,
             //because, here l1 and l2 has to be lesser than r2 and r1
