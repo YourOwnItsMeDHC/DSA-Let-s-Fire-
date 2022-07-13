@@ -1,0 +1,59 @@
+//Completely same as : 3. Allocate minimum number of pages👍👍(Gfg, Coding Ninjas)
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Hard/3.%20%20%20Allocate%20minimum%20number%20of%20pages%F0%9F%91%8D%F0%9F%91%8D(Gfg%2C%20Coding%20Ninjas)
+
+//If you didn't understand, so firstly check above link ☝, it's completely same 
+
+import java.util.ArrayList;
+public class Solution 
+{
+    public static int findLargestMinDistance(ArrayList<Integer> boards, int k)
+    {
+        int start = 0;
+        int sum = 0;
+        for(int i=0; i<boards.size(); i++) {
+            sum += boards.get(i);
+        }
+        int end = sum;
+        
+        int ans = -1;
+        int mid = start + (end-start)/2;
+        
+        while(start <= end) {
+            if(isPossible(boards, boards.size(), k, mid)) {
+                ans = mid;
+                end = mid-1;
+            }
+            else {
+                start = mid+1;
+            }
+            mid = start + (end-start)/2;
+        }
+        return ans;
+    }
+    
+    
+    
+    
+    static boolean isPossible(ArrayList<Integer> boards, int size, int k, int mid) {
+        int paintersCount = 1;
+        int boardsSum = 0;
+        
+        for(int i=0; i<size; i++) {
+            if(boardsSum + boards.get(i) <= mid) {
+                boardsSum += boards.get(i);
+            }
+            else {
+                paintersCount++;
+                
+                if(paintersCount > k || boards.get(i) > mid) {
+                    return false;
+                }
+                
+                boardsSum = boards.get(i);
+            }
+        }
+        return true;
+    }
+    
+    
+}
