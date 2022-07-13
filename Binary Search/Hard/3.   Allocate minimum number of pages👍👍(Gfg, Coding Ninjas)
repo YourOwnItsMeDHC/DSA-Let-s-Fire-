@@ -1,0 +1,140 @@
+//Coding Ninjas (ArrayList) :
+
+import java.util.ArrayList;
+public class Solution {    
+    public static int allocateBooks(ArrayList<Integer> arr, int n, int m) {
+        //Minimum pages can be : 0
+        //Maximum pages can be all the pages of each book i.e. sum of array
+        int start = 0;
+        int sum = 0;
+        for(int i=0; i<n; i++) {
+            sum += arr.get(i);
+        }
+        int end = sum;
+        
+        //Initially, I don't know the answer
+        int ans = -1;
+        
+        //mid => possible number of pages
+        //Here, we are checking that it can be our min. pages i.e. answer or not
+        int mid = start + (end-start) / 2;
+        
+        while(start <= end) {
+            
+            //Checking, whether with "mid" number of pages, is possible to
+            //distribute the books properly or not
+            if(isPossible(arr, n, m, mid)) {       //isPossible : true
+                //Here, "mid" number of pages are possible for proper                           //distribution of books among "m" students
+                //But, also check for more potential answer (if possible)
+                //all pages/elements at right of "mid" will be greater, so with
+                //that "right side" elements it will definitely be [possible
+                //to find our answer, but here we want min. pages, so check left
+                ans = mid;      //Might be our answer, so just store it
+                end = mid-1;
+            }
+            else {                        //isPossible : false
+                //If "mid" number of pages is not possible, then all elements at                 //left is smaller than "nums[mid]" will also be not possible                     //because that elements are more smaller than "mid" elements
+                //So, check at right
+                start = mid+1;
+            }
+            
+            //If "mid" number of pages are possible : then it is OK
+            //But, also check that another "mid" is giving me more optimal
+            //answer or not
+            mid = start + (end-start)/2;
+        }
+        return ans;
+    }
+    
+    
+    
+    //Checking, whether with "mid" number of pages, is possible to
+    //distribute the books properly or not
+    static boolean isPossible(ArrayList<Integer> arr, int n, int m, int mid) {
+        
+        //Initially, there will be atleast one student to whom I will be giving books
+        int studentCount = 1;
+        int pageSum = 0;
+        
+        //Iterate over all the elements/books to distribute it among "m" students
+        for(int i=0; i<n; i++) {
+            if(pageSum + arr.get(i) <= mid) {
+                pageSum += arr.get(i);
+            }
+            else {                  //pageSum + arr[i] > mid
+                studentCount++;
+                if(studentCount > m || arr.get(i) > mid) {
+                    return false;
+                }
+                pageSum = arr.get(i);                
+            }
+           
+        }
+        return true;        
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//GFG (Array) :
+
+class Solution 
+{
+    //Function to find minimum number of pages.
+    public static int findPages(int[] arr, int n,int m)
+    {
+        int start = 0;
+        int sum = 0;
+        for(int i=0; i<n; i++) {
+            sum += arr[i];
+        }
+        int end = sum;
+        
+        int ans = -1;
+        //mid => possible number of pages
+        int mid = start + (end-start) / 2;
+        
+        while(start <= end) {
+            if(isPossible(arr, n, m, mid)) {
+                ans = mid;      //Might be our answer
+                end = mid-1;
+            }
+            else {                        //isPossible : false
+                start = mid+1;
+            }
+            mid = start + (end-start)/2;
+        }
+        return ans;
+    }
+    
+    static boolean isPossible(int[] arr, int n, int m, int mid) {
+        int studentCount = 1;
+        int pageSum = 0;
+        
+        for(int i=0; i<n; i++) {
+            if(pageSum + arr[i] <= mid) {
+                pageSum += arr[i];
+            }
+            else {                  //pageSum + arr[i] > mid
+                studentCount++;
+                if(studentCount > m || arr[i] > mid) {
+                    return false;
+                }
+                pageSum = arr[i];                
+            }
+           
+        }
+        return true;        
+    }
+};
