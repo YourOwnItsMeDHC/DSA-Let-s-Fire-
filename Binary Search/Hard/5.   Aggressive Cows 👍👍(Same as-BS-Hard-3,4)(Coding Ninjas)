@@ -1,0 +1,94 @@
+//Coding Ninja's Article: https://www.codingninjas.com/codestudio/library/aggressive-cows
+//Question Link: https://www.codingninjas.com/codestudio/problems/aggressive-cows_1082559?leftPanelTab=0
+
+//Notes (Diarammatically) : https://drive.google.com/file/d/1d2eNEMdw5iuX7PflLfGykLgKF-SloUyr/view
+
+import java.util.*;  
+import java.util.ArrayList;
+public class Solution 
+{
+    public static int aggressiveCows(ArrayList<Integer> stalls, int k) 
+    {
+        //Cows are aggressive, all the time they will just fight with each other
+        //if they are near/close to each other, so we have to keep that cows as far
+        //as possible so they can't/won't fight with each other
+        
+        //k : number of cows
+        
+        //Sort the array, so we can apply binary search :
+        //https://www.javatpoint.com/how-to-sort-arraylist-in-java
+        Collections.sort(stalls);   
+        
+        //Assume minimum distance betwee the cows as 0 : (min or start)
+        int start = 0;
+        
+        //In worst to worst scenario, if I will subtract largest element of array
+        //with smallest element of array, I will get maximum distance, that can keep
+        //cows away/separate from each other (max or end)
+        //Eg : 4 2 1 3 6 : maxElement=6, minElement=1 ==> 6-1=5
+        //So, here, the distance for separation between cows will never be more than 5
+        //Here, we will take our max/end as maximum element of array, because even if
+        //I will subtract maxElement i.e. 6 with minElement(Assumption) i.e. 0
+        //6-0=6 ==> It is still maxElement only
+//         int maxElement = Integer.MIN_VALUE;           //or "-1"
+//         for(int i=0; i<stalls.size(); i++) {
+//             maxElement = Math.max(maxElement, stalls.get(i));
+//         }
+//         int end = maxElement;
+        
+        //As now ArrayList "stalls" is sorted, and we want largest element
+        //Largest element will always be at last index or sorted array
+        int n = stalls.size();
+        int end = stalls.get(n - 1);
+        
+        int ans = -1;
+        int mid = start + (end-start)/2;
+        
+        while(start <= end) {
+            if(isPossible(stalls, k, mid, n)) {
+                ans = mid;
+                //Here, we got some possible "ans", so we have to move at right,                       //because we have to return the "largest" minimum distance
+                start = mid+1;
+            }
+            else {
+                end = mid-1;
+            }
+            mid = start + (end-start)/2;
+        }
+        return ans;        
+    }
+    
+    
+    
+    
+    static boolean isPossible(ArrayList<Integer> stalls, int k, int mid, int n) {
+        int cowCount = 1;
+        
+        //"lastPos" is the position from where I'm getting possible "largest" minimum distance
+        //Initially, I am just placing my first cow in the first place "stalls[0]", so
+        //here, I'm assuming "stalls[0]" only my "lastPos" initially 
+        int lastPos = stalls.get(0);
+        
+        for(int i=0; i<n; i++) {
+            
+            //If distance between current position i.e. "stalls.get(i)" and "lastPos" is
+            //greater/larger than provided largest distance i.e. "mid", then yes here
+            //I can place my another cow i.e. "cowCount++"
+            if(stalls.get(i) - lastPos >= mid) {
+                cowCount++;
+                
+                //If I'm able to place all the cows "k", while keeping "mid" or
+                //"greater than mid" distance between cows, so they won't fight
+                //Here, so just return true
+                if(cowCount == k) {
+                    return true;
+                }
+                
+                 //So, now whatever was my current position i.e. "stalls.get(i)" will now be my "lastPos"
+            lastPos = stalls.get(i);
+            }
+            
+        }
+        return false;
+    }
+}
