@@ -1,0 +1,73 @@
+//https://youtu.be/Ppy9lvyMnuc
+//Same as : 6. 410. Split Array Largest Sum👍👍(Same as- BS-Hard-3 then 4,5)
+
+//https://www.codingninjas.com/codestudio/problems/divide-chocolates_1466966?leftPanelTab=0
+
+//https://curiouschild.github.io/leetcode/2019/06/21/divide-chocolate.html
+
+import java.util.*;   
+import java.util.ArrayList;
+public class Solution {
+	public static int getMaximumSweetness(ArrayList<Integer> nums, int k) {
+        
+        //Mere "k" number of dost hai, aur agar mai chocolate ko "k" baar kaatunga,
+        //to mere paas "k+1" chunks honge, "k" chunks mai unko dunga aur "1" mai lunga
+        
+        //Mithaas ka level : 1 <= sweetness[i] <= 10^5
+        //Matlab ki min mithaas jo ho sakta hai, wo hai "1"
+        //Max mithaas kitna hoga : poore array ka mithaas i.e. summation of all elements
+        //ko divide karenge number of chunks me i.e. "k+1"
+        //utna "max" muithaas possible hai
+        int start = 1;
+        
+        int sum = 0;
+        for(int i=0; i<nums.size(); i++) {
+            sum += nums.get(i);
+        }
+        int end = sum / (k+1);
+        
+        int ans = -1;
+        
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            if(canSplit(nums, k, mid)) {
+                ans = mid;
+                //Thoda aur sweetness badhaane ka try karte hai (if posible)
+                start = mid+1;
+            }
+            else {
+                //Bahaut jyaada meetha ho gaya hai, thoda kam karo mithaas
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
+    
+    
+    
+    
+    static boolean canSplit(ArrayList<Integer> nums, int k, int mid) {
+        int chunksCount = 0;            //chunks or pieces or cuts , etc
+        int sum = 0;                     //"sum" or sweetnessSum
+        
+        for(int i=0; i<nums.size(); i++) {
+            sum += nums.get(i);
+            if(sum >= mid) {
+                //Agar mera "sum" mithaas jyaada yaa baraabar ho raha hai "mid"
+                //mithaas ke compare me , to bhai
+                //bas, itna meetha bahaut ho gaya, ab dusre chunk ko dekho 
+                chunksCount++;
+                
+                //Dusre chunk ka mithaas mujhe abhi tak pata nahi hai, to ushe check
+                //karna shuru karunga "0" sunya mithaas se
+                sum = 0;
+            }
+        }
+        
+        //Agar mai "mid" amount of mithaas se "k+1" chunks kar paa raha hu (usse
+        //jyaada pieces bhi chalega), to bhai sahi hai, return kar do "true"
+        //Yaa fir "k+1" chunks nahi ho paa raha i.e. "chunksCount < k+1" ==> false
+        return chunksCount >= k+1;
+    }
+    
+}
