@@ -1,0 +1,107 @@
+/**
+ * // This is MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface MountainArray {
+ *     public int get(int index) {}
+ *     public int length() {}
+ * }
+ */
+ 
+class Solution {
+    public int findInMountainArray(int target, MountainArray nums) {
+        
+        int length = nums.length();
+        
+        //Find peak index in mountain array : "852. Peak Index in a Mountain Array"
+        int peak = 0;
+        int start = 0;
+        int end = length-1;
+        
+        while(start < end) {
+            int mid = start + (end-start)/2;
+            
+            if(nums.get(mid) > nums.get(mid+1)) {
+                //We are in descending/right part of the array, nums[mid] may be the
+                //answer, but we will also look at the left to check whether
+                //"is there any element at left of mid as greater than nums[mid]"
+                end = mid;
+                //Above we didn't do "end=mid-1", because there might be the case that
+                //there is no more element at left as greater than nums[mid], so for
+                //that case we have to consider nums[mid] only as our max element
+            }
+            else {              //nums[mid] < nums[mid+1]
+                //Here we are at ascending/left side, so check at right for max
+                //element than current element
+                start = mid+1;
+            }
+        }
+         //At the last, we get start==end which points to the same element which is
+         //our max element, so return either start or end
+         peak = end;            //or return end;
+        
+        
+        
+        
+        
+        
+        
+        //Find target at the left of peak :
+        //Eg : array = [1, 2, 3, 4, 5, 3, 1]
+        //             <--Left---- Peak --Right-->   
+        //Elements at the left of peak are in ascending order, so simply use Binary Search 
+        start = 0;
+        end = peak;
+         while(start <= end) {
+         //int mid = (start + end) / 2;              
+         //Will give error: There is a chance that start+end will exceed Integer limit (2147483647)
+            int mid = start + (end-start)/2;
+
+            if(target < nums.get(mid)) {
+                end = mid-1;
+            }
+            else if(target > nums.get(mid)) {
+                start = mid+1;
+            }
+            else {                                      //if target element == nums[mid] element
+                return mid;
+            }
+        }
+    
+        
+        
+        
+        
+        
+        
+        //Find target at the right of peak :
+        //Eg : array = [1, 2, 3, 4, 5, 3, 1]
+        //             <--Left---- Peak --Right-->        
+        //Elements at the right of peak are in descending order, so use Order Agnostic Binary Search 
+        start = peak;
+        end = length-1;
+         while(start <= end) {
+         //int mid = (start + end) / 2;              
+         //Will give error: There is a chance that start+end will exceed Integer limit (2147483647)
+            int mid = start + (end-start)/2;
+            
+            if(target < nums.get(mid)) {
+                    start = mid+1;                    //Check at right, because it is sorted in Descending Order
+            }
+           else if(target > nums.get(mid)) {                         
+                    //It means target > nums[mid]
+                    end = mid-1;                      //Check at left, because it is sorted in Descending Order
+            }
+            else {  //target == nums.get(mid)           
+                return mid;
+            }
+            
+            
+            
+        }
+        
+        
+        return -1;                 //After running above while loops, Element not found
+        
+      
+    }    
+}
