@@ -1,0 +1,59 @@
+//Gfg : Chocolate Distribution Problem
+
+import java.io.*;
+import java.util.*;
+class GfG
+{
+    public static void main (String[] args)
+    {
+        
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            int n = sc.nextInt();
+            ArrayList<Integer> arr = new ArrayList<>();
+            for(int i = 0;i<n;i++)
+                {
+                    int x = sc.nextInt();
+                    arr.add(x);
+                }
+            int m = sc.nextInt();
+            
+            Solution ob = new Solution();
+            
+    		System.out.println(ob.findMinDiff(arr,n,m));
+        }
+        
+    }
+}// } Driver Code Ends
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> nums, int n, int m)
+    {
+        //https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1/#
+        //https://youtu.be/50nn3bA1BT4 (12)(Pepcoding)
+        
+        //Here, we have to distribute cocolates among "m" students, so window size
+        //will be of "m" size
+        //In that particular window, find min ans max element
+        //Store gap of that max and min element
+        //We have to find that window which gives us these gap as minimum
+        int ans = Integer.MAX_VALUE;
+        
+        Collections.sort(nums);
+        
+        for(int i=0; i<=n-m; i++) {
+            int minOfWindow = nums.get(i);
+            int maxOfWindow = nums.get(i+m-1);
+            int gap = maxOfWindow - minOfWindow;
+            
+            if(gap < ans) {
+                ans = gap;
+            }
+        }
+        
+        return ans;
+    }
+}
