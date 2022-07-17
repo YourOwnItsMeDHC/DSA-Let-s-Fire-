@@ -36,3 +36,6 @@
 
 ----->   [Selection Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Selection%20Sort) :
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Selection%20Sort/Basics/src/com/company))
+
+----->   [Insertion Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Insertion%20Sort) :
+([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Insertion%20Sort/Basics/src/com/company))
