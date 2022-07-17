@@ -27,7 +27,7 @@ public class InsertionSort {
     static void insertionSort(int[] nums) {
 
         //"i" is counter or pass/iteration counter
-        //Here, j=i+1, so, if i<nums.length, then there will be index out o bound for "j"
+        //Here, j=i+1, so, if i<nums.length, then there will be index out of bound for "j"
         //Eg: nums.length=10, i=10th position(index 9), then j=i+1 = 9+1 = 10(index-doesn't exist) ==> index out of bound
         for(int i=0; i<nums.length-1; i++) {                         //or i<=nums.length-2
 
