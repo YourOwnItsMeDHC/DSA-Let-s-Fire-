@@ -1,0 +1,44 @@
+//Google
+
+//Approach - Cycle Sort :
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        
+        //I have to return all the disappeared/missing elements from an array
+        //Here, I don't know number of missing elements, so use ArrayList
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        //array nums of n integers where nums[i] is in the range [1, n]
+        //Eg : nums = [5, 4, 3, 2, 1]     ,   n=5
+        //After Sort :[1, 2, 3, 4, 5]
+        //Index      : 0  1  2  3  4
+        //Using "Cycle Sort", sort the array :
+        int i = 0;
+        while(i < nums.length) {
+            int correctIndex = nums[i]-1;   //See Cycle Sort(gfg, github), to know about correctIndex
+            if(nums[i] != nums[correctIndex]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIndex];
+                nums[correctIndex] = temp;
+            }
+            else {
+                i++;
+            }
+        }
+        //Now, array is sorted
+        
+        //array nums of n integers where nums[i] is in the range [1, n]
+        //Eg : nums = [5, 4, 3, 2, 1]     ,   n=5
+        //After Sort :[1, 2, 3, 4, 5]
+        //Index      : 0  1  2  3  4
+        //Here, at a particular index , index+1 has to be element's value, if it's not
+        //means it missing, just add that missing "index+1" value in ArrayList
+        for(int index=0; index<nums.length; index++) {
+            if(nums[index] != index+1) {
+                ans.add(index+1);
+            }
+        }
+        
+        return ans;
+    }
+}
