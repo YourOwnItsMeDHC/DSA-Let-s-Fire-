@@ -1,4 +1,4 @@
-//If any doubt, refer Notes(3 - 4)
+// If any doubt, refer Notes(3 - 4)
 
 /* The isBadVersion API is defined in the parent class VersionControl.
       boolean isBadVersion(int version); */
