@@ -42,3 +42,4 @@
 
 ----->   [Cycle Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort) :
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Basics/src/com/company))
+([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Easy))
