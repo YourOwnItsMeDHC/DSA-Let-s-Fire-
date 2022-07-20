@@ -1,0 +1,97 @@
+//https://leetcode.com/problems/contains-duplicate/discuss/60858/Possible-solutions.
+
+// //Time complexity: O(N^2), memory: O(1)
+// //The naive approach would be to run a iteration for each element and see whether a duplicate value can be found: this results in O(N^2) time complexity
+
+// class Solution {
+//     public boolean containsDuplicate(int[] nums) {
+        
+//        for(int i = 0; i < nums.length; i++) {
+//             for(int j = i + 1; j < nums.length; j++) {
+//                 if(nums[i] == nums[j]) {
+//                     return true;
+//                 }
+//             }
+//         }
+//         return false;     
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+//Time complexity: O(N lg N), memory: O(1) - not counting the memory used by sort
+//Since it is trivial task to find duplicates in sorted array, we can sort it as the first step of the algorithm and then search for consecutive duplicates
+
+// class Solution {
+//     public boolean containsDuplicate(int[] nums) {
+      
+//         //Here, for sorting we can use Bubble sort, Selection Sort, Insertion sort,.... or
+//         //Arrays.sort(arrayName) as well
+        
+//         // //Insertion Sort (TLE) :
+//         // for(int i=0; i<nums.length-1; i++) {
+//         //     for(int j=i+1; j>0; j--) {
+//         //         if(nums[j] < nums[j-1]) {
+//         //             int temp = nums[j];
+//         //             nums[j] = nums[j-1];
+//         //             nums[j-1] = temp;
+//         //         }
+//         //         else {
+//         //             break;
+//         //         }
+//         //     }
+//         // }
+        
+//         Arrays.sort(nums);
+        
+//         //Check for duplicates :
+//         for(int i=1; i<nums.length; i++) {
+//             if(nums[i] == nums[i-1]) {
+//                 return true;
+//             }
+//         }
+//         return false;       
+//     }    
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+//Time complexity: O(N), memory: O(N)
+//Finally we can used a well known data structure hash table that will help us to identify whether an element has been previously encountered in the array
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> bucket = new HashSet<>();
+        
+        for(int element : nums) {
+            if(bucket.contains(element)) {
+                return true;
+            }
+            else {
+                bucket.add(element);
+            }
+        }
+        return false;
+    }
+}
+
+
+
+
+
