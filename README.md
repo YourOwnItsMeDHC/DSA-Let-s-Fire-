@@ -30,6 +30,7 @@
 
 
 *  [Sorting](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting) :
+([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Easy)) ,
 
 ----->   [Bubble Sort or Sinking Sort or Exchange Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Bubble%20Sort) :
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Bubble%20Sort/Basics/src/com/company))
