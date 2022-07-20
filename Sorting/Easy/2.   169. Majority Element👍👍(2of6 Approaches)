@@ -1,0 +1,108 @@
+//6 Detailed Approaches is already there in "Solution" section of question "169. Majority Element"
+ 
+//Approach 1: Brute Force
+// class Solution {
+//     public int majorityElement(int[] nums) {
+//        for(int i=0; i<nums.length; i++) {
+//            int count = 0;
+//            for(int j=0; j<nums.length; j++) {
+//                if(nums[i] == nums[j]) {
+//                    count++;
+//                }
+//            }
+           
+//            if(count > nums.length/2) {
+//                return nums[i];
+//            }
+//        }
+//         return -1;
+//     }
+// }
+
+
+
+
+
+
+
+
+//Approach 2: Sorting
+class Solution {
+    public int majorityElement(int[] nums) {
+                
+        //nums = [2,2,1,1,1,2,2]
+        //Sort = [1,1,1,2,2,2,2]
+        //              ⬆ center element
+        //The majority element is the element that appears more than ⌊n / 2⌋ times, so after
+        //sorting that element will definetely be also at center, so just return that
+        
+        //Here, for sorting we can use Bubble sort, Selection Sort, Insertion sort,.... or
+        //Arrays.sort(arrayName) as well
+        
+        // Arrays.sort(nums);
+        
+        //Bubble sort :
+        int i = 0;
+        while(i < nums.length-1) {
+            boolean swapped = false;
+            
+            for(int j=i+1; j<nums.length; j++) {
+                  if(nums[j] < nums[j-1]) {
+                     int temp = nums[j];
+                     nums[j] = nums[j-1];
+                     nums[j-1] = temp;
+                     
+                     swapped = true;
+                  } 
+            }
+            
+            if(!swapped) {
+                break;
+            }
+            
+        }
+        
+        
+        return nums[nums.length/2];
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// class Solution {
+//     public int majorityElement(int[] nums) {
+        
+//         int[] count = new int[nums.length];
+//         // Arrays.fill(count, 0);
+                    
+//         int half = nums.length / 2;
+//         for(int i=0; i<nums.length; i++) {
+//             for(int j=0; j<nums.length; j++) {
+//                 if(nums[i] == nums[j]) {
+//                     count[i]++;
+//                 }
+//             }
+//             // if(count[i] > half) {
+//             //     ans = nums[i];
+//             // }
+//         }
+//         // return ans;
+        
+//         int max = 0, ans=0;
+//         for(int i=0; i<count.length; i++) {
+//             max = Math.max(max, count[i]);
+//             if(max > half) {
+//                 ans = max;
+//             }
+//         }
+//         return ans;
+//     }
+// }
