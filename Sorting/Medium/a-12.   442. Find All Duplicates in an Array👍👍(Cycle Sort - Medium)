@@ -1,0 +1,33 @@
+//1. 287. Find the Duplicate Number👍👍🔥🔥🔥(3of8 Approaches)(BS-Medium) also (Cycle Sort - Medium)
+
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Sorting/Cycle%20Sort/Medium/1.%20%20%20287.%20Find%20the%20Duplicate%20Number%F0%9F%91%8D%F0%9F%91%8D%F0%9F%94%A5%F0%9F%94%A5%F0%9F%94%A5(3of8%20Approaches)(BS-Medium)(Amazon%2C%20Microsoft)
+
+
+//Approach - Cycle Sort :
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        
+        int i = 0;
+        while(i < nums.length) {
+            int correctIndex = nums[i]-1;
+            if(nums[i] != nums[correctIndex]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIndex];
+                nums[correctIndex] = temp;
+            }
+            else {
+                i++;
+            }
+        }
+        
+        List<Integer> ans = new ArrayList<>();
+        for(int index=0; index<nums.length; index++) {
+            if(nums[index] != index+1) {
+                ans.add(nums[index]);
+            }
+        }
+       
+        return ans;
+        
+    }
+}
