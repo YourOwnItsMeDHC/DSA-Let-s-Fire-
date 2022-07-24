@@ -1,0 +1,41 @@
+//Approach - Cycle Sort :
+//If not understand, just go through ==> Cycle Sort -> Basics -> Easy(1,2) -> Medium(1,2)
+//Then, come to these "645. Set Mismatch" question
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        
+        //Cycle Sort :
+        int i =0;
+        while(i < nums.length) {
+            int correctIndex = nums[i]-1;
+            if(nums[i] != nums[correctIndex]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIndex];
+                nums[correctIndex] = temp;
+            }
+            else {
+                i++;
+            }
+        }
+        //Now, array is sorted
+        
+        int[] ans = new int[2];
+        for(int index=0; index<nums.length; index++) {
+            if(nums[index] != index+1) {
+                
+                //Eg : nums = [1, 2, 2, 4] & Output: [2,3]    ,   n=4        
+                //Index      : 0  1  2  3        
+                //Above, 3 has to be there at index=2, but at index=2, there is 2
+                //It means, ele=2 is repeated and ele=3 is missing
+                
+                //At "index" , there should be ele=index+1, if it is not there
+                //It means ele=index+1 is missing, and whatever element i.e. nums[index]
+                //is there, that is repeated
+                ans[0] = nums[index];                  //Repeated
+                ans[1] = index+1;                      //Missing
+            }
+        }
+        
+        return ans;
+    }
+}
