@@ -1,0 +1,29 @@
+//Same as ==> Sorting (Easy) ==> "5. 349. Intersection of Two Arrays👍(BS-Easy)(2 Hashsets, 2 Pointers, BS)"
+//If didn't understand, then firstly have a look on the above solution ☝
+
+//My Article : https://leetcode.com/problems/assign-cookies/discuss/2325679/Simple-Greedy-Two-Pointer-Sorting-Java-Solution
+
+//Approach : Two Pointer
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        
+        Arrays.sort(g);
+        Arrays.sort(s);
+        
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        
+        while(i < g.length && j < s.length) {
+            if(s[j] < g[i]) {
+                j++;
+            }
+            else { // If s[j] >= g[i], we can assign the cookie j to the child i
+                count++;
+                i++;
+                j++;
+            }
+        }
+        return count;        
+    }
+}
