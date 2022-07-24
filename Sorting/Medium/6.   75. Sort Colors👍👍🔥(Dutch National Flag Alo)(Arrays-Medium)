@@ -1,0 +1,96 @@
+//https://takeuforward.org/data-structure/sort-an-array-of-0s-1s-and-2s/
+
+//Approach - 2 : Dutch National Flag (One Pass Approach)
+//In Dutch National Flag ,
+//All the elements which are at left of low are/hasToBe 0 i.e. [o to low-1]
+//All the elements which are at right of high are/hasToBe 2 i.e. [high+1 to n]
+class Solution {
+    public void sortColors(int[] nums) {
+        
+        int low = 0;
+        int mid = 0;
+        int high = nums.length-1;
+
+        int temp;
+        
+        while(mid <= high) {
+            switch(nums[mid]) {
+                    
+                    //when mid encounters 0, swap it with low, because, we
+                    //want all 0's at left of low
+                    //then just increment low and mid
+                case 0 : {
+                    temp = nums[mid];
+                    nums[mid] = nums[low];
+                    nums[low] = temp;
+                    
+                    low++;
+                    mid++;
+                    break;
+                }
+                    
+                    //when mid encounters 1, don't do anything
+                    //just increment mid, because we
+                    //want 1 in middle section of array only
+                case 1 : {
+                    mid++;
+                    break;
+                }
+                    
+                    //when mid encounters 2, swap it with high, because, we
+                    //want all 2's at right of high
+                    //then just decrement high
+                case 2 : {
+                    temp = nums[mid];
+                    nums[mid] = nums[high];
+                    nums[high] = temp;
+                    
+                    high--;
+                    break;
+                }
+                    
+            }
+        }
+    }
+}
+
+
+
+
+
+// //Approach 1 : Two Pass Approach
+// //First Pass = O(N), Second Pass = O(N) , So, Time Complexity = O(2N)
+// //Space Complexity: O(1)
+// class Solution {
+//     public void sortColors(int[] nums) {
+        
+//         int n = nums.length;
+//         int countRed=0, countWhite=0, countBlue=0;
+        
+//         //Count number of red, white, blue objects
+//         for(int i=0; i<n; i++) {
+//             if(nums[i] == 0) {
+//                 countRed++;
+//             }
+//             else if(nums[i] == 1) {
+//                 countWhite++;
+//             }
+//             else {
+//                 countBlue++;
+//             }
+//         }
+       
+//         //Sort it in increasing order i.e 1 ➡ 2 ➡ 3
+//         for(int i=0; i<countRed; i++) {
+//             nums[i] = 0;
+//         }
+        
+//         for(int i=0; i<countWhite; i++) {
+//             nums[i + countRed] = 1;
+//         }
+        
+//         for(int i=0; i<countBlue; i++) {
+//            nums[i + countRed + countWhite] = 2;
+//         }
+//     }
+// }
