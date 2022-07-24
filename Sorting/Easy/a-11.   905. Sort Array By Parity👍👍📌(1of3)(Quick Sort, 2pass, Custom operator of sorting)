@@ -1,0 +1,70 @@
+//"Solution" section itself has 3 approaches
+
+// //Approach 1: Two Pass      [O(N) + O(N) = O(2N) i.e. O(N)]
+// //Write all the even elements first, then write all the odd elements.
+// class Solution {
+//     public int[] sortArrayByParity(int[] nums) {
+//         int[] ans = new int[nums.length];
+        
+//         int pos = 0;
+//         for(int i=0; i<nums.length; i++) {        //O(N)
+//             if(nums[i] % 2 == 0) { //Even element
+//                 ans[pos++] = nums[i];
+//             }
+//         }
+        
+//         for(int i=0; i<nums.length; i++) {         //O(N)
+//             if(nums[i] % 2 == 1) { //Odd element
+//                 ans[pos++] = nums[i];
+//             }
+//         }
+        
+//         return ans; 
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Approach 2: One Pass [O(N)] - [Same as Aprroach-1, but beautifying the code
+// with only one for loop]
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int[] ans = new int[nums.length];
+        
+        int start = 0;
+        int end = nums.length-1;
+        
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] % 2 == 0) {
+                ans[start] = nums[i];
+                start++;
+            }
+            else {
+                ans[end] = nums[i];
+                end--;
+            }
+        }
+        
+        return ans;
+    
+    }
+}
+
+
+
+//"Solution" section itself has 3 approaches
+//Remaining Approaches (Yet to explore) :
+//Approach 1: Sort
+//Approach 3: In-Place (Quick Sort)
