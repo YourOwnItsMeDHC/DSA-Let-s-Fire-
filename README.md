@@ -30,6 +30,7 @@
 
 
 *  [Sorting](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting) :
+([`Notes`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Notes)) ,
 ([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Easy)) ,
 ([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Medium)) ,
 ([`Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Hard))
