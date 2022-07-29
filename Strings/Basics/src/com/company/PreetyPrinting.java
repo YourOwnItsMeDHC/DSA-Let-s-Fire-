@@ -8,7 +8,7 @@ public class PreetyPrinting {
 
         //Print the value of Pi :
         System.out.println(Math.PI);       //3.141592653589793
-        System.out.println();
+        System.out.println();         //Just for line spacing purpose
 
         //The printf() method of Java PrintStream class is a convenience method which is used to write a String which is formatted to this output Stream.
         // //It uses the specified format string and arguments to write the string.
