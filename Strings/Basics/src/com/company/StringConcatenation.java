@@ -35,7 +35,7 @@ public class StringConcatenation {
         System.out.println(new Integer(100) + "" + new ArrayList<>()); //100[]
         System.out.println(new Integer(100) + "  " + new ArrayList<>()); //100  []
 
-        System.out.println("d" + 'c'); //dc
+        System.out.println("d" + 'c');  //dc
 
     }
 }
