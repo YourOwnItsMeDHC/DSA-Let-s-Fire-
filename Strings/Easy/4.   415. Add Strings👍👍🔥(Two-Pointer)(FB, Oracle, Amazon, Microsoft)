@@ -1,0 +1,82 @@
+//Facebook , Oracle, Amazon, Microsoft
+//https://www.youtube.com/watch?v=PlCOTfHB54g
+//Own Article : https://leetcode.com/problems/add-strings/discuss/2354670/Detailed-Explanation-Using-ASCII-Value-JAVA-Fast-and-Accepted
+
+//See ASCII Table in Leetcode Notes : https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ASCII-Table-wide.svg/875px-ASCII-Table-wide.svg.png
+
+//Decimal  Char
+//48        0
+//49        1
+//50        2
+//51        3
+//52        4
+//53        5
+//54        6
+//55        7
+//56        8
+//57        9
+
+//If we will divide any number(which is in a string in these question) with the decimal
+//of very first number(see above ASCII Table) i.e. 48
+//We will get our result as a number (in String)
+//Eg: '8' - '0' = 56-48 = 8
+//Eg: '6' - '0' = 54-48 = 6
+
+
+//Eg: nums1='2859' , nums2='293'
+class Solution {
+    public String addStrings(String nums1, String nums2) {
+        
+        //Generally, we do addtion from right to left, so here also we will do summation
+        //from right to left, and at the last we will just reverse to get our answer
+        int i = nums1.length()-1;
+        int j = nums2.length()-1;
+        
+        //For storing value of carry :
+        int carry = 0;
+        
+        //For storing result of summation :
+        StringBuilder result = new StringBuilder();
+        
+        //If i or j is less than 0, then there is nothing, to do, addition
+        while(i > -1 || j > -1) {
+            int digit1;
+            if(i > -1) {
+                digit1 = nums1.charAt(i) - '0';
+            }
+            else {
+                //If there is no further number is left for summation, consider 0
+                digit1 = 0;
+            }
+            
+            // int digit1 = i>-1 ? nums1.charAt(i)-'0' : 0;
+            int digit2 = j>-1 ? nums2.charAt(j)-'0' : 0;
+            
+            //For first iteration i.e. very right and very left number,obviously, carry=0
+            int sum = digit1 + digit2 + carry;
+            
+            //Whatever the remainder we are getting of that sum, append that in result :
+            result.append(sum % 10);
+            
+            //Compute carry :
+            carry = sum/10;
+            
+            //Check for another two numbers :
+            --i;
+            --j;
+        }
+        
+        //Edge Case, if at last there is a situation like : 99 + 1 = 100, here, we will
+        //be having, carry as 1, so just add that 1 in result
+        //I still we are left with carry=1, and we don't have anything to add with it
+        //So, just append that carry=1 also in result
+        if(carry == 1) {
+            result.append(1);
+        }
+        
+        //Now, result = 2513
+        
+        //Just reverse the "result" to get summation value of "nums1" and " nums2" :
+        return result.reverse().toString();
+    }
+}  
