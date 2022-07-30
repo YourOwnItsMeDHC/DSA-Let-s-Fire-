@@ -1,0 +1,111 @@
+//"Solution" section contains Two approaches with detailed explanation :
+//https://leetcode.com/problems/reverse-words-in-a-string-iii/solution/
+
+// //Approach 1: Traverse and Reverse each character one by one
+
+// class Solution {
+//     public String reverseWords(String s) {
+        
+//         //StringBuilder ==> For keeping characters (which are reversed) :
+//       StringBuilder result = new StringBuilder();
+        
+//         //lastSpaceIndex+1 will give starting index of a particular word :
+//         int lastSpaceIndex = -1;
+        
+//         //strIndex-1 will give the last index of a particular word
+//         //Exception : if it is the last word of string, then last index will be strIndex only
+//         for(int strIndex=0; strIndex<s.length(); strIndex++) {
+            
+//             //In both the below cases, we have to reverse a particular word
+//             if(strIndex==s.length()-1 || s.charAt(strIndex)==' ') {
+                
+//                 //Finding last index of a particular word :
+//                 int reverseStrIndex;   //last index of a particular word
+//                 if(strIndex == s.length()-1) {
+//                     reverseStrIndex = strIndex;
+//                 }
+//                 else {
+//                     reverseStrIndex = strIndex - 1;
+//                 }
+//                 //int reverseStrIndex = (strIndex == s.length() - 1) ? strIndex : strIndex - 1;
+                  
+//                 //Reversing a particular word :
+//                 for(; reverseStrIndex > lastSpaceIndex; reverseStrIndex--) {
+//                     result.append(s.charAt(reverseStrIndex));
+//                 }
+                
+//                 //I it is not the last word, then we have to put spacing, for separating
+//                 //words from each other
+//                 if(strIndex != s.length()-1) {
+//                     result.append(' ');
+//                 }
+                
+//                 //Next word ke indices ki tayaari :
+//                 lastSpaceIndex = strIndex;
+//                 //lastSpaceIndex+1 will give starting index of a particular word
+//                 //strIndex-1 will give the last index of a particular word
+//                 //Exception : if it is the last word of string, then last index will be strIndex only
+//             }
+//         }
+        
+//         //Convert StrinBuilder into Strin, and then just return it :
+//         return new String(result);
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Approach 2: Using Two Pointers
+
+class Solution {
+    public String reverseWords(String s) {
+        
+        int lastSpaceIndex = -1;
+        
+        char[] chArray = s.toCharArray();
+        int len = s.length();
+        
+        //Below, we are running "for" loop till "len" and not till "len-1"
+        //So, we don't have to check for last word of the string,
+        //Earlier there was an exception for last word
+        //Exception : if it is the last word of string, then last index will be strIndex only
+        //But, now irrespective of last word, we will do strIndex-1 for last index of a word
+        //Eg: s = "God Ding" , len=8
+        //Indices: 01234567
+        //Suppose, now strIndex=len=8, so for last index of last word also, we will just
+        //do strIndex-1 = 8-1 = 7
+        for(int strIndex=0; strIndex<=len; strIndex++) {
+            if(strIndex==len || chArray[strIndex]==' ') {
+                int start = lastSpaceIndex+1;
+                int end = strIndex-1;
+                
+                while(start < end) {
+                    char temp = chArray[start];
+                    chArray[start] = chArray[end];
+                    chArray[end] = temp;
+                    
+                    start++;
+                    end--;
+                }
+                               
+                lastSpaceIndex = strIndex;
+            }
+        }
+        return new String(chArray);
+    }
+}
