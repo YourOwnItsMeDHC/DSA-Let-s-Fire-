@@ -1,0 +1,120 @@
+//Make sure to check it out (Visual Animation) : https://leetcode.com/problems/reverse-string/discuss/1901756/JavaC%2B%2B-3-Way's-Visual-Solution
+
+// //1. Two Pointer's :
+// class Solution {
+//     public void reverseString(char[] s) {
+       
+//         int start = 0;
+//         int end = s.length-1;
+//         while(start <= end) {           
+//             char temp = s[start];
+//             s[start] = s[end];
+//             s[end] = temp;
+            
+//             start++;
+//             end--;
+//         }
+//     }
+// }
+// //Time Complexity :- BigO(N)
+// //Space Complexity :- BigO(1)
+
+
+
+
+
+
+
+
+
+// //2. Recursive Call :
+// //Explanation is same as Two Pointer's what only different happening is, we are solve this using our fucntion call every time. We are just doing the work to reverse only 1 time first & last element, rest one we are not worrying about!! Because recursion will do that for us :)
+
+// class Solution {
+//     public void reverseString(char[] s) {
+       
+//         int start = 0;
+//         int end = s.length-1;
+//         reverse(s, start, end);
+//     }
+    
+    
+    
+//     void reverse(char[] s, int start, int end) {
+//         //Termiation Condition :
+//         if(start >= end) { //or : start > end
+//             return;
+//         }
+//         char temp = s[start];
+//         s[start] = s[end];
+//         s[end] = temp;
+        
+//         reverse(s, ++start, --end);
+//     }
+    
+// }
+// //Time Complexity :- BigO(N)
+// //Space Complexity :- BigO(N)
+
+
+
+
+
+
+
+
+
+
+
+//3. Stack (Optimized - Best Approach) :
+class Solution {
+    public void reverseString(char[] s) {
+        Stack<Character> stack = new Stack<>();
+        
+        for(int i=0; i<s.length; i++) {
+            stack.push(s[i]);
+        }
+        
+        int i = 0;
+        while(stack.size() > 0) {
+            s[i++] = stack.pop();
+        }
+    }    
+}
+//Time Complexity :- BigO(N)
+//Space Complexity :- BigO(N)
+
+
+
+
+
+// //3. Stack (Not needed - Same as above, but with some extra steps):
+// class Solution {
+//     public void reverseString(char[] s) {
+//         // Initialize stack
+//         Stack<Character> stack = new Stack<>();
+        
+//         // Initialize string 
+//         String str = new String(s);
+        
+//         // Push all elements into the stack
+//         for(int i=0; i<str.length(); i++) {
+//             stack.push(s[i]);
+//         }
+        
+//         // Initialize another array
+//         char[] ans = new char[s.length]; 
+        
+//         // Pop elements from stack
+//         int i = 0;
+//         while(stack.size() > 0) {
+//             s[i++] = stack.pop();
+//         }
+        
+//         // Fill the other array with popped elements from stack
+//         for(int j=0; j<ans.length; j++) {
+//             ans[j] = str.charAt(j);
+//         }
+//     }    
+// }
+
