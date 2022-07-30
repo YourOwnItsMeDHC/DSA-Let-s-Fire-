@@ -53,3 +53,6 @@
 *  [Strings](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics) :
 ([`Notes` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Strings/Basics/Strings_Notes%20.pdf))
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics/src/com/company))
+([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Easy)) ,
+([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Medium)) ,
+([`Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Hard))
