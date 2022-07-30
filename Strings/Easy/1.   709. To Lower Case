@@ -1,0 +1,54 @@
+//https://leetcode.com/problems/to-lower-case/discuss/148993/Java-no-library-methods
+
+//ASCII of Capital starts from 65 to 90
+//ASCII of Small starts from 97 to 122
+
+// //Approach - 1 :
+// class Solution {
+//     public String toLowerCase(String s) {
+//         return s.toLowerCase();
+//     }
+// }
+
+
+
+
+
+
+// //Approach - 2 :
+// class Solution {
+//     public String toLowerCase(String s) {
+//         char[] str = s.toCharArray();
+        
+//         for(int i=0; i<str.length; i++) {
+//             if(str[i] >= 'A' && str[i] <= 'Z') {
+//                 str[i] = (char)(str[i] - 'A' + 'a');
+                
+//         //Eg: str[i]='A', 'A' is 65 ==> str[i] - 'A' + 'a'==> 65-65+97= a
+//         //Eg: str[i]='H, 'H is 72 => str[i] - 'A' + 'a'==>7 2-65+97= h
+//             }
+//         }
+//         return new String(str);
+//     }
+// }
+
+
+
+
+
+//Approach - 3 :
+//The difference between the lower case and upper case ascii value is 32, so when need to convert upper case to lower case, add 32 in the upper case value. and to convert from lower case to uppercase, minus 32 from the lowercase char
+//i.e. 97-65 = 32
+
+class Solution {
+    public String toLowerCase(String s) {
+        char[] str = s.toCharArray();
+        
+        for(int i=0; i<str.length; i++) {
+            if(str[i] >= 'A' && str[i] <= 'Z') {
+                str[i] = (char)(str[i] + 32);
+            }
+        }
+        return new String(str);
+    }
+}
