@@ -1,0 +1,95 @@
+//Own Article : https://leetcode.com/problems/implement-strstr/discuss/2361539/Elegant-Java-solution-Detailed-Explaination-With-Example-Two-Pointer-Java100
+
+// //Approach - 1 : Using .indexOf() method of String
+// class Solution {
+//     public int strStr(String haystack, String needle) {
+//         return haystack.indexOf(needle);
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+//Approach - 2 : Two Pointers
+class Solution {
+    public int strStr(String haystack, String needle) {
+        
+        //Edge case: If the needle is an empty string -> return 0
+        if(needle.length() == 0) {
+            return 0;
+        }
+        if(haystack.length() == 0) {
+             return -1;
+        }
+        
+        //Initialize two pointers
+        int i=0, j=0;
+        
+        //Loop over the whole characters of both strings
+        while(i<haystack.length() && j<needle.length()) {
+            
+            //If the both the characters are same, then do increment of both
+            //pointers i.e. i++ and j++
+            
+            if(haystack.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+                    
+                //if the both strings are equal, then return the difference                   //between the "i"th index and needle's length
+                
+                //Here, suppose needle.length()=4,so indx will be from 0 to 3
+                //Here, "j" is the pointer of "needle", if j=4, means all
+                //characters are checked, no more characters are left in
+                //needle for comparison
+                //Also, here all the chacters of needle are present in haystk
+                
+                //Here, return "i-needle.length()", because len of needle
+                //is needle.length(), and here we to return only when all the
+                //characters of needle is present in haystack, and also we
+                //have to return only that index where the very first
+                //character of word is found in haystacky
+                
+                //Eg: Input: haystack = "hello", needle = "ll" => Output: 2
+                //                           i               j
+                //Above, j is at needle.length(), means nothing further
+                //and i=4, So, here we have to return index of first charact
+                //Therefore, i-index.length() = 4-2 = 2 ==> Output
+                
+                    if(j == needle.length()) {
+                        return i-needle.length();
+                    }
+            }
+            
+            //if the two characters are not the same, then return the                     //needle's pointer to the begining point & the first pointer to               //the position , just to the next character from the current one
+            
+            else {
+                
+                //Eg: Input: haystack = "hello", needle = "ll" => Output: 2
+                //                       i                 j
+                //i!=j , so i=next character=i-j+1=0-0+1=1 and j=0
+                
+                //Eg: Input: haystack = "hello", needle = "ll" => Output: 2
+                //                        i                j
+                //i!=j , so i=next character=i-j+1 = 1-0+1 = 2 and j=0
+                
+                //Eg: Input: haystack = "hello", needle = "ll" => Output: 2
+                //                         i               j
+                //i==j , so i++ = 3 , j++ = 1 (Above if condition)...........
+                
+                i = i-j+1;
+                j=0;
+            }
+        }
+        
+        //Here, above return statement didn't execute, needle is not there in
+        //haystack
+        return -1;       
+        
+    }
+}
