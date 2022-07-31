@@ -1,0 +1,190 @@
+//"Solution" section contains Four approaches with detailed explanation :
+//Refer Notes(27-28)-Horizontal Scanning
+
+//indedxOf : https://www.w3schools.com/java/ref_string_indexof.asp
+//subString : https://www.geeksforgeeks.org/substring-in-java/
+//.length() : https://www.geeksforgeeks.org/length-vs-length-java/#:~:text=length()%20%3A%20length()%20method,characters%20present%20in%20the%20string.&text=1.,objects%20but%20not%20for%20arrays.
+
+// //Approach 1: Horizontal scanning
+// class Solution {
+//     public String longestCommonPrefix(String[] strs) {
+        
+//         //Check wheteher String array "strs" is empty or not :
+//         if(strs.length == 0) {
+//             return "";
+//         }
+        
+//         //Intially, consider first word of string as prefix
+//         String prefix = strs[0];
+//         for(int i=1; i<strs.length; i++) {
+            
+//             //See, whether, is prefix there in strs[i], or not
+//             //If is there, then it will start from index "0" only
+//             //If its not there, then strs[i].indexOf(prefix) is "-1"
+//             while(strs[i].indexOf(prefix) != 0) {
+                
+//                //Here, prefix is not there in strs[i], so just remove 
+//                //very last character of prefix, and again check it
+//                 prefix = prefix.substring(0, prefix.length()-1);
+                
+//              //Here, we are keep on reducing last character of prefix
+//               //So, if there is a case, where we are not left with
+//               //even single character in prefix, then just return ""
+//                 if(prefix.isEmpty()) {
+//                     return "";
+//                 }
+                
+//             }
+//         }
+//         //At last, watever prefix we are getting, just return that :
+//         return prefix;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //Approach 2: Vertical scanning
+// class Solution {
+//     public String longestCommonPrefix(String[] strs) {
+        
+//         //Check wheteher String array "strs" is empty or not :
+        
+//         if(strs == null || strs.length == 0) {
+//             return "";
+//         }
+        
+//         //Compare each character of first word with all the reamining
+//         //words (also, see, that character has to be in that same "i"th
+//         //position, in all other words)
+        
+//         for(int i=0; i<strs[0].length(); i++) {
+//             char c = strs[0].charAt(i);
+            
+//             //Compare each character(one by one) of first word, with all
+//             //other words excluding itself i.e. first word)
+//             //Therofore, "j" starts from 1(second word)
+            
+//             for(int j=1; j<strs.length; j++) {
+                
+//                 //If character, which "c" is holding is not there, even
+//                 //in any of single word, just return characters of first
+//                 //word(because, we are using that first word for
+//                 //comparison purpose), from 0th index till i-1
+//                 //Excluding "i", because 'i'th character is not there
+//                 //in any of word
+                
+//                 //If length of word is == i, then also return same as ☝
+//                 //Eg: strs = ["flower","flow","flight"]
+//                 //                i=3
+//                 //Eg: if i=3, and length of 2nd word=3(it means, 2nd
+//                 //word will have index from 0 to 2 i.e. index=3 doesn't
+//                 //exist)
+//                 if(strs[j].length() == i || strs[j].charAt(i) != c) {
+//                     return strs[0].substring(0, i);
+//                 }
+//             }
+//         }
+        
+//         return strs[0];
+        
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Approach 4: Binary search
+
+//https://www.w3schools.com/java/ref_string_startswith.asp
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        
+        //Check wheteher String array "strs" is empty or not :
+        
+        if(strs == null || strs.length == 0) {
+            return "";
+        }
+        
+        //Find the min length from the string, so we can use that as "end"
+        //for Binary Search
+        
+        int minLen = Integer.MAX_VALUE;
+        
+        for(String str : strs) {
+            minLen = Math.min(minLen, str.length());
+        }
+        
+        
+        int start = 0;
+        int end = minLen;
+        
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            
+            //If in "strs" string, characters are same, upto length=mid
+            //Then, laalach, check whether next character is also there or
+            //not
+            
+            if(commonPrefix(strs, mid)) {
+                start = mid+1;
+            }
+            else {
+                
+                //If in "strs" string, characters are not same, upto                         //length=mid, ek ek karke peeche aao, aur firse check karo
+                end = mid-1;
+            }
+        }
+        
+        return strs[0].substring(0, (start+end)/2);
+        
+    }
+    
+    boolean commonPrefix(String[] strs, int len) {
+        String str1 = strs[0].substring(0, len);
+        
+        //Agar string ke har word me "str1" hai, to thik hai, par agar kisi
+        //ek word me bhi "str1" nahi hai to return false
+            for(int i=1; i<strs.length; i++) {
+                if(!strs[i].startsWith(str1)) {
+                    return false;
+                }
+            }
+        return true;
+    }
+    
+}
+
