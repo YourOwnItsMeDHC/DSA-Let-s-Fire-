@@ -1,0 +1,131 @@
+//Google, Facebok, Amazon, Uber , in almost all companies , ... etc.
+
+//https://youtu.be/4i6-9IzQHwo (10) - Animated🔥🔥🔥
+//https://www.interviewbit.com/blog/longest-substring-without-repeating-characters/
+
+
+// //Brute Force - Using another arary or set : 
+// //Correct ✅ ==> Accepted ==> But, TLE
+// class Solution {
+//     public int lengthOfLongestSubstring(String s) {
+        
+//         // //No use :
+//         // if(s==null || s.length()==0) {
+//         //     return 1;
+//         // }
+        
+//         //Taking length of the string :        
+//         int n = s.length();
+        
+//         //Initial assumption of max length :
+//         int maxLen = 0;
+        
+//         //Run two "for" loops for finding all possible substrings
+        
+//         for(int i=0; i<n; i++) {
+//             for(int j=i; j<n; j++) {
+                
+//                 //Check whether there is any repetition in substring, whose
+//                 //start pointer is "i", and end pointer is "j"
+                
+//                 if(checkRepetition(s, i, j)) {
+                    
+//                     //Check, which length is max, previous one ? OR current one?
+//                     //Eg : s = "pwwkew"
+//                     //            i j
+//                     //            2 4
+//                     //j-i+1 = 4-2+1=3 , Above, lengt of substring "wke" is 3
+                    
+//                     maxLen = Math.max(maxLen, j-i+1);
+//                 }
+//             }
+//         }
+//         return maxLen;
+//     }
+    
+    
+//     boolean checkRepetition(String s, int start, int end) {
+        
+//         //Create an array of size 128, why 128 ? ==> See these ASCII Table image
+//         //https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ASCII-Table-wide.svg/875px-ASCII-Table-wide.svg.png
+//         //And, because : s consists of English letters, digits, symbols and spaces.
+        
+//         //Initaially all the elements would have value "0"
+        
+//         int[] chars = new int[128];
+        
+//         for(int i=start; i<=end; i++) {
+            
+//             //Eg : s = "pwwkew"
+            
+//             char c = s.charAt(i);      //Assume, c as "w" at index(1)
+            
+//             //ASCII of "w" = 119
+//             //Increment from "0" to "1" at 119th index, because we found "w" in
+//             //substring
+            
+//             chars[c]++; 
+            
+//             //If "w" encounters again, then again increment from "1" to "2"
+//             //These time 2>1 = true ==> Repetition is there ==. Return false
+            
+//             if(chars[c] > 1) {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     } 
+    
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Optimized : Sliding Window
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        if(s == null || s.length() == 0) {
+            return 0;
+        }
+        
+        int i=0, j=0, maxLen=0;
+        Set<Character> set = new HashSet<>();
+        
+        while(i < s.length()) {
+            char c = s.charAt(i);
+            
+            while(set.contains(c)) {
+                set.remove(s.charAt(j));
+                ++j;
+            }
+            set.add(c);
+            
+            maxLen = Math.max(maxLen, i-j+1);
+            ++i;
+            
+        }
+        
+        return maxLen;
+        
+    }
+}
+
