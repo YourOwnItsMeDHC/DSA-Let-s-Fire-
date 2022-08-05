@@ -1,0 +1,62 @@
+//Completely same question : "921. Minimum Add to Make Parentheses Valid"(Medium)
+//After "1249. Minimum Remove to Make Valid Parentheses", have a look into
+//"921. Minimum Add to Make Parentheses Valid" (Medium)
+
+//https://youtu.be/Givpwgu9IIc  (24- 2x)
+
+
+//Own Article : https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/discuss/2382073/Stack-Based-or-Easy-to-Understand-or-Faster-than-99-or-Java-Solution
+
+//GIVE PRIORITY TO THE INNER PARENTHESES
+//1: Create a stack
+//2: If '(' encounters, push (that index) it onto the stack
+//3: If ')' encounters, check whether there is a pair for these ')' i.e. is there
+//   any '(' in the stack (and stack contains only index of '(')
+//4: If stack contains '(' ==> It's a pair, pop '(' from top of the stack, and
+//   just move on i.e. go for next character
+//   Else, stack doesn't contains '(' i.e. size of stack is 0, update i.e. in the
+//   place of that ')' , put '.' ==> '.' indicating invalid Parentheses
+//5: After traversing all the characters of string, see is there any '(' in stack
+//   If it is, then in the string at that index , update that "(" with '.'
+//6: Traverse string once again, add in stringbuilder, add only those characters
+//   excluding '.' , and then return that StringBuilder converting it into String
+
+//Optimized : Using Stack
+class Solution {
+    public String minRemoveToMakeValid(String s) {
+        
+        char[] chars = s.toCharArray();
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        for(int i=0; i<chars.length; i++) {
+            if(chars[i] == '(') {
+                stack.push(i);
+            }
+            else if(chars[i] == ')') {
+                if(stack.size() == 0) {
+                    chars[i] = '.';
+                }
+                else {
+                    stack.pop();
+                }
+            }
+        }
+        
+        while(stack.size() > 0) {
+            chars[stack.pop()] = '.';
+        }
+        
+        StringBuilder builder = new StringBuilder();
+        
+        for(char c : chars) {
+            if(c != '.') {
+                builder.append(c);
+            }
+        }
+        
+        return builder.toString();
+         
+    }
+}
+
