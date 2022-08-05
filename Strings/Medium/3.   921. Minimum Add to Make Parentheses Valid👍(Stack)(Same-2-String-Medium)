@@ -1,0 +1,88 @@
+//Completely same question : "1249. Minimum Remove to Make Valid Parentheses"
+//Before "921. Minimum Add to Make Parentheses Valid"(Medium), have a look into
+//"1249. Minimum Remove to Make Valid Parentheses" (Medium)
+
+//Own Article : https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/discuss/2382046/Java-Easy-to-understand-Stack-Solution-(8ms)
+
+// //Optimzed : Using Stack
+// class Solution {
+//     public int minAddToMakeValid(String s) {
+        
+//         char[] chars = s.toCharArray();
+        
+//         Stack<Integer> stack = new Stack<>();
+        
+//         int count = 0;
+//         for(int i=0; i<chars.length; i++) {
+//             if(chars[i] == '(') {
+//                 stack.push(i);
+//             }
+//             else {
+//                 if(stack.size() == 0) {
+//                     //Here, valid parentheses is not there, we need it, do ++
+//                     count++;
+//                 }
+//                 else {
+//                     stack.pop();
+//                 }
+//             }
+//         }
+         
+//  //Also, count '(', whih are in stack, ')' ke intezaar me akele baithe hai
+//  //Now, whole string is already traversed, so '(' will not get any pair
+
+//         while(stack.size() > 0) {
+//             stack.pop();
+//             count++;
+//         }
+        
+//         return count;
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Same code as above, But
+//Without using extra "char" array
+//Without popping stack, as we did in the last, of the above code
+class Solution {
+    public int minAddToMakeValid(String s) {
+        
+        Stack<Character> stack = new Stack<>();
+        int count = 0;
+        for(int i=0; i<s.length(); i++) {
+            if(s.charAt(i) == '(') {
+                stack.push('(');
+            }
+            else {
+                if(!stack.empty()) {
+                    stack.pop();
+                }
+                else {
+                    count++;
+                }
+            }
+        }
+        
+    //Also, count '(', whih are in stack, ')' ke intezaar me akele baithe hai
+    //Now, whole string is already traversed, so '(' will not get any pair
+    //Number of '(' in the stack will be equals to stack.size() only
+    //So, just simply add that with our count
+        
+        return count+stack.size();
+    }
+}
