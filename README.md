@@ -54,5 +54,5 @@
 ([`Notes` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Notes))
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics/src/com/company))
 ([`Easy`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Easy)) ,
-([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Medium)) ,
+([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Medium)) ,
 ([`Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Hard))
