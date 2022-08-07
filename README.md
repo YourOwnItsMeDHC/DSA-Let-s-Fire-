@@ -6,6 +6,10 @@
 
 [Begin Your Journey](https://github.com/YourOwnItsMeDHC/ProgramBasics/tree/master/src/deepak)
 
+
+[`Patterns`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Patterns/src/com/company)
+
+
 [Functions/Methods](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Functions/src/com/functions)
 
 *  [Arrays](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Arrays) :
