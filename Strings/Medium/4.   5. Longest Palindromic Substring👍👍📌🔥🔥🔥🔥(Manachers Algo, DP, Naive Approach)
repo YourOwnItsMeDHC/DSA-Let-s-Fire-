@@ -1,0 +1,63 @@
+//5 Approaches are there in "Solution" section
+//Manacher's Algorithm
+//Dynamic Programming
+
+//https://github.com/mission-peace/interview/blob/master/src/com/interview/string/LongestPalindromeSubstring.java
+//https://www.youtube.com/watch?v=06QIlUBLTz4
+//https://youtu.be/V-sEwsca1ak
+
+
+//Naive Approach : Time - O(N^2) , Space - O(1)
+//https://www.youtube.com/watch?v=QfZvw8_jz1w (9)-Naive Approach
+class Solution {
+    public String longestPalindrome(String s) {
+        
+        //Initializing the pointers :
+        int start = 0;
+        int end = 0;
+        
+        //Assuming, each index "i" as center . and find Longest Palindromic           //Substring
+        for(int i=0; i<s.length(); i++) {
+            
+            //For odd length, assume left as "i", also right as "i"
+            //For even length, assume left as "i", also right as "i+1"
+            //Check, by assuming "i" as above positions, what size of
+            //Palindromic  SubString, I am getting
+            
+            int odd = expand(s, i, i);
+            int even = expand(s, i, i+1);
+            
+            //Consider, only longest length among above "odd" and "even"
+            
+            int len = Math.max(odd, even);
+            
+            if(len > end-start) {
+                
+                //So, here new start and new end will be :
+                
+                start = i - (len-1)/2;
+                end = i + len/2;
+            }
+        }
+        
+        //At last, we will get Longest Palindromic Substring, just return it:
+        return s.substring(start, end+1);
+    }
+    
+    
+    
+    int expand(String s, int left, int right) {
+        while(left>=0 && right<s.length() &&
+              s.charAt(left) == s.charAt(right)) {
+            
+            //Here, "left" and "right" characters are same, so because of our
+            //greed, check for more pssible answer, go one step back(left--)
+            //and also one step ahead(right++) :
+            
+            left--;
+            right++;
+        }
+        
+        return right-left-1;
+    }
+}
