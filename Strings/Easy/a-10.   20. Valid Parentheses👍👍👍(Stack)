@@ -1,0 +1,80 @@
+//Own Article : https://leetcode.com/problems/valid-parentheses/discuss/2398609/Short-java-solution-Full-Explanation-With-Dry-Run-of-an-example
+
+/*
+The basic idea is to push the right parentheses ')', ']', or '}' into the stack each time when we encounter left ones. And if a right bracket appears in the string, we need check if the stack is empty and also whether the top element is the same with that right bracket. If not, the string is not a valid one. At last, we also need check if the stack is empty.
+
+Eg : s = "()[]{}"
+
+ch = (
+Stack : )
+
+ch = )
+Stack : )
+Do : stack.pop()
+stack.isEmpty() || stack.pop() != ch ==> False || )!=) ==> False || False
+
+ch = [
+Stack :
+Push ] onto the stack
+Stack : ]
+
+ch = ]
+Stack : ]
+Do : stack.pop()
+stack.isEmpty() || stack.pop() != ch ==> False || ]!=] ==> False || False
+
+ch = {
+Stack :
+Push } onto the stack
+Stack : }
+
+ch = }
+Stack : }
+Do : stack.pop()
+stack.isEmpty() || stack.pop() != ch ==> False || }!=} ==> False || False
+
+Now, stack is empty.
+Stack :
+
+After iterations in for loop, return stack.isEmpty()
+stack.isEmpty() == true
+
+
+Why should we return stack.isEmpty() ?
+Because, there might be the case :
+
+Eg : s = "("     ==> Not a valid pair of parentheses
+
+ch = (
+Stack : )
+
+After iterations in for loop, return stack.isEmpty()
+stack.isEmpty() == false
+
+In above example, there is no ')' in String for '(', that's why because of these case
+we should return stack.isEmpty()
+*/
+
+
+class Solution {
+    public boolean isValid(String s) {
+        
+        Stack<Character> stack = new Stack<>();
+        
+        for(char ch : s.toCharArray()) {
+            if(ch == '(') {
+                stack.push(')');
+            }
+            else if(ch == '[') {
+                stack.push(']');
+            }
+            else if(ch == '{') {
+                stack.push('}');
+            }
+            else if(stack.isEmpty() || stack.pop() != ch) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
