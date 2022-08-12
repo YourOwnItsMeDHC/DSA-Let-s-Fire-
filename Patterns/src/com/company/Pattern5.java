@@ -19,6 +19,12 @@ public class Pattern5 {
         pattern5(5);
         System.out.println();
         pattern5a(5);
+
+        System.out.println();
+        pattern5b(5);
+
+        System.out.println();
+        pattern5c(5);
     }
 
 
@@ -60,11 +66,16 @@ public class Pattern5 {
 
 
 
-////    static void pattern5b(int n) {
-//        for(int row=0; row<2*n; row++) {
-//            int totalColInParticularRow = row>n ? 2*n-row :
-//        }
-//    }
+    //Taking out formula of totalColInParticularRow (Also, indexing starts from "1") :
+    static void pattern5b(int n) {
+        for(int row=1; row<=2*n-1; row++) {
+            int totalColInParticularRow = row>n ? 2*n-row : row;
+            for(int col=1; col<=totalColInParticularRow; col++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
 
 
 
@@ -77,7 +88,16 @@ public class Pattern5 {
 
 
 
-
+//Taking out formula of totalColInParticularRow (Also, indexing starts from "0") :
+    static void pattern5c(int n) {
+        for(int row=0; row<2*n; row++) {
+            int totalColumnInParticularRow = row>n ? 2*n-row : row;
+            for(int col=0; col<totalColumnInParticularRow; col++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
 
 
 
