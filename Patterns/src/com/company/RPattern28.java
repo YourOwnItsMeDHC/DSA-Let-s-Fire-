@@ -17,7 +17,7 @@ Diamond Shape Pattern :
 
 
 package com.company;
-public class Pattern28 {
+public class RPattern28 {
     public static void main(String[] args) {
         pattern28(5);
     }
