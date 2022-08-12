@@ -1,5 +1,5 @@
 /* Same as Pattern-28 : Diamond Shape Pattern (👈👈👈👈Firstly See These)
-https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Patterns/src/com/company/Pattern5.java
+https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Patterns/src/com/company/RPattern28.java
 
 Diamond Pattern (Numbers) :
 
