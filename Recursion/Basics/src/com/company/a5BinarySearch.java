@@ -24,5 +24,4 @@ public class a5BinarySearch {
         }
         return binarySearch(nums, target, mid+1, end);
     }
-
 }
