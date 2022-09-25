@@ -38,6 +38,11 @@ public class Q1EvenOdd {
 
     static boolean isOdd(int n) {
         return (n & 1) == 1;
+
+       //n=19 & 1     ==   1    ???
+       // n=19  1 0 0 1 1               ====> 1 0 0 1 1
+       //     &         1               ====> 0 0 0 0 1
+       //                                     0 0 0 0 1       ==> 1  ==> isOdd ==> True i.e. 19 is Odd
     }
 
 }
