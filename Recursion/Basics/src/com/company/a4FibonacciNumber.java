@@ -4,7 +4,7 @@
 package com.company;
 public class a4FibonacciNumber {
     public static void main(String[] args) {
-        int ans = fibonacci(6);
+        int ans = fibonacci(49);
         System.out.println(ans);
     }
 

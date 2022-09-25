@@ -1,0 +1,165 @@
+//Same as Bitwise ==> Basics ==> Q.2
+//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Bitwise%20%26%20Maths/src/com/company/Q2NonRepeatingNumber.java
+
+// //Approach 1 - Using Hashmap :
+// class Solution {
+//     public int singleNumber(int[] nums) {
+//         HashMap<Integer, Integer> hash = new HashMap<>();
+        
+//         for(int x : nums) {
+//             if(hash.containsKey(x)) {  //if hashmap contains 'element', then increase correspoding val/count
+//                 int count = hash.get(x);  //Take the value of count of that "x" key
+//                 hash.put(x, ++count);
+//             }
+//             else {
+//                 hash.put(x, 1);  ////if hashmap does not contain  'element', then put it in hashmap
+//             }
+//         }
+         
+//         for(int x : hash.keySet()) {  //Iterate through 'keys' of HashMap
+//             if(hash.get(x) == 1) {    //if 'value' for 'key' is '1', then return that 'key' element
+//                 return x;
+//             }
+//         }
+        
+//         return -1;
+//     }
+// }
+// /* Time Complexity : O(nlogn) , as there is a for loop and inside for loop     'hash.containsKey'
+// Space Complexity : O(n) , as HashMap of size nearly 'n/2' is used.
+// */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //Approach 2 - Using Sort() Method :
+// class Solution {
+//     public int singleNumber(int[] nums) {
+//         Arrays.sort(nums);                      //Sort the array
+        
+//         //Each element in the array appears twice except for one element which               appears only once.
+//         //It means, length of the array is odd
+//         //That's why, do below operation excluding the last element, so run loop             till  i<nums.length-1
+//         //Eg-Len=10, so index-0 to 9, so run loop till 8th index i.e. i<10-1 ==>             i<9  ==> Running loop from index 0 to 8 only
+//         for(int i=0; i<nums.length-1; i+=2) {
+//             if(nums[i] != nums[i+1]) {            //Check pairwise values in array
+//                 return nums[i];           //if any pairwise values are different, then it is answer
+//             }
+//         }
+        
+//         //Here, we are left with last index value, so just simply return that
+//         return nums[nums.length-1];
+//     }
+// }
+
+// /* Time Complexity : O(nlogn) , as 'sort()' method is used
+//    Space Complexity : O(1) , as No extra space is used other than some constant */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Optimal Approach - Using XOR :
+
+/*
+XOR rules :
+If n ^ 1 = opposite of n (n's compliment)           ===> 101001 ^ 111111 = 010110
+If n ^ 0 = same as of n                             ===> 101001 ^ 000000 = 101001
+The ^ is a bitwise XOR operator. It works like this:
+00010 ^ 00010 = 00000;
+00000 ^ 10101 = 10101;
+In other words, if two integers of the same value (and bit representation) are XORed together,
+the expression evaluates to all 0s. If a number is XORed with all 0s, the expression evaluates to the number itself. These are both properties of the XOR function.
+XORing the entire array together will eliminate all the duplicates (they will all be set to 0) and leave only the single number.
+ */
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int unique = 0;
+        for(int n : nums) {
+            unique ^= n;
+            
+    //XOR(^) the numbers, at the last we will get that particular unique number
+            //Eg : nums = {2, 4, 3, 5, 3, 2, 4}
+    //If same number gets XOR, we get 0              ===> 00010 ^ 00010 = 00000
+    //So, XOR all elements, so during the process of XORing, duplicates will become       0, and at the last we will left with unique number i.e. 5
+        }
+        return unique;
+    }
+}
+
+
+/*
+Bitwise 'XOR' gives zero when both inputs are same. And if we apply XOR for 'zero' and 'any number', it will give output as that number itself. So if the array is {4,1,2,1,2} then 'XOR' operation is
+((2^2)^(1^1)^(4)) => (0^0^4) => 4
+
+Time Complexity : O(n) , as only one 'for'loop
+Space Complexity : O(1) , as No extra space is used other than some constant
+*/
