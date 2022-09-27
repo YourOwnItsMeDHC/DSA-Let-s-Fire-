@@ -68,5 +68,8 @@
 
 
 *  [Bitwise and Maths](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Bitwise%20%26%20Maths/src/com/company) :
-([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Bitwise%20%26%20Maths/src/com/company))
+([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Bitwise%20%26%20Maths/src/com/company)) ,
+([`Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Bitwise%20%26%20Maths/Bitwise/Easy))
+
+
 
