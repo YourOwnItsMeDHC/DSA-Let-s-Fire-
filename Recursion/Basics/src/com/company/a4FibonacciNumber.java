@@ -1,7 +1,7 @@
 //Fibonacci Number : https://github.com/YourOwnItsMeDHC/ProgramBasics/blob/master/src/deepak/FibonacciNumber.java
 //Fibonacci Series : https://github.com/YourOwnItsMeDHC/ProgramBasics/blob/master/src/deepak/FibonacciSeries.java
 
-//Visualize Fibonaci Recursion :
+//Visualize Fibonaci Recursion:
 //https://observablehq.com/@victormutai/visualizing-recursive-fibonacci-algorithm
 
 package com.company;
