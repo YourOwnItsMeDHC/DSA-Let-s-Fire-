@@ -65,6 +65,8 @@
 
 *  [Recursion](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Recursion) :
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Recursion/Basics/src/com/company))
+([`Easy` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Recursion/Easy))
+
 
 
 *  [Bitwise and Maths](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Bitwise%20%26%20Maths/src/com/company) :
