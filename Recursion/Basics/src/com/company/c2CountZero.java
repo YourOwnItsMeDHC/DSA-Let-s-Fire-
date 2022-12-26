@@ -1,5 +1,5 @@
+//Count Number Of Zeroes
 package com.company;
-
 public class c2CountZero {
     public static void main(String[] args) {
         System.out.println(count(2030405));
