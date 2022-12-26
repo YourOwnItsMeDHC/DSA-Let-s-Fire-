@@ -1,6 +1,6 @@
 package com.company;
 
-public class b910Palindrome {
+public class b10Palindrome {
     public static void main(String[] args) {
 
         //Simply, reverse the number, and check whether that original number is same to these reversed number or not
