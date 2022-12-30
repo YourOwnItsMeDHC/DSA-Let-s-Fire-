@@ -1,11 +1,13 @@
-package com.company;
+//Notes : https://drive.google.com/drive/u/0/folders/1Qr5tnayFuzia4h1DwkG2zSCmiC0u9hsJ
+//Own Tutorial : https://youtu.be/2hTixZ6vSLU
 
+package com.company;
 import java.util.Scanner;
 
 public class ZPatternRangoli {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the valur for n : ");
+        System.out.println("Enter the value for n : ");
         int n = sc.nextInt();
 
         for(int i=0; i<n; i++) {
@@ -23,10 +25,10 @@ public class ZPatternRangoli {
                    || i+j==(n-1)+(n/2)
                    || j-i==(n/2))
                 {
-                    System.out.print("*");
+                    System.out.print("*" + " ");
                 }
                 else {
-                    System.out.print(" ");
+                    System.out.print(" " + " ");
                 }
             }
             System.out.println();
