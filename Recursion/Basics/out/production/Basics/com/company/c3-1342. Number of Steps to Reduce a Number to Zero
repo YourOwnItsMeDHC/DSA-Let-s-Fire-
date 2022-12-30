@@ -56,39 +56,3 @@ class Solution {
         return helper(num-1, ++steps);  //Otherwise, we have to subtract 1 from it.
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Approach-02 : Using Recursion
-class Solution {
-    public int numberOfSteps(int num) {
-        return helper(num, 0);
-    }
-    
-    static int helper(int num, int steps) {
-        if(num == 0) {            //Nothing is left in "num", just return "steps"
-            return steps;
-        }
-        
-        if(num%2 == 0) {         //Current number is even, we have to divide it by 2
-            return helper(num/2, ++steps);
-        }
-        
-        return helper(num-1, ++steps);  //Otherwise, we have to subtract 1 from it.
-    }
-}
