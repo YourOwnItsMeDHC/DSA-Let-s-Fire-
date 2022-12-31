@@ -1,7 +1,6 @@
 //Search an element in a rotated sorted array
 //Without Recursion :  BS ==> Basics => 10. 33. Search in Rotated Sorted Array👍👍(BS-Medium)
-//https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic/src/com/company/33.%20Search%20in%20Rotated%20Sorted%20Array
-
+// https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Binary%20Search/Basic/src/com/company/33.%20Search%20in%20Rotated%20Sorted%20Array
 
 package com.company;
 public class d4RotataedBinarySearch {
