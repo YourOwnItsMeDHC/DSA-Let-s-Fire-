@@ -1,6 +1,9 @@
 //Iterative Code :
 // https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Patterns/src/com/company/Pattern3.java
 
+//Earlier, in iterative approach, we were using two for loops. One for iterating rows, one for iterating columns
+//Hence, here we are using two arguments for rows and columns instead of two for loops.
+
 //Page = 35
 package com.company;
 public class e1Pattern1 {
