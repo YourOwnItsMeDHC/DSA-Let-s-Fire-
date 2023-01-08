@@ -24,6 +24,11 @@ public class f1MergeSort {
         nums = mergeSort(nums);
         System.out.println(Arrays.toString(nums));             //[1, 2, 3, 4, 5]
 
+
+        //In-Place
+        mergeSortInPlace(nums, 0, nums.length);
+        System.out.println(Arrays.toString(nums));             //[1, 2, 3, 4, 5]
+
     }
 
 
@@ -91,4 +96,139 @@ public class f1MergeSort {
         }
         return mix;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    static void mergeSortInPlace(int[] nums, int start, int end) {
+        if(end - start == 1) {
+            return;
+        }
+
+        int mid = start + (end-start) / 2;
+
+        mergeSortInPlace(nums, start, mid);
+        mergeSortInPlace(nums, mid, end);
+
+        mergeInPlace(nums, start, mid, end);
+    }
+
+    static void mergeInPlace(int[] nums, int start, int mid, int end) {
+        int[] mix = new int[end-start];
+
+        int i = start;
+        int j = mid;
+        int k = 0;
+
+        while(i<mid && j<end) {
+            if(nums[i] < nums[j]) {
+                mix[k] = nums[i];
+                i++;
+            }
+            else {
+                mix[k] = nums[j];
+                j++;
+            }
+            k++;
+        }
+
+        while(i < mid) {
+            mix[k] = nums[i];
+            i++;
+            k++;
+        }
+
+        while(j < end) {
+            mix[k] = nums[j];
+            j++;
+            k++;
+        }
+
+        //Put all the values of "mix" array into the "nums" array, in order to modify "nums" array
+        for(int l=0; l<mix.length; l++) {
+            nums[start + l] = mix[l];
+        }
+
+        //Eg :
+        //11 28 13 4 15 60 17
+        //         S     E
+        //Above we are doing nums[start + l], because "start" at every function call will differ
+        //Hence, here I don't have to sort from index 0 in these particular function call, I just have to sort
+        //from these "S" to "E" i.e here I only have to sort 4 15 and 60
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
