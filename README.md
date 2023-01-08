@@ -54,6 +54,11 @@
 ([`Medium`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Medium)) ,
 ([`Hard`](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort/Hard))
 
+----->   [Merge Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Recursion/Basics/src/com/company/f1MergeSort.java) :
+
+----->   [Quick Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort) :
+
+
 *  [Strings](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics) :
 ([`Notes` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Notes))
 ([`Basics` ](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics/src/com/company))
