@@ -56,7 +56,7 @@
 
 ----->   [Merge Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Recursion/Basics/src/com/company/f1MergeSort.java) :
 
------>   [Quick Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Sorting/Cycle%20Sort) :
+----->   [Quick Sort](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/blob/master/Recursion/Basics/src/com/company/f2QuickSort.java) :
 
 
 *  [Strings](https://github.com/YourOwnItsMeDHC/DSA-Let-s-Fire-/tree/master/Strings/Basics) :
